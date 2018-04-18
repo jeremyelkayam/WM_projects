@@ -3,7 +3,6 @@
 
 #include <string>
 #include "shape.h"
-#include "point.h"
 
 using namespace std;
 
@@ -14,9 +13,10 @@ class Cone : public Shape {
       Point center, apex;
       double radius;
       string bcolor;
-
    public:
       Cone (string type, string color, string bcolor, Point center, Point apex, double radius);
+
+      string get_color(void);
 
       void print_color (void);
 

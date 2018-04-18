@@ -1,8 +1,6 @@
 #include <string>
 #include <iostream>
 #include "cone.h"
-#include "shape.h"
-#include "point.h"
 
 using namespace std;
 
@@ -17,11 +15,10 @@ Cone::Cone (string type, string color, string bcolor, Point center, Point apex, 
    this -> radius = radius;
 }
 
-
 void Cone::print_color (void)
 
 {
-   cout << "Color: "  << color << "  Base Color: " << bcolor;
+  cout << "Color: "  << color << "  Base Color: " << bcolor;
 }
 
 

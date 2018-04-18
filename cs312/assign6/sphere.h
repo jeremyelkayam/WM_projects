@@ -3,7 +3,6 @@
 
 #include <string>
 #include "shape.h"
-#include "point.h"
 
 using namespace std;
 

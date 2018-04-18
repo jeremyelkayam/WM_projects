@@ -1,19 +1,16 @@
-#ifndef SPHERE_H
-#define SPHERE_H
+#ifndef BOX_H
+#define BOX_H
 
 #include <string>
 #include "shape.h"
-#include "point.h"
 
 using namespace std;
 
 
 class Box : public Shape {
 
-   private:
-  double length;
-  double width;
-  double height;
+ private:
+  double length,width,height;
   string tbcolor;
 
    public:

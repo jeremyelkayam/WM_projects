@@ -9,21 +9,33 @@ using namespace std;
 
 class Shape {
 
-   private:
-  string type,color;
-  Point loc;
-  Shape *next;
+ private:
+  string type; //type of 3D shape this is, i.e. sphere,cone,etc.
+  Point loc;   //origin of the shape. Where on the shape this is varies by shape.
+  Shape *next; //points to next shape in the sequence.
 
-   public:
-      Shape(string type, string color, Point loc);
+ protected:
+  string color;
+ public:
+  //Constructor for Shape, setting the type, color, and location to those given.
+  Shape(string type, string color, Point loc);
+  
+  //virtual void print_color (void); commented out for testing purposes
+  
+  //virtual double compute_volume (void);
 
-      virtual void print_color (void);
+  //Prints the type of the shape.
+  void print_type (void);
 
-      virtual double compute_volume (void);
+  //Prints the location of the shape.
+  void print_loc (void);
 
-      void print_type (void);
+  //Sets the variable next to the Shape * that the user passes in.
+  void set_next(Shape *next);
 
-      void print_loc (void);
+  //Returns the variable next.
+  Shape *get_next(void);
+  
 };
 
 #endif
