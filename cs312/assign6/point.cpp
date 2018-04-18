@@ -15,7 +15,7 @@ double Point::length()
 //Prints the coordinates of the point.
 void Point::print(void)
 {
-  cout << "x: " << this->x << " y: " << this->y << " z: " << this->z;
+  cout << "x: " << this->x << " y: " << this->y << " z: " << this->z << "\n";
 }
 
 //Subtraction overload case for points; subtracts the coordinates of the second point from the first.

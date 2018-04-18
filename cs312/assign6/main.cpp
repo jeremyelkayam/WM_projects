@@ -9,6 +9,20 @@ int main()
 {
   Point hello;
   hello.set(0,0,0);
+  hello.print();
+  cout << "Distance from origin: " << hello.length() << "\n";
+  hello.set(2,5,6);
+  hello.print();
+  cout << "Distance from origin: " << hello.length() << "\n";
+  Point *hi=new Point(1,1,1);
+  hi->print();
+  Point hey;
+  hey.set(1,1,1);
+  hey.print();
+  Point subtract=hello-hey;
+  cout << "2,5,6 - 1,1,1 = ";
+  subtract.print();
+  //cout << "\n";
   //Shape *hey=new Shape("hi","green",hello);
 
   return 0;
