@@ -1,14 +1,13 @@
-#ifndef CONE_H
-#define CONE_H
+#ifndef SHAPE_H
+#define SHAPE_H
 
 #include <string>
-#include "shape.h"
 #include "point.h"
 
 using namespace std;
 
 
-class Cone : public Shape {
+class Shape {
 
    private:
   string type,color;
