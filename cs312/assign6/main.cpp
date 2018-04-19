@@ -22,8 +22,13 @@ int main()
   Point subtract=hello-hey;
   cout << "2,5,6 - 1,1,1 = ";
   subtract.print();
-  //cout << "\n";
-  //Shape *hey=new Shape("hi","green",hello);
+  subtract=hey-hello;
+  cout << "1,1,1 - 2,5,6 = ";
+  subtract.print();
+
+  Shape* yo=("thing","brown",subtract);
+  yo->print_type();
+  yo->print_loc();
 
   return 0;
 }
