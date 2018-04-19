@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #ifndef SPHERE_H
 #define SPHERE_H
 

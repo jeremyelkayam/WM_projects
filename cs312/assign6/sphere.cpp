@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #include <string>
 #include <cmath>
 #include "sphere.h"
@@ -9,6 +10,8 @@ Sphere::Sphere(string type, string color, Point center, double radius):Shape(typ
 {
   this->radius=radius;
 }
+
+void Sphere
 
 //Returns the volume of the solid using (4/3)(pi)(r^3).
 double Sphere::compute_volume(void)

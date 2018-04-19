@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #ifndef SHAPE_H
 #define SHAPE_H
 

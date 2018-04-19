@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #include <string>
 #include <iostream>
 #include "shape.h"

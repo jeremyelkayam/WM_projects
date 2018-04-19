@@ -1,3 +1,4 @@
+//author: Timothy Davis
 #include <string>
 #include <iostream>
 #include "cone.h"
@@ -18,7 +19,7 @@ Cone::Cone (string type, string color, string bcolor, Point center, Point apex, 
 void Cone::print_color (void)
 
 {
-  cout << "Color: "  << color << "  Base Color: " << bcolor;
+  cout << "Color: "  << color << "  Base Color: " << bcolor << "\n";
 }
 
 

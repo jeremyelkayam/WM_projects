@@ -1,3 +1,4 @@
+//author: Timothy Davis
 #ifndef CONE_H
 #define CONE_H
 

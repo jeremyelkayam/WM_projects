@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #ifndef BOX_H
 #define BOX_H
 
