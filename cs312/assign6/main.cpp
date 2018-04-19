@@ -26,20 +26,22 @@ int main()
   cout << "1,1,1 - 2,5,6 = ";
   subtract.print();
 
-  Shape* yo=("thing","brown",subtract);
-  yo->print_type();
-  yo->print_loc();
+
+  Sphere yo=Sphere("sphere","yellow",subtract,6);
+  yo.print_type();
+  yo.print_loc();
+  yo.print_color();
+  cout << "\nVolume: " << yo.compute_volume() << "\n";
 
   return 0;
 }
 
-/*
 void read_objs (Shape **list)
 
 {
-   Shape *node;         // variable used to create a new node each time through the loop
-   double x, y, z, ...  // temporary variables used to read in values; fill in the rest
-   string type, ...     // temporary variables used to read in values; fill in the rest
+   Shape *node;                    // variable used to create a new node each time through the loop
+   double x, y, z, xx, yy, zz, rad;     // temporary variables used to read in values; fill in the rest
+   string type, color, color2;// temporary variables used to read in values; fill in the rest
 
    // initialize list
    *list = NULL;
@@ -68,5 +70,3 @@ void read_objs (Shape **list)
       //   set the beginning of the list to node
    }
 }
-
-*/

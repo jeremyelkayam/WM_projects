@@ -16,8 +16,6 @@ class Cone : public Shape {
    public:
       Cone (string type, string color, string bcolor, Point center, Point apex, double radius);
 
-      string get_color(void);
-
       void print_color (void);
 
       double compute_volume (void);

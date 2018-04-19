@@ -15,7 +15,7 @@ Shape::Shape(string type,string color,Point loc)
 //Prints the coordinates of the point.
 void Shape::print_type(void)
 {
-  cout << "Name: " << type;
+  cout << "Name: " << type << "\n";
 }
 
 //Prints the location of the shape.
@@ -35,4 +35,9 @@ void Shape::set_next(Shape *next)
 Shape* Shape::get_next(void)
 {
   return next;
+}
+
+void Shape::print_color(void)
+{
+  cout << "Color: " << color ;
 }

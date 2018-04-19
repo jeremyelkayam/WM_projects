@@ -19,10 +19,12 @@ class Shape {
  public:
   //Constructor for Shape, setting the type, color, and location to those given.
   Shape(string type, string color, Point loc);
-  
-  //virtual void print_color (void); commented out for testing purposes
-  
-  //virtual double compute_volume (void);
+
+  //By default this prints color
+  virtual void print_color (void); 
+
+  //Shape-dependent, so it's pure virtual and can't be defined in the base class
+  virtual double compute_volume (void)=0;
 
   //Prints the type of the shape.
   void print_type (void);

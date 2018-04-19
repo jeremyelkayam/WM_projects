@@ -2,6 +2,7 @@
 #define SPHERE_H
 
 #include <string>
+#include <iostream>
 #include "shape.h"
 
 using namespace std;
@@ -9,20 +10,15 @@ using namespace std;
 
 class Sphere : public Shape {
 
-   private:
-      Point center;
-      double radius;
+ private:
+  double radius;//radius of the sphere
+  
+ public:
+  //Initializes class with specified attributes, using Shape's constructor as a helper.
+  Sphere(string type, string color, Point center, double radius);
 
-   public:
-      Sphere(string type, string color, Point center, double radius);
-
-      void print_color (void);
-
-      double compute_volume (void);
-
-      // the following overrides print_type in the base class, but can never be called
-      //  through a pointer to the base class
-      void print_type (void) { cout << "should never be called" << endl; }
+  //Returns the volume of the solid using (4/3)(pi)(r^3).
+  double compute_volume (void);
 };
 
 #endif
