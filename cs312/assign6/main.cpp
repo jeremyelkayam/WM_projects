@@ -1,3 +1,4 @@
+//author: Jeremy Elkayam
 #include <iostream>
 #include "cone.h"
 #include "box.h"
@@ -5,7 +6,7 @@
 
 using namespace std;
 
-
+//Reads object definitions from cin and chains them together using list as the beginning of the list and the next field of each Shape.
 void read_objs (Shape **list)
 {
   Shape *node;                    // variable used to create a new node each time through the loop
@@ -18,7 +19,8 @@ void read_objs (Shape **list)
   while (cin >> type) {
     
     if (type.compare ("sphere") == 0) {
-      
+
+      //read in values from 
       cin >> x >> y >> z >> rad >> color;
       
       node = new Sphere(type,color,Point(x,y,z),rad);
@@ -47,9 +49,25 @@ void read_objs (Shape **list)
   }
 }
 
+void print_objs(Shape *list)
+{
+  Shape *current=list;
+
+  cout << "Objects:\n\n";
+  
+  while(current!=NULL){
+    current->print_type();
+    current->print_color();
+    current->print_loc();
+    cout << "Volume: " << current->compute_volume() <<"\n\n";
+    
+    current=current->get_next();
+  }
+}
 
 int main()
 {
+  /*
   Point hello;
   hello.set(0,0,0);
   hello.print();
@@ -81,9 +99,11 @@ int main()
   yikeo.print_loc();
   yikeo.print_color();
   cout << "Volume: " << yikeo.compute_volume() << "\n";
+  */
   
-  //Shape **objects;
-  //read_objs(objects);
+  Shape *objects;
+  read_objs(&objects);
+  print_objs(objects);
   
   return 0;
 }
