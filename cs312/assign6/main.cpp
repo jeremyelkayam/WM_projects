@@ -31,8 +31,15 @@ int main()
   yo.print_type();
   yo.print_loc();
   yo.print_color();
-  cout << "\nVolume: " << yo.compute_volume() << "\n";
+  cout << "Volume: " << yo.compute_volume() << "\n";
 
+  Box yikeo=Box("box","green","black",5,6,7,hello);
+  yikeo.print_type();
+  yikeo.print_loc();
+  yikeo.print_color();
+  cout << "Volume: " << yikeo.compute_volume() << "\n";
+
+  
   return 0;
 }
 

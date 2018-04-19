@@ -39,5 +39,5 @@ Shape* Shape::get_next(void)
 
 void Shape::print_color(void)
 {
-  cout << "Color: " << color ;
+  cout << "Color: " << color << "\n" ;
 }
