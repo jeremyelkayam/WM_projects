@@ -11,3 +11,57 @@ main = do
 
      -- [2,3,4,5] (everything besides the first element)
      print (tail list)
+
+     -- 5 (last element only)
+     print (head (tail (tail (tail (tail list)))))
+
+     -- [1,2,3,4] (all but last element)
+     print (init list)
+
+     -- 4 (second to last element)
+     print (head (tail (tail (tail (init list)))))
+
+     -- True (check if 3 is an element of list)
+     print (elem 3 list)
+
+     -- 5 (size of list)
+     print (length list)
+
+     -- False (check if list is empty)
+     print (null list)
+
+     -- [5,4,3,2,1] (reverse list)
+
+     -- [1,2] (first two elements)
+
+     -- [3,4,5] (last three)
+
+     -- 1 (lowest value)
+
+     -- 5 (greatest value)
+
+     -- 15 (sum of all values)
+
+     -- 120 (product of all values)
+
+     -- [1,4,9,16,25] (each element squared)
+
+     -- False (check if every element is even)
+
+     -- True (check if at least one element is odd)
+
+     -- [8,1,2,3,4,5] (concatenate 8 to front of list)
+
+     -- "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (range of capital letters from A to Z)
+
+     -- [3,9,15,18,21,27,30]
+
+     -- [0,0,0,0,0,0,0,0,0,0]
+
+     -- "abc" (concatenation of lists)
+
+     -- [(1,'a'),(2,'b'),(3,'c')] (zip list)
+
+     -- ([1,2,3],"abc") (unzip list)
+
+     -- ["Hello","world"] (operation on "Hello world"
