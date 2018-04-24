@@ -68,17 +68,22 @@ main = do
      print (8:list)
 
      -- "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (range of capital letters from A to Z)
-     print ['A','B' .. 'Z']
+     print ['A' .. 'Z']
 
-     -- [3,9,15,18,21,27,30]
-     
+     -- [3,9,15,18,21,27,30] (take an explicit list and perform an operation on it)
+     print (map (*3) [1,3,5,6,7,9,10])
 
      -- [0,0,0,0,0,0,0,0,0,0]
+     print (map (*0) [1 .. 10])
 
-     -- "abc" (concatenation of lists)
+     -- "abc" (concatenation of 2 lists)
+     print (['a']++['b','c'])
 
      -- [(1,'a'),(2,'b'),(3,'c')] (zip list)
+     print (zip [1,2,3] ['a','b','c'])
 
      -- ([1,2,3],"abc") (unzip list)
+     print (unzip [(1,'a'),(2,'b'),(3,'c')])
 
-     -- ["Hello","world"] (operation on "Hello world"
+     -- ["Hello","world"] (operation on "Hello world")
+     print (words "Hello world")
