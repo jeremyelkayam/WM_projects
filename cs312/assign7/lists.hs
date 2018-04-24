@@ -1,6 +1,10 @@
 --author: Jeremy Elkayam
 
 list = [1,2,3,4,5]
+maphead :: (a -> b) -> [ a ] -> [ b]
+maphead  func xs = [ func x | x <-xs ]
+square :: Int->Int
+square x = x*x
 
 main = do
      -- [1,2,3,4,5] (the entire list, no alterations)
@@ -60,11 +64,14 @@ main = do
      -- True (check if at least one element is odd)
      print (any odd list)
 
-     -- [8,1,2,3,4,5] (concatenate 8 to front of list)
+     -- [8,1,2,3,4,5] (append 8 to front of list)
+     print (8:list)
 
      -- "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (range of capital letters from A to Z)
+     print ['A','B' .. 'Z']
 
      -- [3,9,15,18,21,27,30]
+     
 
      -- [0,0,0,0,0,0,0,0,0,0]
 
