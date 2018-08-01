@@ -3,6 +3,7 @@ Archive of projects and assignments completed in undergraduate classes at Willia
 
 ## Key
 Navigate to each course to learn more.
+
 | Course Number | Course Name                         |
 |---------------|-------------------------------------|
 | CS301         | Software Development                |
