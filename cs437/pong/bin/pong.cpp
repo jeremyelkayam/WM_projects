@@ -31,6 +31,7 @@ int main(int argc, char** argv)
 	
     }
     //update view and logic
+    
     view->update();
   }
 
