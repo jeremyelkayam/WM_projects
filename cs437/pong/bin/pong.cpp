@@ -1,4 +1,13 @@
+/*
+  pong.cpp
+  Purpose: Main executable for pong assignment. Controls setup/teardown of game as well as game loop.
+  
+  Disclaimer: may be terrible, since I have no idea what I'm doing and just futsed around with SFML for
+  awhile, trying to make use of the SFML documentation and game conventions described in the lectures from
+  the first 3 weeks...
 
+  @author Jeremy Elkayam
+ */
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "ball.hpp"
@@ -15,7 +24,8 @@ int main(int argc, char** argv)
 
   //set up game
   Game *game = new Game(App.getSize().x,App.getSize().y);
-  View *view = new View(game,&App);
+  Logic *logic = new Logic
+  View *view = new View(game,&App);  
 
   // start main loop
   while(App.isOpen())

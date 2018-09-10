@@ -9,4 +9,11 @@
 
 #include "game.hpp"
 
+class Logic
+{
+private:
+  Game *game;
+  
+};
+
 #endif
