@@ -1,3 +1,7 @@
+/*
+  ball.cpp
+  Purpose: Simulate a ball bouncing around in the game environment.
+ */
 #include <iostream>
 #include <cmath>
 #include "ball.hpp"

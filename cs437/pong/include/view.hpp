@@ -1,18 +1,18 @@
 #ifndef VIEW_HPP
 #define VIEW_HPP
 
+#include <SFML/Graphics.hpp>
 
 class View
 {
 private:
-  Ball ball;
+  Game game;
+  sf::RenderWindow window;
 
 public:
-  View(Ball ball);
-
-  void get_ball_xcor();
-  void get_ball_ycor();
+  View(Game game,sf::RenderWindow window);
   
+  void update();
   
 }
 
