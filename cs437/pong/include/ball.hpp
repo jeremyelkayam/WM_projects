@@ -17,18 +17,24 @@ private:
    */
   bool angle_changed;
 
-  double get_x_velocity();
-  double get_y_velocity();
-
 public:
   //Constructor to set ball's fields when a new round is initiated.
   Ball(double angle,double speed,double xcor,double ycor);
 
+  void set_speed(double speed){this->speed=speed;};
+  void set_angle(double angle);
+  
+
+  double get_x_velocity();
+  double get_y_velocity();
+  double get_xcor(){return xcor;}
+  double get_ycor(){return ycor;}
+
   //Delete the ball
-  void kill();
+  //void kill();
 
   //possibly add time as a param for this?
-  void move();
+  //void move();
 
   
 };

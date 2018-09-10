@@ -1,6 +1,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "ball.hpp"
 
 using namespace std;
 
@@ -11,7 +12,6 @@ int main(int argc, char** argv)
   sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong (working title)",sf::Style::Titlebar | sf::Style::Close); //enable titlebar & close options
   sf::Color bgcolor=sf::Color::Black;
 
-  
   // start main loop
   while(App.isOpen())
   {
@@ -26,16 +26,19 @@ int main(int argc, char** argv)
 	
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-      {
-	bgcolor=sf::Color::White;
-      }
-
 
     // clear screen and fill with bgcolor    
     App.clear(bgcolor);
+
+  
     
     bgcolor=sf::Color::Black;
+
+    
+    
+    //ball=Ball(
+
+    
 
 
     

@@ -19,6 +19,7 @@ double Ball::get_x_velocity()
     {
       //remember, this uses radians
       cached_xvelocity=speed*cos(angle);
+      angle_changed=false;
     }
   return cached_xvelocity;
 }
@@ -28,6 +29,12 @@ double Ball::get_y_velocity()
   if(angle_changed)
     {
       cached_yvelocity=speed*sin(angle);
+      angle_changed=false;
     }
   return cached_yvelocity;
+}
+
+void Ball::set_angle(double angle){
+  this->angle=angle;
+  this->angle_changed=true;
 }
