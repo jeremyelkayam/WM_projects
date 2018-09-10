@@ -10,7 +10,7 @@
 class Game
 {
 private:
-  //Ball ball;
+  Ball *ball;
   int p1score;
   int p2score;
   

@@ -14,7 +14,7 @@ int main(int argc, char** argv)
   sf::Color bgcolor=sf::Color::Black;
 
   //set up game
-  
+  Game *game = new Game(App.getSize().x,App.getSize().y);
 
   // start main loop
   while(App.isOpen())

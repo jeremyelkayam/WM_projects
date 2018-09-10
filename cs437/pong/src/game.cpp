@@ -9,7 +9,7 @@
 
 Game::Game(double x,double y)
 {
-  //this->ball=Ball(1.0,.1,x/2,y/2);
+  this->ball=new Ball(1.0,.1,x/2,y/2);
   this->p1score=0;
   this->p2score=0;
 }
