@@ -6,12 +6,14 @@
  */
 #include <SFML/Graphics.hpp>
 
-View::View(Game game, sf::RenderWindow window){
+View::View(Game game, sf::RenderWindow window)
+{
   this->game=game;
   this->window=window;
 }
 
-void View::update(){
+void View::update()
+{
   //clear window to prepare for rendering
   window.clear(sf::Color::Black);
 
@@ -22,7 +24,8 @@ void View::update(){
 }
 
 
-void View::draw_ball(){
+void View::draw_ball()
+{
   sf::CircleShape ball(5);
 
   ball.setPosition(game->get_ball_x(),game->get_ball_y());

@@ -10,12 +10,18 @@ class Game
 {
 private:
   Ball ball;
+  int p1score;
+  int p2score;
   
 public:
-  Game();
+  Game(Vector2u dimensions);
        
   double get_ball_x();
   double get_ball_y();
+  
+  int get_p1_score(){return this->p1score;}
+  int get_p2_score(){return this->p2score;}
+
 }
 
 #endif
