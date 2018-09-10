@@ -23,3 +23,11 @@ double Game::get_ball_y()
 {
   return ball->get_ycor();
 }
+
+void Game::increment_p1_score(){
+  p1score++;
+}
+
+void Game::increment_p2_score(){
+  p2score++;
+}

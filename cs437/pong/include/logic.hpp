@@ -1,6 +1,6 @@
 /*
   logic.hpp
-  Purpose:
+  Purpose: 
 
   @author Jeremy Elkayam
  */
@@ -13,7 +13,9 @@ class Logic
 {
 private:
   Game *game;
-  
+public:
+  Logic(Game *game);
+  void update(int ms_elapsed);
 };
 
 #endif

@@ -23,6 +23,9 @@ public:
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}
 
+  void increment_p1_score();
+  void increment_p2_score();
+
 };
 
 #endif
