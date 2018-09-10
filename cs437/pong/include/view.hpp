@@ -8,13 +8,14 @@
 #define VIEW_HPP
 
 #include <SFML/Graphics.hpp>
+#include "game.hpp"
 
 class View
 {
 private:
   //A reference to the properties of the game being played.
   Game *game;
-  sf::RenderWindow window;
+  sf::RenderWindow *window;
 
   void draw_ball();
 
@@ -23,6 +24,6 @@ public:
   
   void update();
   
-}
+};
 
 #endif

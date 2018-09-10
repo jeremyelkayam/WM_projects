@@ -4,9 +4,12 @@
   by any class that needs them.
  */
 
-Game::Game(Vector2u dimensions)
+#include "game.hpp"
+#include "ball.hpp"
+
+Game::Game(double x,double y)
 {
-  this->ball=Ball(
+  //this->ball=Ball(1.0,.1,x/2,y/2);
   this->p1score=0;
   this->p2score=0;
 }
