@@ -12,7 +12,10 @@ private:
   Ball ball;
   
 public:
-  
+  Game();
+       
+  double get_ball_x();
+  double get_ball_y();
 }
 
 #endif

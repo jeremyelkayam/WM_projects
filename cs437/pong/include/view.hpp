@@ -1,3 +1,9 @@
+/*
+  view.hpp
+  Purpose: 
+
+  @author Jeremy Elkayam
+ */
 #ifndef VIEW_HPP
 #define VIEW_HPP
 
@@ -6,11 +12,14 @@
 class View
 {
 private:
-  Game game;
+  //A reference to the properties of the game being played.
+  Game *game;
   sf::RenderWindow window;
 
+  void draw_ball();
+
 public:
-  View(Game game,sf::RenderWindow window);
+  View(Game *game,sf::RenderWindow window);
   
   void update();
   

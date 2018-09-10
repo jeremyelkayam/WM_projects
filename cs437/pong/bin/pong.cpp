@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  
+  double pos=0;
   // create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong (working title)",sf::Style::Titlebar | sf::Style::Close); //enable titlebar & close options
   sf::Color bgcolor=sf::Color::Black;
@@ -28,22 +28,22 @@ int main(int argc, char** argv)
     
 
     // clear screen and fill with bgcolor    
-    App.clear(bgcolor);
+    //App.clear(bgcolor);
 
   
     
-    bgcolor=sf::Color::Black;
+    /*bgcolor=sf::Color::Black;
 
-    
-    
-    //ball=Ball(
+    sf::CircleShape circle(5);
 
-    
+    circle.setPosition(pos,pos);
+    circle.setPointCount(10);
 
-
-    
+    App.draw(circle);
+    */
     // display
     App.display();
+
   }
 
   // Done.
