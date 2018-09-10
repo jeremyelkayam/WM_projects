@@ -15,6 +15,7 @@ int main(int argc, char** argv)
 
   //set up game
   Game *game = new Game(App.getSize().x,App.getSize().y);
+  View *view = new View(game,&App);
 
   // start main loop
   while(App.isOpen())
@@ -29,25 +30,8 @@ int main(int argc, char** argv)
 
 	
     }
-    
-
-    // clear screen and fill with bgcolor    
-    //App.clear(bgcolor);
-
-  
-    
-    /*bgcolor=sf::Color::Black;
-
-    sf::CircleShape circle(5);
-
-    circle.setPosition(pos,pos);
-    circle.setPointCount(10);
-
-    App.draw(circle);
-    */
-    // display
-    App.display();
-    
+    //update view and logic
+    view->update();
   }
 
   // Done.

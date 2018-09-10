@@ -20,7 +20,7 @@ private:
   void draw_ball();
 
 public:
-  View(Game *game,sf::RenderWindow window);
+  View(Game *game,sf::RenderWindow *window);
   
   void update();
   

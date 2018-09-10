@@ -14,3 +14,12 @@ Game::Game(double x,double y)
   this->p2score=0;
 }
 
+double Game::get_ball_x()
+{
+  return ball->get_xcor();
+}
+
+double Game::get_ball_y()
+{
+  return ball->get_ycor();
+}
