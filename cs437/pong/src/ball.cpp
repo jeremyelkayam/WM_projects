@@ -6,6 +6,7 @@
  */
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 #include "ball.hpp"
 
 using namespace std;
@@ -24,6 +25,9 @@ Ball::Ball(double angle, double speed, double xcor, double ycor)
   this->xcor=xcor;
   this->ycor=ycor;
   this->angle_changed=true;
+
+  //initialize rng
+  rng.seed(std::random_device()());
 }
 
 double Ball::get_x_velocity()
@@ -60,6 +64,7 @@ void Ball::set_angle(double angle)
 
 void Ball::move(double micros_elapsed)
 {
+  micros_elapsed*=3;
   //cout << "\nx coordinate " << xcor <<"\ny coordinate " << ycor;
   //cout << "\nx coordinate plus stuff " << (get_x_velocity()*micros_elapsed);
   this->xcor+=(get_x_velocity()*micros_elapsed);
@@ -78,4 +83,9 @@ void Ball::reflect_y()
 void Ball::reflect_x()
 {
   angle=-angle;
+  
+  //create a random perturbation between -.3 and .3 radians, and introduce it to the angle of reflection.
+  std::uniform_real_distribution<double>unif(-0.3,0.3);
+
+  angle+=unif(rng);
 }

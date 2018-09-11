@@ -2,7 +2,7 @@
 #define BALL_HPP
 
 #include <iostream>
-
+#include <random>
 
 class Ball
 {
@@ -16,6 +16,8 @@ private:
    * and cached_yvelocity were last calculated.
    */
   bool angle_changed;
+
+  std::mt19937 rng;
 
 public:
   //Constructor to set ball's fields when a new round is initiated.
