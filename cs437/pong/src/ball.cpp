@@ -66,10 +66,16 @@ void Ball::move(double micros_elapsed)
   this->ycor+=(get_y_velocity()*micros_elapsed);
 }
 
-void Ball::reflect_y(){
+void Ball::reflect_y()
+{
   if(angle>=0){
     angle=M_PI-angle;
   }else{
     angle=-M_PI-angle;
   }
+}
+
+void Ball::reflect_x()
+{
+  angle=-angle;
 }

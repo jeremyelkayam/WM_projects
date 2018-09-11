@@ -37,6 +37,7 @@ public:
   void move(double ms_elapsed);
 
   void reflect_y();
+  void reflect_x();
   
 };
 
