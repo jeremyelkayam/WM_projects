@@ -10,6 +10,13 @@
 
 using namespace std;
 
+/*Constructor for the Ball class.
+
+  @param angle: direction of velocity in radians 
+  @param speed: magnitude of velocity in pixels per millisecond
+  @param xcor: starting x-coordinate in pixels
+  @param ycor: starting y-coordinate in pixels
+ */
 Ball::Ball(double angle, double speed, double xcor, double ycor)
 {
   this->angle=angle;
@@ -43,4 +50,8 @@ double Ball::get_y_velocity()
 void Ball::set_angle(double angle){
   this->angle=angle;
   this->angle_changed=true;
+}
+
+void Ball::move(int ms_elapsed){
+  
 }

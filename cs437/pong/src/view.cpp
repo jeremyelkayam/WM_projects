@@ -29,7 +29,7 @@ void View::draw_ball()
 {
   sf::CircleShape ball(5);
 
-  ball.setPosition(game->get_ball_x(),game->get_ball_y());
+  ball.setPosition(game->get_ball()->get_xcor(),game->get_ball()->get_ycor());
 
   window->draw(ball);
 }

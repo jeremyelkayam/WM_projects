@@ -13,6 +13,7 @@
 #include "ball.hpp"
 #include "game.hpp"
 #include "view.hpp"
+#include "logic.hpp"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int main(int argc, char** argv)
 
   //set up game
   Game *game = new Game(App.getSize().x,App.getSize().y);
-  Logic *logic = new Logic
+  Logic *logic = new Logic(game);
   View *view = new View(game,&App);  
 
   // start main loop

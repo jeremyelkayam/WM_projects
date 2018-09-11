@@ -33,8 +33,8 @@ public:
   //Delete the ball
   //void kill();
 
-  //possibly add time as a param for this?
-  //void move();
+  
+  void move(int ms_elapsed);
 
   
 };
