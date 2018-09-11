@@ -12,7 +12,7 @@
 #include <iostream>
 #include "ball.hpp"
 #include "game.hpp"
-#include "view.hpp"
+#include "renderer.hpp"
 #include "logic.hpp"
 
 using namespace std;
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
   //set up game
   Game *game = new Game(App.getSize().x,App.getSize().y);
   Logic *logic = new Logic(game);
-  View *view = new View(game,&App);
+  Renderer *renderer = new Renderer(game,&App);
 
   sf::Clock clock;
 
@@ -43,9 +43,9 @@ int main(int argc, char** argv)
 
 	
     }
-    //update view and logic
+    //update renderer and logic
     logic->update(clock.getElapsedTime().asMicroseconds());
-    view->update();
+    renderer->update();
 
     clock.restart();
   }
