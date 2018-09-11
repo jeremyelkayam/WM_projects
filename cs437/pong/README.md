@@ -10,9 +10,16 @@ _Completed!_
 and the computer the other paddle __(15%)__.
 - The paddle can be moved by keyboard or mouse (one method of control is sufficient). The paddle
 of both the player and the AI should move at a constant speed.
-- A ball should bounce of the top and bottom edge of the playfield and the direction of the ball should
-change to the reflected direction __(15%)__. To add an element of uncertainty, a small random perturbation
-could be added/subtracted from the reflected direction __(5%)__.
+- ~~A ball should bounce of the top and bottom edge of the playfield and the direction of the ball should
+change to the reflected direction __(15%)__.~~
+
+
+__Completed!__
+
+~~To add an element of uncertainty, a small random perturbation
+could be added/subtracted from the reflected direction __(5%)__.~~
+
+__Completed!__
 - A player scores when the ball hits the edge of the competitors’ side __(5%)__.
 - The game starts with both players having zero points, and ends when one player reaches 11 
 points. A message should be shown to indicate whether the player won or lost.  The player 
