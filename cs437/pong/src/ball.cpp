@@ -68,8 +68,8 @@ void Ball::move(double micros_elapsed)
 
 void Ball::reflect_y(){
   if(angle>=0){
-    angle=pi-angle;
+    angle=M_PI-angle;
   }else{
-    angle=-pi-angle
+    angle=-M_PI-angle;
   }
 }
