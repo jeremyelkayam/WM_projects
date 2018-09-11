@@ -4,12 +4,13 @@
   by any class that needs them.
  */
 
+#include <random>
 #include "game.hpp"
 #include "ball.hpp"
 
 Game::Game(double x,double y)
 {
-  this->ball=new Ball(1.0,.1,x/2,y/2);
+  this->ball=new Ball(1.0,.01,x/2,y/2);
   this->p1score=0;
   this->p2score=0;
   this->x_dimension=x;

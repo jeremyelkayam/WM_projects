@@ -28,30 +28,48 @@ Ball::Ball(double angle, double speed, double xcor, double ycor)
 
 double Ball::get_x_velocity()
 {
+  /*
   if(angle_changed)
     {
-      //remember, this uses radians
+      remember, this uses radians
       cached_xvelocity=speed*cos(angle);
-      angle_changed=false;
-    }
-  return cached_xvelocity;
+      return cached_xvelocity;
+  */
+  return speed*cos(angle);
 }
 
 double Ball::get_y_velocity()
 {
+  /*
   if(angle_changed)
     {
+      cout << sin(angle) <<"\n";
       cached_yvelocity=speed*sin(angle);
       angle_changed=false;
     }
   return cached_yvelocity;
+  */
+  return speed*sin(angle);
 }
 
-void Ball::set_angle(double angle){
+void Ball::set_angle(double angle)
+{
   this->angle=angle;
   this->angle_changed=true;
 }
 
-void Ball::move(int ms_elapsed){
-  
+void Ball::move(double micros_elapsed)
+{
+  //cout << "\nx coordinate " << xcor <<"\ny coordinate " << ycor;
+  //cout << "\nx coordinate plus stuff " << (get_x_velocity()*micros_elapsed);
+  this->xcor+=(get_x_velocity()*micros_elapsed);
+  this->ycor+=(get_y_velocity()*micros_elapsed);
+}
+
+void Ball::reflect_y(){
+  if(angle>=0){
+    angle=pi-angle;
+  }else{
+    angle=-pi-angle
+  }
 }

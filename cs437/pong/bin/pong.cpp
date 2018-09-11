@@ -26,7 +26,9 @@ int main(int argc, char** argv)
   //set up game
   Game *game = new Game(App.getSize().x,App.getSize().y);
   Logic *logic = new Logic(game);
-  View *view = new View(game,&App);  
+  View *view = new View(game,&App);
+
+  sf::Clock clock;
 
   // start main loop
   while(App.isOpen())
@@ -42,8 +44,10 @@ int main(int argc, char** argv)
 	
     }
     //update view and logic
-    
+    logic->update(clock.getElapsedTime().asMicroseconds());
     view->update();
+
+    clock.restart();
   }
 
   // Done.

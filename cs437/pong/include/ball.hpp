@@ -34,8 +34,9 @@ public:
   //void kill();
 
   
-  void move(int ms_elapsed);
+  void move(double ms_elapsed);
 
+  void reflect_y()
   
 };
 

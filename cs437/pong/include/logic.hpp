@@ -14,14 +14,13 @@ class Logic
 private:
   Game *game;
   bool ball_above_below_screen();
-  void bounce_ball();
   //Shortcut for getting the ball's x-coordinate.
   double ball_x(){return this->game->get_ball()->get_xcor();}
   //Shortcut for getting the ball's y-coordinate.
   double ball_y(){return this->game->get_ball()->get_ycor();}
 public:
   Logic(Game *game);
-  void update(int ms_elapsed);
+  void update(int micros_elapsed);
 };
 
 #endif
