@@ -18,7 +18,6 @@ Logic::Logic(Game *game)
 void Logic::update(int micros_elapsed)
 {
   
-  
   if(ball_above_screen() || ball_below_screen())
     {
       double screen_edge;
@@ -37,7 +36,6 @@ void Logic::update(int micros_elapsed)
        */
       this->game->get_ball()->set_ycor(screen_edge);
       
-      //
       this->game->get_ball()->reflect_x();
     }
   if(ball_past_left_side() || ball_past_right_side())

@@ -90,6 +90,5 @@ void Ball::reflect_x()
   //add this perturbation to the reflected angle
   angle+=perturbation;
 
-  cout << "perturbation: " << perturbation << "\n";
 }
 

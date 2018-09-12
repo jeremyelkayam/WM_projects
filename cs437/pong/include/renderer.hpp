@@ -17,8 +17,10 @@ private:
   //A reference to the properties of the game being played.
   Game *game;
   sf::RenderWindow *window;
+  sf::Font font;
 
   void draw_ball();
+  void draw_scores();
 
 public:
   Renderer(Game *game,sf::RenderWindow *window);
