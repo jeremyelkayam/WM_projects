@@ -5,7 +5,6 @@
  */
 
 #include <random>
-#include <cmath>
 #include "game.hpp"
 #include "ball.hpp"
 
@@ -13,9 +12,9 @@ Game::Game(double x,double y)
 {
   starting_angle_rng.seed(std::random_device()());
 
-  //create a random starting angle 
-  std::uniform_real_distribution<double>unif(0,2*M_PI);
   
+  std::uniform_real_distribution<double>unif(0,2*M_PI);
+
   this->ball=new Ball(unif(starting_angle_rng),.004,x/2,y/2);
   this->p1score=0;
   this->p2score=0;
@@ -31,4 +30,13 @@ void Game::increment_p1_score()
 void Game::increment_p2_score()
 {
   p2score++;
+}
+
+void Game::new_round()
+{
+  std::uniform_real_distribution<double>unif(0,2*M_PI);
+
+  ball->set_xcor(x_dimension/2);
+  ball->set_ycor(y_dimension/2);
+  ball->set_angle(unif(starting_angle_rng));
 }

@@ -23,8 +23,10 @@ public:
   //Constructor to set ball's fields when a new round is initiated.
   Ball(double angle,double speed,double xcor,double ycor);
 
-  void set_speed(double speed){this->speed=speed;};
-  void set_angle(double angle);
+  void set_speed(double speed){this->speed=speed;}
+  void set_angle(double angle){this->angle=angle;}
+  void set_xcor(double xcor){this->xcor=xcor;}
+  void set_ycor(double ycor){this->ycor=ycor;}
   
 
   double get_x_velocity();

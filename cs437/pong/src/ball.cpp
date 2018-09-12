@@ -1,3 +1,4 @@
+
 /*
   ball.cpp
   Purpose: Simulate a ball bouncing around in the game environment.
@@ -56,11 +57,6 @@ double Ball::get_y_velocity()
   return speed*sin(angle);
 }
 
-void Ball::set_angle(double angle)
-{
-  this->angle=angle;
-  this->angle_changed=true;
-}
 
 void Ball::move(double micros_elapsed)
 {
@@ -75,14 +71,25 @@ void Ball::reflect_y()
   }else{
     angle=-M_PI-angle;
   }
+  
 }
 
+/*idea: potentially make this so that the perturbation doesn't reflect
+  the ball into the direction it came from (i.e. if it would make the
+  angle go past pi/2 or 3pi/2, generate a new perturbation)
+ */
 void Ball::reflect_x()
 {
   angle=-angle;
-  
-  //create a random perturbation between -.3 and .3 radians, and introduce it to the angle of reflection.
-  std::uniform_real_distribution<double>unif(-0.3,0.3);
 
-  angle+=unif(rng);
+  //generate a random perturbation in the range of -.3 to .3 radians
+  std::uniform_real_distribution<double>unif(-0.1,0.1);
+
+  double perturbation=unif(rng);
+  
+  //add this perturbation to the reflected angle
+  angle+=perturbation;
+
+  cout << "perturbation: " << perturbation << "\n";
 }
+

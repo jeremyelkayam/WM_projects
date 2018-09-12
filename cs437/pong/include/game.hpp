@@ -5,6 +5,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <cmath>
 #include "ball.hpp"
 
 class Game
@@ -29,6 +30,8 @@ public:
   double get_x_dimension(){return this->x_dimension;}
   double get_y_dimension(){return this->y_dimension;}
 
+  void new_round();
+  
 };
 
 #endif

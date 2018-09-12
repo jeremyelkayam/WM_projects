@@ -13,7 +13,10 @@ class Logic
 {
 private:
   Game *game;
-  bool ball_above_below_screen();
+  bool ball_past_left_side();
+  bool ball_past_right_side();
+  bool ball_above_screen();
+  bool ball_below_screen();
   //Shortcut for getting the ball's x-coordinate.
   double ball_x(){return this->game->get_ball()->get_xcor();}
   //Shortcut for getting the ball's y-coordinate.
