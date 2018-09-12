@@ -12,14 +12,13 @@ class Game
 private:
   Ball *ball;
   int p1score,p2score;
-  double x_dimension,y_dimension;
+  double x_dimension,y_dimension;  
+  std::mt19937 starting_angle_rng;
   
 public:
   Game(double x, double y);
 
   Ball *get_ball(){return this->ball;}
-  //double get_ball_x();
-  //double get_ball_y();
   
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}

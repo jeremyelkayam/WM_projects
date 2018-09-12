@@ -64,9 +64,6 @@ void Ball::set_angle(double angle)
 
 void Ball::move(double micros_elapsed)
 {
-  micros_elapsed*=3;
-  //cout << "\nx coordinate " << xcor <<"\ny coordinate " << ycor;
-  //cout << "\nx coordinate plus stuff " << (get_x_velocity()*micros_elapsed);
   this->xcor+=(get_x_velocity()*micros_elapsed);
   this->ycor+=(get_y_velocity()*micros_elapsed);
 }
