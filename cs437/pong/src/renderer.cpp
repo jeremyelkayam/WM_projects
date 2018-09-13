@@ -14,10 +14,16 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
   this->game=game;
   this->window=window;
 
+
+  //idea - make set_up_font(), set_up_ball(), etc. methods for this?
   if (!this->font.loadFromFile("../assets/fonts/gloryquest.ttf"))
     {
-      //cout << "error/n";
+      //TODO - handle this error (immediate exit and popup saying file not found?)
     }
+  ball.setRadius(5);
+  
+  p1_paddle.setSize(sf::Vector2f(5,game->get_p1_paddle()->get_height()));
+  p2_paddle.setSize(sf::Vector2f(5,game->get_p2_paddle()->get_height()));
   
 }
 
@@ -37,8 +43,6 @@ void Renderer::update()
 
 void Renderer::draw_ball()
 {
-  sf::CircleShape ball(5);
-
   ball.setPosition(game->get_ball()->get_xcor(),game->get_ball()->get_ycor());
 
   window->draw(ball);
@@ -46,9 +50,6 @@ void Renderer::draw_ball()
 
 void Renderer::draw_scores()
 {
-  
-  sf::Text p1score,p2score;
-
   //set font for both score texts
   p1score.setFont(font);
   p2score.setFont(font);
@@ -70,8 +71,6 @@ void Renderer::draw_scores()
 
 void Renderer::draw_paddles()
 {
-  sf::RectangleShape p1_paddle(sf::Vector2f(5,game->get_p1_paddle()->get_height()));
-  sf::RectangleShape p2_paddle(sf::Vector2f(5,game->get_p2_paddle()->get_height()));
 
   p1_paddle.setPosition(0,game->get_p1_paddle()->get_center());
   p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p1_paddle()->get_center());

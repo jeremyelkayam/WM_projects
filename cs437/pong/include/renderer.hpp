@@ -18,6 +18,9 @@ private:
   Game *game;
   sf::RenderWindow *window;
   sf::Font font;
+  sf::CircleShape ball;
+  sf::Text p1score,p2score;
+  sf::RectangleShape p1_paddle,p2_paddle;
 
   void draw_ball();
   void draw_scores();
