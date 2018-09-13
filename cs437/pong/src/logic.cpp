@@ -17,40 +17,28 @@ Logic::Logic(Game *game)
 
 void Logic::update(int micros_elapsed)
 {
-  double screen_edge;
   if(ball_above_screen() || ball_below_screen())
     {
-      if(ball_above_screen())
-	{
-	  screen_edge=0;
-	}
-      else if(ball_below_screen())
-	{
-	  screen_edge=game->get_y_dimension();
-	}
-      
-      /*
-	set ball to being exactly on the screen's edge, to prevent ball being too
-	far offscreen and causing unnecessary calls to reflect_x().
-       */
-      this->game->get_ball()->set_ycor(screen_edge);
-      
-      this->game->get_ball()->reflect_x();
+      top_bottom_bounce();
     }
+  
   if(ball_past_left_side() || ball_past_right_side())
     {
-      if(ball_past_left_side())
+      /*goal:
+	if(hit_paddle())
 	{
-	  game->increment_p2_score();
-	  screen_edge=0;
+	bounce_off_paddle();
 	}
-      
-      else if (ball_past_right_side())
+	else
 	{
-	  game->increment_p1_score();
-	  screen_edge=game->get_x_dimension();
+	player_score(ball_past_right_side());
+	check_for_win(); // maybe not this
+	start_new_round();
 	}
-      game->new_round();
+	
+       */
+      player_score_point(ball_past_right_side());
+      start_new_round();
     }
 
   this->game->get_ball()->move(micros_elapsed);
@@ -77,4 +65,43 @@ bool Logic::ball_past_left_side()
 bool Logic::ball_past_right_side()
 {
   return ball_x()>game->get_x_dimension();
+}
+
+void Logic::top_bottom_bounce()
+{
+  double screen_edge;
+  if(ball_above_screen())
+    {
+      screen_edge=0;
+    }
+  else if(ball_below_screen())
+    {
+      screen_edge=game->get_y_dimension();
+    }
+      
+  /*
+    set ball to being exactly on the screen's edge, to prevent ball being too
+    far offscreen and causing unnecessary calls to reflect_x().
+  */
+  this->game->get_ball()->set_ycor(screen_edge);
+  
+  this->game->get_ball()->reflect_x();
+}
+
+
+void Logic::player_score_point(bool player_one_scored)
+{
+  if(player_one_scored)
+    {
+      game->increment_p1_score();
+    }
+  else
+    {
+      game->increment_p2_score();
+    }
+}
+
+void Logic::start_new_round()
+{
+  game->new_round();
 }
