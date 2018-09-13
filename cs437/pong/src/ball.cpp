@@ -25,7 +25,6 @@ Ball::Ball(double angle, double speed, double xcor, double ycor)
   this->speed=speed;
   this->xcor=xcor;
   this->ycor=ycor;
-  this->angle_changed=true;
 
   //initialize rng
   rng.seed(std::random_device()());

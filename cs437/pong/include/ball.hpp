@@ -12,10 +12,6 @@ private:
    */
   double angle,speed,xcor,ycor,cached_xvelocity,cached_yvelocity;
   
-  /* Boolean to keep track of whether or not the angle was changed since cached_xvelocity
-   * and cached_yvelocity were last calculated.
-   */
-  bool angle_changed;
 
   std::mt19937 rng;
 

@@ -9,7 +9,10 @@
 
 class Paddle
 {
+private:
+  double speed,acceleration;
 
+  
 }
 
 #endif
