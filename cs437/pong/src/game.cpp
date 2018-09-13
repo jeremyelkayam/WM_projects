@@ -38,4 +38,6 @@ void Game::new_round()
   ball->set_xcor(x_dimension/2);
   ball->set_ycor(y_dimension/2);
   ball->set_angle(unif(starting_angle_rng));
+
+  
 }

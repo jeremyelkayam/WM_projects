@@ -22,8 +22,9 @@ public:
   void set_accel(double accel){this->accel=accel;}
   void set_ycor(double ycor){this->ycor=ycor;}
 
-  void move(double micros_elapsed, Direction dir);
+  double get_ycor(double ycor){return this->ycor;}
 
+  void move(double micros_elapsed, Direction dir);
   
 };
 
