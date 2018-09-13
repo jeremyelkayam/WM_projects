@@ -6,11 +6,12 @@
   */
 #include "paddle.hpp"
 
-Paddle::Paddle(double speed, double accel, double ycor)
+Paddle::Paddle(double speed, double accel, double ycor, double height)
 {
   set_speed(speed);
   set_accel(accel);
   set_ycor(ycor);
+  set_height(height);
 }
 
 void Paddle::move(double micros_elapsed, Direction dir)
