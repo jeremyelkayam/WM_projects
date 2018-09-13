@@ -4,8 +4,8 @@
 
   @author Jeremy Elkayam
   */
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef PADDLE_HPP
+#define PADDLE_HPP
 
 
 class Paddle

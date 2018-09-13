@@ -2,16 +2,21 @@
   game.hpp
   Purpose: Store game properties in a singular class for easy access.
  */
+
+//TODO: make this class a singleton.
+
 #ifndef GAME_HPP
 #define GAME_HPP
 
 #include <cmath>
 #include "ball.hpp"
+#include "paddle.hpp"
 
 class Game
 {
 private:
   Ball *ball;
+  Paddle *p1paddle;
   int p1score,p2score;
   double x_dimension,y_dimension;  
   std::mt19937 starting_angle_rng;
