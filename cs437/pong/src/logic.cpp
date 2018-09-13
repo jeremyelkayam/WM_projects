@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <SFML/Window/Keyboard.hpp>
 #include "logic.hpp"
 #include "paddle.hpp"
 
@@ -18,6 +19,16 @@ Logic::Logic(Game *game)
 
 void Logic::update(int micros_elapsed)
 {
+  
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Up);
+    }
+  else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
+    }
+  
   if(ball_above_screen() || ball_below_screen())
     {
       top_bottom_bounce();

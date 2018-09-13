@@ -4,6 +4,7 @@
 
   @author Jeremy Elkayam
  */
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "renderer.hpp"
 
@@ -72,9 +73,9 @@ void Renderer::draw_scores()
 void Renderer::draw_paddles()
 {
 
-  p1_paddle.setPosition(0,game->get_p1_paddle()->get_center());
-  p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p1_paddle()->get_center());
-  
+  p1_paddle.setPosition(0,game->get_p1_paddle()->get_ycor());
+  p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p2_paddle()->get_ycor());
+
   window->draw(p1_paddle);
   window->draw(p2_paddle);
 			       
