@@ -32,27 +32,11 @@ Ball::Ball(double angle, double speed, double xcor, double ycor)
 
 double Ball::get_x_velocity()
 {
-  /*
-  if(angle_changed)
-    {
-      remember, this uses radians
-      cached_xvelocity=speed*cos(angle);
-      return cached_xvelocity;
-  */
   return speed*cos(angle);
 }
 
 double Ball::get_y_velocity()
 {
-  /*
-  if(angle_changed)
-    {
-      cout << sin(angle) <<"\n";
-      cached_yvelocity=speed*sin(angle);
-      angle_changed=false;
-    }
-  return cached_yvelocity;
-  */
   return speed*sin(angle);
 }
 
@@ -81,7 +65,7 @@ void Ball::reflect_x()
 {
   angle=-angle;
 
-  //generate a random perturbation in the range of -.3 to .3 radians
+  //generate a random perturbation in the range of -.1 to .1 radians
   std::uniform_real_distribution<double>unif(-0.1,0.1);
 
   double perturbation=unif(rng);
@@ -89,5 +73,6 @@ void Ball::reflect_x()
   //add this perturbation to the reflected angle
   angle+=perturbation;
 
+  cout << "angle: " << angle << "\n";
 }
 

@@ -33,7 +33,6 @@ void Paddle::move(double micros_elapsed, Direction dir)
   double delta_y=this->speed*micros_elapsed*multiplier;
 
   this->ycor+=delta_y;
-  cout << ycor << "\n";
 }
 
 double Paddle::get_center()

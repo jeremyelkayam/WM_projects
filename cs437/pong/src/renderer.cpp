@@ -77,6 +77,5 @@ void Renderer::draw_paddles()
   p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p2_paddle()->get_ycor());
 
   window->draw(p1_paddle);
-  window->draw(p2_paddle);
-			       
+  window->draw(p2_paddle);			       
 }
