@@ -30,9 +30,7 @@ public:
   double get_xcor(){return xcor;}
   double get_ycor(){return ycor;}
 
-  //Delete the ball
-  //void kill();
-
+  
   
   void move(double ms_elapsed);
 
