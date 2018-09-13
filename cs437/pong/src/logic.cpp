@@ -38,6 +38,7 @@ void Logic::update(int micros_elapsed)
 	}
 	
        */
+      cout << "did ball hit paddle?: " << ball_hit_paddle() << "\n";
       player_score_point(ball_past_right_side());
       start_new_round();
     }
@@ -121,6 +122,8 @@ bool Logic::ball_hit_paddle()
 	{
 	  paddle=game->get_p2_paddle();
 	}
-  return false;
+      return (ball_ycor>paddle->get_ycor() &&
+	      ball_ycor<paddle->get_ycor()+paddle->get_height());
     }
+  return false;
 }
