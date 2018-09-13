@@ -31,3 +31,8 @@ void Paddle::move(double micros_elapsed, Direction dir)
 
   this->ycor+=delta_y;
 }
+
+double Paddle::get_center()
+{
+  return get_ycor()-(get_height()/2);
+}

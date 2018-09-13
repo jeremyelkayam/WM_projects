@@ -15,6 +15,8 @@ Game::Game(double x,double y)
   std::uniform_real_distribution<double>unif(0,2*M_PI);
 
   this->ball=new Ball(unif(starting_angle_rng),.004,x/2,y/2);
+  this->p1_paddle=new Paddle(.005,0,y/2,y/10);
+  this->p2_paddle=new Paddle(.005,0,y/2,y/10);
   this->p1score=0;
   this->p2score=0;
   this->x_dimension=x;

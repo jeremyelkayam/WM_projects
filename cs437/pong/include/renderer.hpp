@@ -21,6 +21,7 @@ private:
 
   void draw_ball();
   void draw_scores();
+  void draw_paddles();
 
 public:
   Renderer(Game *game,sf::RenderWindow *window);

@@ -17,10 +17,9 @@ Logic::Logic(Game *game)
 
 void Logic::update(int micros_elapsed)
 {
-  
+  double screen_edge;
   if(ball_above_screen() || ball_below_screen())
     {
-      double screen_edge;
       if(ball_above_screen())
 	{
 	  screen_edge=0;
@@ -43,15 +42,19 @@ void Logic::update(int micros_elapsed)
       if(ball_past_left_side())
 	{
 	  game->increment_p2_score();
+	  screen_edge=0;
 	}
+      
       else if (ball_past_right_side())
 	{
 	  game->increment_p1_score();
+	  screen_edge=game->get_x_dimension();
 	}
       game->new_round();
     }
 
   this->game->get_ball()->move(micros_elapsed);
+
   
 }
 

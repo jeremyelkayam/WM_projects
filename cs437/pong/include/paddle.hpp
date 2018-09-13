@@ -25,6 +25,7 @@ public:
 
   double get_ycor(){return this->ycor;}
   double get_height(){return this->height;}
+  double get_center();
 
   void move(double micros_elapsed, Direction dir);
   

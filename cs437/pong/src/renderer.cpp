@@ -28,6 +28,7 @@ void Renderer::update()
   
   draw_ball();
   draw_scores();
+  draw_paddles();
 
   window->display();
 
@@ -65,4 +66,17 @@ void Renderer::draw_scores()
   window->draw(p1score);
   window->draw(p2score);
   
+}
+
+void Renderer::draw_paddles()
+{
+  sf::RectangleShape p1_paddle(sf::Vector2f(5,game->get_p1_paddle()->get_height()));
+  sf::RectangleShape p2_paddle(sf::Vector2f(5,game->get_p2_paddle()->get_height()));
+
+  p1_paddle.setPosition(0,game->get_p1_paddle()->get_center());
+  p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p1_paddle()->get_center());
+  
+  window->draw(p1_paddle);
+  window->draw(p2_paddle);
+			       
 }
