@@ -43,7 +43,7 @@ void Renderer::update()
 
 void Renderer::draw_ball()
 {
-  ball.setPosition(game->get_ball()->get_xcor(),game->get_ball()->get_ycor());
+  ball.setPosition(game->get_ball()->get_xcor()-5,game->get_ball()->get_ycor()-5);
 
   window->draw(ball);
 }
