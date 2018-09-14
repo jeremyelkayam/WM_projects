@@ -33,15 +33,12 @@ void Logic::update(int micros_elapsed)
       else
 	{
 
+	  keyboard_paddle_movement(micros_elapsed);
 	  
-	  //cout << "total time: " << total_time << "\n";
-	  //cout << "micros elapsed: " << micros_elapsed << "\n";
 	  total_time+=micros_elapsed;
-	  //cout << "total time: " << total_time << "\n";
 	  
-	  if(total_time>100000) //1 billion microseconds = 1 second
+	  if(total_time>50000)
 	    {
-	      //cout << game->get_countdown() << "\n";
 	      game->decrement_countdown();
 	      total_time=0;
 	    }
@@ -52,15 +49,7 @@ void Logic::update(int micros_elapsed)
     {
 
       //TODO: separate this into more functions?
-  
-      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
-	  game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Up);
-	}
-      else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-	  game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
-	}
+      keyboard_paddle_movement(micros_elapsed);
       
       if(ball_above_screen() || ball_below_screen())
 	{
@@ -188,4 +177,16 @@ bool Logic::ball_hit_p2_paddle()
 	      ball_ycor<paddle->get_ycor()+paddle->get_height());
     }
   return false;
+}
+
+void Logic::keyboard_paddle_movement(int micros_elapsed)
+{
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Up);
+    }
+  else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
+    }
 }

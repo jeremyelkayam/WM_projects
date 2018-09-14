@@ -34,6 +34,7 @@ private:
   void left_right_bounce();
   void player_score_point(bool player_one_scored);
   void start_new_round();
+  void keyboard_paddle_movement(int micros_elapsed);
 public:
   Logic(Game *game);
   void update(int micros_elapsed);

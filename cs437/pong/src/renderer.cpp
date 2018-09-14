@@ -104,6 +104,8 @@ void Renderer::draw_new_round_text()
 
 void Renderer::draw_countdown_text()
 {
+  //TODO: make the text progressively bigger with the decreasing number
+  
   countdown_text.setFont(font);
 
   countdown_text.setString(to_string(game->get_countdown()));

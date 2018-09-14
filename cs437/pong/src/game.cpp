@@ -19,9 +19,9 @@ Game::Game(double x,double y,GameState state)
 
   srand(time(0));
   
-  this->ball=new Ball(random_angle(),.006,x/2,y/2);
-  this->p1_paddle=new Paddle(.01,0,y/2,y/10,y);
-  this->p2_paddle=new Paddle(.01,0,y/2,y/10,y);
+  this->ball=new Ball(random_angle(),.01,x/2,y/2);
+  this->p1_paddle=new Paddle(.02,0,y/2,y/10,y);
+  this->p2_paddle=new Paddle(.013,0,y/2,y/10,y);
   this->p1score=0;
   this->p2score=0;
   this->x_dimension=x;
