@@ -21,51 +21,44 @@ Logic::Logic(Game *game)
 
 void Logic::update(int micros_elapsed)
 {
+  GameState state=game->get_current_state();
+
+  if(state==GameState::Playing)
+    {
+
+      //TODO: separate this into more functions?
   
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-    {
-      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Up);
-    }
-  else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-    {
-      game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
-    }
-  
-  if(ball_above_screen() || ball_below_screen())
-    {
-      top_bottom_bounce();
-    }
-  
-  if(ball_past_left_side() || ball_past_right_side())
-    {
-      /*goal:
-	if(hit_paddle())
+      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-	bounce_off_paddle();
+	  game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Up);
 	}
-	else
+      else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-	player_score(ball_past_right_side());
-	check_for_win(); // maybe not this
-	start_new_round();
+	  game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
 	}
-	
-       */
-      if((ball_hit_p1_paddle() && ball_past_left_side())
-	 || (ball_hit_p2_paddle() && ball_past_right_side()))
+      
+      if(ball_above_screen() || ball_below_screen())
+	{
+	  top_bottom_bounce();
+	}
+      
+      if(ball_past_left_side() || ball_past_right_side())
+	{
+	  if((ball_hit_p1_paddle() && ball_past_left_side())
+	     || (ball_hit_p2_paddle() && ball_past_right_side()))
 	{
 	  left_right_bounce();
 	}
-      else{
-	player_score_point(ball_past_right_side());
-	start_new_round();
-      }
+	  else{
+	    player_score_point(ball_past_right_side());
+	    start_new_round();
+	  }
+	}
+      
+      this->cp->update(micros_elapsed);
+      
+      this->game->get_ball()->move(micros_elapsed);
     }
-
-  this->cp->update(micros_elapsed);
-
-  this->game->get_ball()->move(micros_elapsed);
-
 }
 
 bool Logic::ball_above_screen()

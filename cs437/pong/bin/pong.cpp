@@ -39,8 +39,16 @@ int main(int argc, char** argv)
     {
       // Exit
       if(Event.type == sf::Event::Closed)
+	{
         App.close();
-
+	}
+      else if(Event.type == sf::Event::KeyPressed)
+	{
+	  if(game->get_current_state()==GameState::NewRound)
+	    {
+	      game->set_state(GameState::Playing);
+	    }
+	}
 	
     }
     //update renderer and logic

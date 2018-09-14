@@ -35,6 +35,8 @@ public:
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}
 
+  GameState get_current_state(){return this->current_state;}
+
   void increment_p1_score();
   void increment_p2_score();
 
