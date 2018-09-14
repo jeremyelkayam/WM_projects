@@ -17,11 +17,36 @@ Logic::Logic(Game *game)
 {
   this->game=game;
   this->cp=new ComputerPlayer(game);
+  this->total_time=0;
 }
 
 void Logic::update(int micros_elapsed)
 {
   GameState state=game->get_current_state();
+
+  if(state==GameState::CountDown)
+    {
+      if(game->get_countdown()==0)
+	{
+	  game->set_state(GameState::Playing);
+	}
+      else
+	{
+
+	  
+	  //cout << "total time: " << total_time << "\n";
+	  //cout << "micros elapsed: " << micros_elapsed << "\n";
+	  total_time+=micros_elapsed;
+	  //cout << "total time: " << total_time << "\n";
+	  
+	  if(total_time>100000) //1 billion microseconds = 1 second
+	    {
+	      //cout << game->get_countdown() << "\n";
+	      game->decrement_countdown();
+	      total_time=0;
+	    }
+	}
+    }
 
   if(state==GameState::Playing)
     {

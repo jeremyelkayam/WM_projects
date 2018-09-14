@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 	{
 	  if(game->get_current_state()==GameState::NewRound)
 	    {
-	      game->set_state(GameState::Playing);
+	      game->set_state(GameState::CountDown);
 	    }
 	}
 	

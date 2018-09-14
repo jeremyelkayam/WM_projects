@@ -9,7 +9,7 @@ _Completed!_
 - ~~A single player version should be implemented where the user controls a single paddle __(15%)__,
 and the computer the other paddle __(15%)__.~~ _Completed!_
 - ~~The paddle can be moved by keyboard or mouse (one method of control is sufficient). The paddle
-of both the player~~ and the AI should move at a constant speed.
+of both the player and the AI should move at a constant speed.~~
 - ~~A ball should bounce of the top and bottom edge of the playfield and the direction of the ball should
 change to the reflected direction __(15%)__.~~
 _Completed!_
@@ -46,6 +46,7 @@ It should be beatable without forcing it to have a much lower speed than the pla
 players). It makes the game boring~~ _Completed!_
 - ~~Game should pause and wait for player input upon starting a new round, to allow players to
 catch their breath and focus on the new round of play.~~ _Completed!_
+- At the beginning of a new round, maybe countdown from 3 before starting a round? Just an idea.
 - Title Screen with adjustable options.
   - turn AI on/off for each side? i.e. 2 AI players, 2 human players, or one each
   - adjustable speed slider?

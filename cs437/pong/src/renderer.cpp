@@ -41,6 +41,10 @@ void Renderer::update()
     {
       draw_new_round_text();
     }
+  else if(game->get_current_state()==GameState::CountDown)
+    {
+      draw_countdown_text();
+    }
 
   window->display();
 
@@ -96,4 +100,17 @@ void Renderer::draw_new_round_text()
   new_round_text.setPosition(100,450);
 
   window->draw(new_round_text);
+}
+
+void Renderer::draw_countdown_text()
+{
+  countdown_text.setFont(font);
+
+  countdown_text.setString(to_string(game->get_countdown()));
+
+  countdown_text.setCharacterSize(256);
+  
+  countdown_text.setPosition(350,100);
+
+  window->draw(countdown_text);
 }

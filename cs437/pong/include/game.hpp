@@ -13,7 +13,7 @@
 #include "paddle.hpp"
 
 
-enum class GameState { NewRound, Playing };
+enum class GameState { NewRound, Playing, CountDown};
 
 class Game
 {
@@ -24,6 +24,7 @@ private:
   double x_dimension,y_dimension;  
   std::mt19937 starting_angle_rng;
   GameState current_state;
+  int countdown;
 public:
   
   Game(double x, double y,GameState state);
@@ -34,11 +35,13 @@ public:
   
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}
+  int get_countdown(){return this->countdown;}
 
   GameState get_current_state(){return this->current_state;}
 
   void increment_p1_score();
   void increment_p2_score();
+  void decrement_countdown(){this->countdown--;}
 
   double get_x_dimension(){return this->x_dimension;}
   double get_y_dimension(){return this->y_dimension;}
@@ -47,7 +50,7 @@ public:
 
   double random_angle();
 
-  void set_state(GameState new_state){this->current_state=new_state;}
+  void set_state(GameState new_state);
 };
 
 #endif

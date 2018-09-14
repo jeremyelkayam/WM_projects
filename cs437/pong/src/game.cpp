@@ -65,3 +65,12 @@ double Game::random_angle()
   
   return random_angle;
 }
+
+void Game::set_state(GameState new_state)
+{
+  if(new_state==GameState::CountDown)
+    {
+      this->countdown=3;
+    }
+  this->current_state=new_state;
+}
