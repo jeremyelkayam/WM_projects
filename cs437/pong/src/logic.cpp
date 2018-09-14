@@ -49,7 +49,13 @@ void Logic::update(int micros_elapsed)
 	}
 	
        */
-      cout << "did ball hit paddle?: " << ball_hit_paddle() << "\n";
+      //cout << "did ball hit paddle?: " << ball_hit_paddle() << "\n";
+
+      if(ball_hit_p1_paddle() || ball_hit_p2_paddle())
+	{
+	  
+	}
+      
       player_score_point(ball_past_right_side());
       start_new_round();
     }
@@ -119,20 +125,27 @@ void Logic::start_new_round()
   game->new_round();
 }
 
-bool Logic::ball_hit_paddle()
+bool Logic::ball_hit_p1_paddle()
 {
-  if(ball_past_left_side() || ball_past_right_side())
+  if(ball_past_left_side())
     {
       double ball_ycor=game->get_ball()->get_ycor();
       Paddle *paddle;
-      if(ball_past_left_side())
-	{
-	  paddle=game->get_p1_paddle();
-	}
-      if(ball_past_right_side())
-	{
-	  paddle=game->get_p2_paddle();
-	}
+      paddle=game->get_p1_paddle();
+      return (ball_ycor>paddle->get_ycor() &&
+	      ball_ycor<paddle->get_ycor()+paddle->get_height());
+    }
+  return false;
+}
+
+
+bool Logic::ball_hit_p2_paddle()
+{
+  if(ball_past_right_side())
+    {
+      double ball_ycor=game->get_ball()->get_ycor();
+      Paddle *paddle;
+      paddle=game->get_p2_paddle();
       return (ball_ycor>paddle->get_ycor() &&
 	      ball_ycor<paddle->get_ycor()+paddle->get_height());
     }

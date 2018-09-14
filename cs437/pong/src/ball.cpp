@@ -1,4 +1,3 @@
-
 /*
   ball.cpp
   Purpose: Simulate a ball bouncing around in the game environment.
@@ -13,11 +12,11 @@
 using namespace std;
 
 /*Constructor for the Ball class.
-
-  @param angle: direction of velocity in radians 
-  @param speed: magnitude of velocity in pixels per millisecond
-  @param xcor: starting x-coordinate in pixels
-  @param ycor: starting y-coordinate in pixels
+ *
+ *@param angle: direction of velocity in radians 
+ *@param speed: magnitude of velocity in pixels per microsecond
+ *@param xcor: starting x-coordinate in pixels
+ *@param ycor: starting y-coordinate in pixels
  */
 Ball::Ball(double angle, double speed, double xcor, double ycor)
 {
@@ -73,6 +72,6 @@ void Ball::reflect_x()
   //add this perturbation to the reflected angle
   angle+=perturbation;
 
-  cout << "angle: " << angle << "\n";
+  //cout << "angle: " << angle << "\n";
 }
 

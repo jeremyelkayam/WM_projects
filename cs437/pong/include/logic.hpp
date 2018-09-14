@@ -17,7 +17,8 @@ private:
   bool ball_past_right_side();
   bool ball_above_screen();
   bool ball_below_screen();
-  bool ball_hit_paddle();
+  bool ball_hit_p1_paddle();
+  bool ball_hit_p2_paddle();
   //Shortcut for getting the ball's x-coordinate.
   double ball_x(){return this->game->get_ball()->get_xcor();}
   //Shortcut for getting the ball's y-coordinate.
