@@ -51,3 +51,6 @@ catch their breath and focus on the new round of play.
   - adjustable speed slider?
   - sounds on/off?
 - cheesy sound effects?
+- acceleration of paddle (the Paddle class already stores an unused acceleration
+- When bouncing off of a paddle, a ball could have a deterministic perturbation, affected
+by the magnitude and direction of the paddle's velocity.
