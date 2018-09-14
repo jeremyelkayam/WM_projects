@@ -113,9 +113,32 @@ void Renderer::draw_countdown_text()
 
   countdown_text.setString(to_string(game->get_countdown()));
 
-  countdown_text.setCharacterSize(256);
+  int character_size;
+  if(game->get_countdown()==3)
+    {
+      character_size=192;
+    }
+  else if(game->get_countdown()==2)
+    {
+      character_size=320;
+    }
+  else if(game->get_countdown()==1)
+    {
+      character_size=448;
+    }
+  else if(game->get_countdown()==0)
+    {
+      return;
+    }
   
-  countdown_text.setPosition(350,100);
+  countdown_text.setCharacterSize(character_size);
 
+  sf::FloatRect textRect=countdown_text.getLocalBounds();
+  countdown_text.setOrigin(textRect.left + textRect.width/2,
+		 textRect.top + textRect.height/2);
+  
+  
+  countdown_text.setPosition(400,300);
+  //cout << "width " << countdown_text.getLocalBounds().width << ", height " << countdown_text.getLocalBounds().height << "\n";
   window->draw(countdown_text);
 }
