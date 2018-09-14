@@ -11,12 +11,12 @@
 class Paddle
 {
 private:
-  double speed,accel,ycor,height;
+  double speed,accel,ycor,height,max_ycor;
 
 public:
   enum class Direction { Up, Down };
   
-  Paddle(double speed, double accel, double ycor, double height);
+  Paddle(double speed, double accel, double ycor, double height, double max_ycor);
 
   void set_speed(double speed){this->speed=speed;}
   void set_accel(double accel){this->accel=accel;}

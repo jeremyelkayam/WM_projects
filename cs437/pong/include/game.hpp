@@ -33,8 +33,8 @@ public:
   void increment_p1_score();
   void increment_p2_score();
 
-  double get_x_dimension(){return this->x_dimension;}
-  double get_y_dimension(){return this->y_dimension;}
+  double get_x_dimension(){return Game::x_dimension;}
+  double get_y_dimension(){return Game::y_dimension;}
 
   void new_round();
 
