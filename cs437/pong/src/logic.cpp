@@ -10,6 +10,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "logic.hpp"
 #include "paddle.hpp"
+#include "sound_player.hpp"
 
 using namespace std;
 
@@ -39,6 +40,7 @@ void Logic::update(int micros_elapsed)
 	  
 	  if(total_time>50000)
 	    {
+	      
 	      game->decrement_countdown();
 	      total_time=0;
 	    }
