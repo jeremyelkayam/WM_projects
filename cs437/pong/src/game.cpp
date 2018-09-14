@@ -13,7 +13,7 @@
 
 using namespace std;
 
-Game::Game(double x,double y)
+Game::Game(double x,double y,GameState state)
 {
   starting_angle_rng.seed(std::random_device()());
 
@@ -26,6 +26,7 @@ Game::Game(double x,double y)
   this->p2score=0;
   this->x_dimension=x;
   this->y_dimension=y;
+  this->current_state=state;
 }
 
 void Game::increment_p1_score()
@@ -44,7 +45,7 @@ void Game::new_round()
   ball->set_xcor(x_dimension/2);
   ball->set_ycor(y_dimension/2);
   ball->set_angle(random_angle());
-  
+  set_state(GameState::NewRound);
 }
 
 double Game::random_angle()

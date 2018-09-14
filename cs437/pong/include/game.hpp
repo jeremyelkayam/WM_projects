@@ -12,6 +12,9 @@
 #include "ball.hpp"
 #include "paddle.hpp"
 
+
+enum class GameState { NewRound, Playing };
+
 class Game
 {
 private:
@@ -20,8 +23,10 @@ private:
   int p1score,p2score;
   double x_dimension,y_dimension;  
   std::mt19937 starting_angle_rng;
+  GameState current_state;
 public:
-  Game(double x, double y);
+  
+  Game(double x, double y,GameState state);
 
   Ball *get_ball(){return this->ball;}
   Paddle *get_p1_paddle(){return this->p1_paddle;}
@@ -33,12 +38,14 @@ public:
   void increment_p1_score();
   void increment_p2_score();
 
-  double get_x_dimension(){return Game::x_dimension;}
-  double get_y_dimension(){return Game::y_dimension;}
+  double get_x_dimension(){return this->x_dimension;}
+  double get_y_dimension(){return this->y_dimension;}
 
   void new_round();
 
   double random_angle();
+
+  void set_state(GameState new_state){this->current_state=new_state;}
 };
 
 #endif
