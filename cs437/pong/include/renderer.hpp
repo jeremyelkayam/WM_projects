@@ -19,12 +19,13 @@ private:
   sf::RenderWindow *window;
   sf::Font font;
   sf::CircleShape ball;
-  sf::Text p1score,p2score;
+  sf::Text p1score,p2score,new_round_text;
   sf::RectangleShape p1_paddle,p2_paddle;
 
   void draw_ball();
   void draw_scores();
   void draw_paddles();
+  void draw_new_round_text();
 
 public:
   Renderer(Game *game,sf::RenderWindow *window);

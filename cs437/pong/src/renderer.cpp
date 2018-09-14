@@ -37,6 +37,11 @@ void Renderer::update()
   draw_scores();
   draw_paddles();
 
+  if(game->get_current_state()==GameState::NewRound)
+    {
+      draw_new_round_text();
+    }
+
   window->display();
 
 }
@@ -59,11 +64,11 @@ void Renderer::draw_scores()
   p1score.setString("P1: " + to_string(game->get_p1_score()) + " points");
   p2score.setString("P2: " + to_string(game->get_p2_score()) + " points");
 
-  p1score.setCharacterSize(40);
-  p2score.setCharacterSize(40);
+  p1score.setCharacterSize(48);
+  p2score.setCharacterSize(48);
   
   p1score.setPosition(100,50);
-  p2score.setPosition(600,50);
+  p2score.setPosition(500,50);
 
   window->draw(p1score);
   window->draw(p2score);
@@ -78,4 +83,17 @@ void Renderer::draw_paddles()
 
   window->draw(p1_paddle);
   window->draw(p2_paddle);			       
+}
+
+void Renderer::draw_new_round_text()
+{
+  new_round_text.setFont(font);
+
+  new_round_text.setString("Press any key to continue...");
+
+  new_round_text.setCharacterSize(64);
+  
+  new_round_text.setPosition(100,450);
+
+  window->draw(new_round_text);
 }
