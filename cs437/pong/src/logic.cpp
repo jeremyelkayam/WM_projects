@@ -16,6 +16,7 @@ using namespace std;
 Logic::Logic(Game *game)
 {
   this->game=game;
+  this->cp=new ComputerPlayer(game);
 }
 
 void Logic::update(int micros_elapsed)
@@ -60,6 +61,8 @@ void Logic::update(int micros_elapsed)
 	start_new_round();
       }
     }
+
+  this->cp->update(micros_elapsed);
 
   this->game->get_ball()->move(micros_elapsed);
 

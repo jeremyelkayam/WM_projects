@@ -17,7 +17,7 @@ Paddle::Paddle(double speed, double accel, double ycor, double height)
   set_height(height);
 }
 
-void Paddle::move(double micros_elapsed, Direction dir)
+void Paddle::move(int micros_elapsed, Direction dir)
 {
   int multiplier;
   if(dir==Direction::Up)

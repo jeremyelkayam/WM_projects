@@ -27,7 +27,7 @@ public:
   double get_height(){return this->height;}
   double get_center();
 
-  void move(double micros_elapsed, Direction dir);
+  void move(int micros_elapsed, Direction dir);
   
 };
 

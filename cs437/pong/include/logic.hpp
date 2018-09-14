@@ -9,11 +9,13 @@
 #define LOGIC_HPP
 
 #include "game.hpp"
+#include "computer_player.hpp"
 
 class Logic
 {
 private:
   Game *game;
+  ComputerPlayer *cp;
   bool ball_past_left_side();
   bool ball_past_right_side();
   bool ball_above_screen();
