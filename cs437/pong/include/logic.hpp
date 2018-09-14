@@ -1,6 +1,7 @@
 /*
   logic.hpp
-  Purpose: 
+  Purpose: Handle the logic computations of the game's main loop
+           (e.g. controls, collison detection, etc).
 
   @author Jeremy Elkayam
  */

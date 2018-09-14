@@ -1,6 +1,7 @@
 /*
   logic.cpp
-  Purpose:
+  Purpose: Handle the logic computations of the game's main loop
+           (e.g. controls, collison detection, etc).
 
   @author Jeremy Elkayam
  */
@@ -49,8 +50,6 @@ void Logic::update(int micros_elapsed)
 	}
 	
        */
-      //cout << "did ball hit paddle?: " << ball_hit_paddle() << "\n";
-
       if((ball_hit_p1_paddle() && ball_past_left_side())
 	 || (ball_hit_p2_paddle() && ball_past_right_side()))
 	{
@@ -64,7 +63,6 @@ void Logic::update(int micros_elapsed)
 
   this->game->get_ball()->move(micros_elapsed);
 
-  
 }
 
 bool Logic::ball_above_screen()
