@@ -4,8 +4,10 @@ Archive of projects and assignments completed in undergraduate classes at Willia
 ## Key
 Navigate to each course to learn more.
 
-| Course Number | Course Name                         |
-|---------------|-------------------------------------|
-| CS301         | Software Development                |
-| CS303         | Algorithms                          |
-| CS312         | Principles of Programming Languages |
+| Course Number | Course Name                             |
+|---------------|-----------------------------------------|
+| CS301         | Software Development                    |
+| CS303         | Algorithms                              |
+| CS304         | Computer Organization                   |
+| CS312         | Principles of Programming Languages     |
+| CS437         | Intro to Game Design & Game Development |

@@ -27,7 +27,18 @@ should have the option to restart the game or quit __(10%)__.
 ### Completed Requirements
 - 800x600 game window with resizing disabled
 - Ball that bounces on contact with top and bottom of screen, with angle reflected
-- Random perturbation ranging from -0.3 to 0.3 radians upon bouncing off the top/bottom of the screen
+- Random perturbation ranging from -0.1 to 0.1 radians upon bouncing off the top/bottom of the screen
+- Single player-controlled paddle that the ball can bounce off of.
+- Players score a point when a ball hits the opposing side's edge.
+- Both players start with 0 points.
+- Game displays point values on-screen.
 
 ## Bonus Features
 - None so far!
+
+### Planned features/potential ideas and goals
+- Title Screen with adjustable options.
+  - turn AI on/off for each side? i.e. 2 AI players, 2 human players, or one each
+  - adjustable speed slider?
+  - sounds on/off?
+- cheesy sound effects?
