@@ -42,10 +42,10 @@ It should be beatable without forcing it to have a much lower speed than the pla
   - Also: it should try to use all or none of its movement speed. None of this pressing and
   releasing the keys to make it seem slower or faster. I will get points docked if both paddles
   don't move at constant speed.
-- Initial angle shouldn't skew toward 180 or 0 degrees (i.e. stright toward one of the
-players). It makes the game boring
-- Game should pause and wait for player input upon starting a new round, to allow players to
-catch their breath and focus on the new round of play.
+- ~~Initial angle shouldn't skew toward 180 or 0 degrees (i.e. stright toward one of the
+players). It makes the game boring~~ _Completed!_
+- ~~Game should pause and wait for player input upon starting a new round, to allow players to
+catch their breath and focus on the new round of play.~~ _Completed!_
 - Title Screen with adjustable options.
   - turn AI on/off for each side? i.e. 2 AI players, 2 human players, or one each
   - adjustable speed slider?
