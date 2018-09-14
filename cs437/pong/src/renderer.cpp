@@ -32,8 +32,7 @@ void Renderer::update()
 {
   //clear window to prepare for rendering
   window->clear(sf::Color::Black);
-  
-  draw_ball();
+
   draw_scores();
   draw_paddles();
 
@@ -44,6 +43,10 @@ void Renderer::update()
   else if(game->get_current_state()==GameState::CountDown)
     {
       draw_countdown_text();
+    }
+  else
+    {  
+      draw_ball();
     }
 
   window->display();
