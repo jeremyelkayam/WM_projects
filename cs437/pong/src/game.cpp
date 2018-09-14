@@ -5,16 +5,21 @@
  */
 
 #include <random>
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
 #include "game.hpp"
 #include "ball.hpp"
+
+using namespace std;
 
 Game::Game(double x,double y)
 {
   starting_angle_rng.seed(std::random_device()());
 
-  std::uniform_real_distribution<double>unif(0,2*M_PI);
-
-  this->ball=new Ball(unif(starting_angle_rng),.006,x/2,y/2);
+  srand(time(0));
+  
+  this->ball=new Ball(random_angle(),.006,x/2,y/2);
   this->p1_paddle=new Paddle(.01,0,y/2,y/10);
   this->p2_paddle=new Paddle(.01,0,y/2,y/10);
   this->p1score=0;
@@ -35,11 +40,23 @@ void Game::increment_p2_score()
 
 void Game::new_round()
 {
-  std::uniform_real_distribution<double>unif(0,2*M_PI);
 
   ball->set_xcor(x_dimension/2);
   ball->set_ycor(y_dimension/2);
-  ball->set_angle(unif(starting_angle_rng));
-
+  ball->set_angle(random_angle());
   
+}
+
+double Game::random_angle()
+{
+  std::uniform_real_distribution<double>angle_unif((-2*M_PI/5),(2*M_PI/5));
+
+  double random_angle=angle_unif(starting_angle_rng);
+
+  if(rand() % 2)
+    {
+      random_angle = M_PI - random_angle;
+    }
+  
+  return random_angle;
 }

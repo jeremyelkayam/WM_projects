@@ -20,7 +20,6 @@ private:
   int p1score,p2score;
   double x_dimension,y_dimension;  
   std::mt19937 starting_angle_rng;
-  
 public:
   Game(double x, double y);
 
@@ -37,7 +36,9 @@ public:
   double get_x_dimension(){return this->x_dimension;}
   double get_y_dimension(){return this->y_dimension;}
 
-  void new_round();  
+  void new_round();
+
+  double random_angle();
 };
 
 #endif
