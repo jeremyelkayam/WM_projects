@@ -51,13 +51,15 @@ void Logic::update(int micros_elapsed)
        */
       //cout << "did ball hit paddle?: " << ball_hit_paddle() << "\n";
 
-      if(ball_hit_p1_paddle() || ball_hit_p2_paddle())
+      if((ball_hit_p1_paddle() && ball_past_left_side())
+	 || (ball_hit_p2_paddle() && ball_past_right_side()))
 	{
-	  
+	  left_right_bounce();
 	}
-      
-      player_score_point(ball_past_right_side());
-      start_new_round();
+      else{
+	player_score_point(ball_past_right_side());
+	start_new_round();
+      }
     }
 
   this->game->get_ball()->move(micros_elapsed);
@@ -107,6 +109,23 @@ void Logic::top_bottom_bounce()
   this->game->get_ball()->reflect_x();
 }
 
+void Logic::left_right_bounce()
+{
+  double screen_edge;
+  if(ball_past_left_side())
+    {
+      screen_edge=0;
+    }
+  else if(ball_past_right_side())
+    {
+      screen_edge=game->get_x_dimension();
+    }
+
+  this->game->get_ball()->set_xcor(screen_edge);
+  
+  this->game->get_ball()->reflect_y();
+}
+ 
 
 void Logic::player_score_point(bool player_one_scored)
 {

@@ -24,6 +24,7 @@ private:
   //Shortcut for getting the ball's y-coordinate.
   double ball_y(){return this->game->get_ball()->get_ycor();}
   void top_bottom_bounce();
+  void left_right_bounce();
   void player_score_point(bool player_one_scored);
   void start_new_round();
 public:

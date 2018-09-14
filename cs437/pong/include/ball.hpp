@@ -28,9 +28,10 @@ public:
   Ball(double angle,double speed,double xcor,double ycor);
 
   /*Sets a new magnitude for the ball's velocity.
-   *@param speed
+   *@param speed: magnitude of velocity in pixels per microsecond
    */
   void set_speed(double speed){this->speed=speed;}
+  
   void set_angle(double angle){this->angle=angle;}
   void set_xcor(double xcor){this->xcor=xcor;}
   void set_ycor(double ycor){this->ycor=ycor;}
