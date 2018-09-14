@@ -6,8 +6,8 @@ Pong game by Jeremy Elkayam, made in SFML
 __(10%)__.~~
 _Completed!_
 - A well-defined game loop that coordinates game timing and event management __(20%)__.
-- ~~A single player version should be implemented where the user controls a single paddle __(15%)__,~~
-and the computer the other paddle __(15%)__.
+- ~~A single player version should be implemented where the user controls a single paddle __(15%)__,
+and the computer the other paddle __(15%)__.~~ _Completed!_
 - ~~The paddle can be moved by keyboard or mouse (one method of control is sufficient). The paddle
 of both the player~~ and the AI should move at a constant speed.
 - ~~A ball should bounce of the top and bottom edge of the playfield and the direction of the ball should
