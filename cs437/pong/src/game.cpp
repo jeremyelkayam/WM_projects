@@ -49,7 +49,7 @@ void Game::new_round()
 
 double Game::random_angle()
 {
-  std::uniform_real_distribution<double>angle_unif((-2*M_PI/5),(2*M_PI/5));
+  std::uniform_real_distribution<double>angle_unif((-3*M_PI/7),(3*M_PI/7));
 
   double random_angle=angle_unif(starting_angle_rng);
 
