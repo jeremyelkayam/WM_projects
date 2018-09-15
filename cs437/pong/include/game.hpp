@@ -13,7 +13,7 @@
 #include "paddle.hpp"
 
 
-enum class GameState { NewRound, Playing, CountDown};
+enum class GameState { NewRound, Playing, CountDown, EndScreen};
 
 class Game
 {
@@ -21,7 +21,7 @@ private:
   Ball *ball;
   Paddle *p1_paddle,*p2_paddle;
   int p1score,p2score;
-  double x_dimension,y_dimension;  
+  double x_dimension,y_dimension;
   std::mt19937 starting_angle_rng;
   GameState current_state;
   int countdown;

@@ -25,7 +25,6 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
   
   p1_paddle.setSize(sf::Vector2f(5,game->get_p1_paddle()->get_height()));
   p2_paddle.setSize(sf::Vector2f(5,game->get_p2_paddle()->get_height()));
-  
 }
 
 void Renderer::update()
