@@ -73,9 +73,12 @@ void Renderer::draw_scores()
 
   p1score.setCharacterSize(48);
   p2score.setCharacterSize(48);
+
+  set_origin_to_center(&p1score);
+  set_origin_to_center(&p2score);
   
-  p1score.setPosition(100,50);
-  p2score.setPosition(500,50);
+  p1score.setPosition(150,100);
+  p2score.setPosition(650,100);
 
   window->draw(p1score);
   window->draw(p2score);
@@ -99,16 +102,16 @@ void Renderer::draw_new_round_text()
   new_round_text.setString("Press any key to continue...");
 
   new_round_text.setCharacterSize(64);
+
+  set_origin_to_center(&new_round_text);
   
-  new_round_text.setPosition(100,450);
+  new_round_text.setPosition(400,500);
 
   window->draw(new_round_text);
 }
 
 void Renderer::draw_countdown_text()
 {
-  //TODO: make the text progressively bigger with the decreasing number
-  
   countdown_text.setFont(font);
 
   countdown_text.setString(to_string(game->get_countdown()));
@@ -133,12 +136,18 @@ void Renderer::draw_countdown_text()
   
   countdown_text.setCharacterSize(character_size);
 
-  sf::FloatRect textRect=countdown_text.getLocalBounds();
-  countdown_text.setOrigin(textRect.left + textRect.width/2,
-		 textRect.top + textRect.height/2);
+  set_origin_to_center(&countdown_text);
   
   
   countdown_text.setPosition(400,300);
   //cout << "width " << countdown_text.getLocalBounds().width << ", height " << countdown_text.getLocalBounds().height << "\n";
   window->draw(countdown_text);
+}
+
+
+void Renderer::set_origin_to_center(sf::Text *text)
+{
+  sf::FloatRect textRect=text->getLocalBounds();
+text->setOrigin(textRect.left + textRect.width/2,
+		 textRect.top + textRect.height/2);
 }

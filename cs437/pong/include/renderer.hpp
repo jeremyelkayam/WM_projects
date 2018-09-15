@@ -28,6 +28,8 @@ private:
   void draw_new_round_text();
   void draw_countdown_text();
 
+  void set_origin_to_center(sf::Text *text);
+
 public:
   Renderer(Game *game,sf::RenderWindow *window);
   
