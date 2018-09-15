@@ -50,8 +50,7 @@ void Logic::update(int micros_elapsed)
 	    }
 	}
     }
-
-  if(state==GameState::Playing)
+  else if(state==GameState::Playing)
     {
 
       //TODO: separate this into more functions?

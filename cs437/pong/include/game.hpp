@@ -11,7 +11,7 @@
 #include <cmath>
 #include "ball.hpp"
 #include "paddle.hpp"
-
+#include "menu.hpp"
 
 enum class GameState { NewRound, Playing, CountDown, EndScreen};
 
@@ -20,6 +20,7 @@ class Game
 private:
   Ball *ball;
   Paddle *p1_paddle,*p2_paddle;
+  Menu *menu;
   int p1score,p2score;
   double x_dimension,y_dimension;
   std::mt19937 starting_angle_rng;
@@ -32,6 +33,7 @@ public:
   Ball *get_ball(){return this->ball;}
   Paddle *get_p1_paddle(){return this->p1_paddle;}
   Paddle *get_p2_paddle(){return this->p2_paddle;}
+  Menu *get_menu(){return this->menu;}
   
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}

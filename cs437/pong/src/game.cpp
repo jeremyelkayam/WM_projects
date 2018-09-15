@@ -22,6 +22,7 @@ Game::Game(double x,double y,GameState state)
   this->ball=new Ball(random_angle(),.008,x/2,y/2);
   this->p1_paddle=new Paddle(.02,0,y/2,y/10,y);
   this->p2_paddle=new Paddle(.013,0,y/2,y/10,y);
+  this->menu=new Menu(MenuType::Finish,0);
   this->p1score=0;
   this->p2score=0;
   this->x_dimension=x;

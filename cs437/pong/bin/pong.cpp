@@ -54,7 +54,21 @@ int main(int argc, char** argv)
 	    {
 	      game->set_state(GameState::CountDown);
 	    }
-	  
+	  else if(game->get_current_state()==GameState::EndScreen)
+	    {
+	      if(Event.key.code == sf::Keyboard::Up)
+		{
+		  
+		}
+	      else if(Event.key.code == sf::Keyboard::Down)
+		{
+		  
+		}
+	      else if(Event.key.code == sf::Keyboard::Return)
+		{
+		  
+		}
+	    }
 	}
 	
     }
