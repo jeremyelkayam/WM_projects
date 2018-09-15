@@ -43,6 +43,10 @@ void Logic::update(int micros_elapsed)
 	      
 	      game->decrement_countdown();
 	      total_time=0;
+	      if(game->get_countdown()==2)
+		{
+		  SoundPlayer::play_two();
+		}
 	    }
 	}
     }

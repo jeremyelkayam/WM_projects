@@ -9,13 +9,11 @@
 #ifndef SOUND_PLAY_HPP
 #define SOUND_PLAY_HPP
 
-#include <SFML/Audio.hpp>
 
 class SoundPlayer
 {
 private:
-  static sf::SoundBuffer buffer;
-  static void play_buffer(sf::SoundBuffer buffer);
+  
 public:
   static void play_three();
   static void play_two();

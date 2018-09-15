@@ -9,11 +9,14 @@
   @author Jeremy Elkayam
  */
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
+#include <SFML/Audio.hpp>
 #include "ball.hpp"
 #include "game.hpp"
 #include "renderer.hpp"
 #include "logic.hpp"
+#include "sound_player.hpp"
 
 using namespace std;
 
@@ -29,10 +32,13 @@ int main(int argc, char** argv)
   Renderer *renderer = new Renderer(game,&App);
 
   sf::Clock clock;
-
+  
+  
+  
   // start main loop
   while(App.isOpen())
-  {
+    {
+    
     // process events
     sf::Event Event;
     while(App.pollEvent(Event))
@@ -48,6 +54,7 @@ int main(int argc, char** argv)
 	    {
 	      game->set_state(GameState::CountDown);
 	    }
+	  
 	}
 	
     }
