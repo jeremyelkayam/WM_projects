@@ -70,7 +70,10 @@ void Logic::update(int micros_elapsed)
 	}
 	  else{
 	    player_score_point(ball_past_right_side());
-	    start_new_round();
+	    if(game->get_current_state()!=GameState::EndScreen)
+	      {
+		start_new_round();
+	      }
 	  }
 	}
       
@@ -154,7 +157,10 @@ void Logic::player_score_point(bool player_one_scored)
 
 void Logic::start_new_round()
 {
-  game->new_round();
+  if(game->get_current_state()==GameState::Playing)
+    {
+      game->new_round();
+    }
 }
 
 bool Logic::ball_hit_p1_paddle()

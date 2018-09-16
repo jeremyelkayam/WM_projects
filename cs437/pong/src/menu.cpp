@@ -16,7 +16,6 @@ Menu::Menu(MenuType type, int default_selection)
       options.push_back("New Game");
       options.push_back("Main Menu");
       options.push_back("Quit");
-
     }
   selection=default_selection;
 }

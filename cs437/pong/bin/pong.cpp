@@ -58,11 +58,11 @@ int main(int argc, char** argv)
 	    {
 	      if(Event.key.code == sf::Keyboard::Up)
 		{
-		  
+		  game->get_menu()->move_up();
 		}
 	      else if(Event.key.code == sf::Keyboard::Down)
 		{
-		  
+		  game->get_menu()->move_down();		  
 		}
 	      else if(Event.key.code == sf::Keyboard::Return)
 		{

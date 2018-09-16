@@ -32,22 +32,30 @@ void Renderer::update()
   //clear window to prepare for rendering
   window->clear(sf::Color::Black);
 
+  
   draw_scores();
-  draw_paddles();
 
-  if(game->get_current_state()==GameState::NewRound)
+  if(game->get_current_state()==GameState::EndScreen)
     {
-      draw_new_round_text();
-    }
-  else if(game->get_current_state()==GameState::CountDown)
-    {
-      draw_countdown_text();
+      draw_menu_text();
     }
   else
-    {  
-      draw_ball();
+    {
+      draw_paddles();
+      
+      if(game->get_current_state()==GameState::NewRound)
+	{
+	  draw_new_round_text();
+	}
+      else if(game->get_current_state()==GameState::CountDown)
+	{
+	  draw_countdown_text();
+	}
+      else
+	{
+	  draw_ball();
+	}
     }
-
   window->display();
 
 }
@@ -144,9 +152,33 @@ void Renderer::draw_countdown_text()
 }
 
 
+void Renderer::draw_menu_text()
+{
+  vector <string> menu_options=game->get_menu()->get_options();
+  int selection=game->get_menu()->get_selection();
+  for(int z=0;z<menu_options.size();z++)
+    {
+      sf::Text option;
+      option.setFont(font);
+      
+      option.setString(menu_options[z]);
+      
+      option.setCharacterSize(64);
+      
+      set_origin_to_center(&option);
+      
+      option.setPosition(400,300+48*z);
+      
+      window->draw(option);
+
+    }
+}
+
+
 void Renderer::set_origin_to_center(sf::Text *text)
 {
   sf::FloatRect textRect=text->getLocalBounds();
 text->setOrigin(textRect.left + textRect.width/2,
 		 textRect.top + textRect.height/2);
 }
+

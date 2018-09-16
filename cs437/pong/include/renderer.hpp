@@ -27,6 +27,7 @@ private:
   void draw_paddles();
   void draw_new_round_text();
   void draw_countdown_text();
+  void draw_menu_text();
 
   void set_origin_to_center(sf::Text *text);
 
