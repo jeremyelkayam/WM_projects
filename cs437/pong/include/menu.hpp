@@ -13,7 +13,7 @@
 
 using namespace std;
 
-enum class MenuType { Main, Finish };
+enum class MenuType { Main, Finish, Pause };
 
 class Menu
 {
@@ -26,6 +26,8 @@ public:
   void move_down();
   void move_up();
   void select();
+
+  void set_type(MenuType type);
 
   int get_selection(){return selection;}
   vector <string> get_options(){return options;}

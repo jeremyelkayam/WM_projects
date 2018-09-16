@@ -81,8 +81,16 @@ void Game::set_state(GameState new_state)
     {
       this->countdown=3;
     }
+  else if(new_state==GameState::EndScreen)
+    {
+      menu->set_type(MenuType::Finish);
+    }
+  else if(new_state==GameState::Paused)
+    {
+      menu->set_type(MenuType::Pause);
+    }
+  
   this->current_state=new_state;
-  //cout << "setting state\n";
 }
 
 void Game::restart_game()

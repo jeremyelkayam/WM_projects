@@ -55,11 +55,11 @@ int main(int argc, char** argv)
 	    {
 	      if(game->get_current_state()==GameState::Playing)
 		{
-		  
+		  logic->handle_menu_event(Event,&App);	      
 		}
 	      else if(game->get_current_state()==GameState::Paused)
 		{
-
+		  game->set_state(GameState::Playing);
 		}
 	    }
 	  if(game->get_current_state()==GameState::NewRound)
