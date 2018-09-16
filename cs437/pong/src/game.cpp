@@ -87,6 +87,7 @@ void Game::set_state(GameState new_state)
 
 void Game::restart_game()
 {
+  //TODO: set paddle positions to default
   p1score=0;
   p2score=0;
   new_round();

@@ -18,9 +18,9 @@ could be added/subtracted from the reflected direction __(5%)__.~~
 _Completed!_
 - ~~A player scores when the ball hits the edge of the competitors’ side __(5%)__.~~
 _Completed!_
-- ~~The game starts with both players having zero points~~, and ends when one player reaches 11 
+- ~~The game starts with both players having zero points, and ends when one player reaches 11 
 points. A message should be shown to indicate whether the player won or lost.  The player 
-should have the option to restart the game or quit __(10%)__.
+should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 - ~~The current score should be shown in the window __(5%)__.~~ _Completed!_
 
 
@@ -34,7 +34,8 @@ should have the option to restart the game or quit __(10%)__.
 - Game displays point values on-screen.
 
 ## Bonus Features
-- None so far!
+- At the beginning of each round, game waits for player input and counts down before starting gameplay
+- 
 
 ### Planned features/potential ideas and goals
 - better AI (more realistic). Make it fuck up sometimes. Under or overshoot the ball.
@@ -42,16 +43,13 @@ It should be beatable without forcing it to have a much lower speed than the pla
   - Also: it should try to use all or none of its movement speed. None of this pressing and
   releasing the keys to make it seem slower or faster. I will get points docked if both paddles
   don't move at constant speed.
-- ~~Initial angle shouldn't skew toward 180 or 0 degrees (i.e. stright toward one of the
-players). It makes the game boring~~ _Completed!_
-- ~~Game should pause and wait for player input upon starting a new round, to allow players to
-catch their breath and focus on the new round of play.~~ _Completed!_
-- At the beginning of a new round, maybe countdown from 3 before starting a round? Just an idea.
 - Title Screen with adjustable options.
   - turn AI on/off for each side? i.e. 2 AI players, 2 human players, or one each
   - adjustable speed slider?
+  - points required to win?
   - sounds on/off?
 - cheesy sound effects?
-- acceleration of paddle (the Paddle class already stores an unused acceleration
+- acceleration of paddle (the Paddle class already stores an unused acceleration!)
 - When bouncing off of a paddle, a ball could have a deterministic perturbation, affected
 by the magnitude and direction of the paddle's velocity.
+- Pause menu

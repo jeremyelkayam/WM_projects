@@ -43,39 +43,32 @@ int main(int argc, char** argv)
     sf::Event Event;
     while(App.pollEvent(Event))
     {
-      // Exit
+      //TODO: put all event handling into the logic class.
       if(Event.type == sf::Event::Closed)
 	{
         App.close();
 	}
       else if(Event.type == sf::Event::KeyPressed)
 	{
+	  
+	  if(Event.key.code == sf::Keyboard::Escape)
+	    {
+	      if(game->get_current_state()==GameState::Playing)
+		{
+		  
+		}
+	      else if(game->get_current_state()==GameState::Paused)
+		{
+
+		}
+	    }
 	  if(game->get_current_state()==GameState::NewRound)
 	    {
 	      game->set_state(GameState::CountDown);
 	    }
 	  else if(game->get_current_state()==GameState::EndScreen)
 	    {
-	      if(Event.key.code == sf::Keyboard::Up)
-		{
-		  game->get_menu()->move_up();
-		}
-	      else if(Event.key.code == sf::Keyboard::Down)
-		{
-		  game->get_menu()->move_down();		  
-		}
-	      else if(Event.key.code == sf::Keyboard::Return)
-		{
-		  string selected=game->get_menu()->get_selected_option();
-		  if(selected=="Quit")
-		    {
-		      App.close();
-		    }
-		  else if(selected=="New Game")
-		    {
-		      game->restart_game();
-		    }
-		}
+	      logic->handle_menu_event(Event,&App);
 	    }
 	}
 	

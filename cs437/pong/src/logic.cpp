@@ -201,3 +201,27 @@ void Logic::keyboard_paddle_movement(int micros_elapsed)
       game->get_p2_paddle()->move(micros_elapsed,Paddle::Direction::Down);
     }
 }
+
+void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
+{
+  if(event.key.code == sf::Keyboard::Up)
+    {
+      game->get_menu()->move_up();
+    }
+  else if(event.key.code == sf::Keyboard::Down)
+    {
+      game->get_menu()->move_down();		  
+    }
+  else if(event.key.code == sf::Keyboard::Return)
+    {
+      string selected=game->get_menu()->get_selected_option();
+      if(selected=="Quit")
+	{
+	  App->close();
+	}
+      else if(selected=="New Game")
+	{
+	  game->restart_game();
+	}
+    }
+}

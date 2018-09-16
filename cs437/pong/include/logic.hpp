@@ -8,6 +8,7 @@
 #ifndef LOGIC_HPP
 #define LOGIC_HPP
 
+#include <SFML/Graphics.hpp>
 #include "game.hpp"
 #include "computer_player.hpp"
 
@@ -38,6 +39,8 @@ private:
 public:
   Logic(Game *game);
   void update(int micros_elapsed);
+
+  void handle_menu_event(sf::Event event, sf::RenderWindow *App);
 };
 
 #endif

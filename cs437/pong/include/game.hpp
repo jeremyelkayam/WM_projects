@@ -13,7 +13,7 @@
 #include "paddle.hpp"
 #include "menu.hpp"
 
-enum class GameState { NewRound, Playing, CountDown, EndScreen};
+enum class GameState { NewRound, Playing, CountDown, EndScreen, Paused};
 
 class Game
 {
