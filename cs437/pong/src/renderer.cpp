@@ -17,7 +17,11 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
 
 
   //idea - make set_up_font(), set_up_ball(), etc. methods for this?
-  if (!this->font.loadFromFile("../assets/fonts/gloryquest.ttf"))
+  if (!this->pixel_font.loadFromFile("../assets/fonts/gloryquest.ttf"))
+    {
+      //TODO - handle this error (immediate exit and popup saying file not found?)
+    }
+  if (!this->title_font.loadFromFile("../assets/fonts/mumbold.ttf"))
     {
       //TODO - handle this error (immediate exit and popup saying file not found?)
     }
@@ -81,8 +85,8 @@ void Renderer::draw_ball()
 void Renderer::draw_scores()
 {
   //set font for both score texts
-  p1score.setFont(font);
-  p2score.setFont(font);
+  p1score.setFont(pixel_font);
+  p2score.setFont(pixel_font);
 
   //set score texts to display respective scores
   p1score.setString("P1: " + to_string(game->get_p1_score()) + " points");
@@ -114,7 +118,7 @@ void Renderer::draw_paddles()
 
 void Renderer::draw_new_round_text()
 {
-  new_round_text.setFont(font);
+  new_round_text.setFont(pixel_font);
 
   new_round_text.setString("Press any key to continue...");
 
@@ -129,7 +133,7 @@ void Renderer::draw_new_round_text()
 
 void Renderer::draw_countdown_text()
 {
-  countdown_text.setFont(font);
+  countdown_text.setFont(pixel_font);
 
   countdown_text.setString(to_string(game->get_countdown()));
 
@@ -170,7 +174,7 @@ void Renderer::draw_menu_text(int starting_ycor)
   for(int z=0;z<menu_options.size();z++)
     {
       sf::Text option;
-      option.setFont(font);
+      option.setFont(pixel_font);
       
       option.setString(menu_options[z]);
       
@@ -182,9 +186,12 @@ void Renderer::draw_menu_text(int starting_ycor)
 
       if(z==game->get_menu()->get_selection())
 	{
+	  /*
 	  option.setOutlineThickness(1);
 	  option.setOutlineColor(sf::Color::White);
 	  option.setFillColor(sf::Color::Black);
+	  */
+	  option.setFillColor(sf::Color::Yellow);
 	}
       
       window->draw(option);
@@ -207,7 +214,7 @@ void Renderer::draw_end_menu()
   
   sf::Text finish_text;
   
-  finish_text.setFont(font);
+  finish_text.setFont(pixel_font);
   
   finish_text.setString(player_name+" wins!");
   
@@ -226,7 +233,7 @@ void Renderer::draw_pause_menu()
 {
   sf::Text paused_text;
   
-  paused_text.setFont(font);
+  paused_text.setFont(pixel_font);
   
   paused_text.setString("Paused");
   
@@ -253,9 +260,9 @@ void Renderer::draw_main_menu()
   sf::Text text;
   
   //TODO: set this to something easy and fun like Mumbo-SSK
-  text.setFont(font);
+  text.setFont(title_font);
   
-  text.setString("Pong");
+  text.setString("PONG");
   
   text.setCharacterSize(256);
   

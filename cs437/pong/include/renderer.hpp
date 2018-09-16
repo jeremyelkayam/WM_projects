@@ -17,7 +17,7 @@ private:
   //A reference to the properties of the game being played.
   Game *game;
   sf::RenderWindow *window;
-  sf::Font font;
+  sf::Font pixel_font,title_font;
   sf::CircleShape ball;
   sf::Text p1score,p2score,new_round_text,countdown_text;
   sf::RectangleShape p1_paddle,p2_paddle;
