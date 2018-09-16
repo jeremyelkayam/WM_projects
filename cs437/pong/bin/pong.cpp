@@ -38,50 +38,52 @@ int main(int argc, char** argv)
   // start main loop
   while(App.isOpen())
     {
-    
-    // process events
-    sf::Event Event;
-    while(App.pollEvent(Event))
-    {
-      //TODO: put all event handling into the logic class.
-      if(Event.type == sf::Event::Closed)
+      GameState previous_state;
+      // process events
+      sf::Event Event;
+      while(App.pollEvent(Event))
 	{
-        App.close();
-	}
-      else if(Event.type == sf::Event::KeyPressed)
-	{
+	  //TODO: put all event handling into the logic class.
+	  if(Event.type == sf::Event::Closed)
+	    {
+	      App.close();
+	    }
+	  else if(Event.type == sf::Event::KeyPressed)
+	    {
+	      
+	      if(Event.key.code == sf::Keyboard::Escape)
+		{ 
+		  if(game->get_current_state()==GameState::Playing )
+		    //||game->get_current_state()==GameState::CountDown)
+		    {
+		      game->set_state(GameState::Paused);
+		      previous_state=game->get_current_state();
+		    }
+		  else if(game->get_current_state()==GameState::Paused)
+		    {
+		      game->set_state(previous_state);
+		    }
+		}
+	      if(game->get_current_state()==GameState::NewRound)
+		{
+		  game->set_state(GameState::CountDown);
+		}
+	      else if(game->get_current_state()==GameState::EndScreen ||
+		      game->get_current_state()==GameState::Paused ||
+		      game->get_current_state()==GameState::MainMenu)
+		{
+		  logic->handle_menu_event(Event,&App);
+		}
+	    }
 	  
-	  if(Event.key.code == sf::Keyboard::Escape)
-	    {
-	      if(game->get_current_state()==GameState::Playing)
-		{
-		  game->set_state(GameState::Paused);
-		}
-	      else if(game->get_current_state()==GameState::Paused)
-		{
-		  game->set_state(GameState::Playing);
-		}
-	    }
-	  if(game->get_current_state()==GameState::NewRound)
-	    {
-	      game->set_state(GameState::CountDown);
-	    }
-	  else if(game->get_current_state()==GameState::EndScreen ||
-		  game->get_current_state()==GameState::Paused ||
-		  game->get_current_state()==GameState::MainMenu)
-	    {
-	      logic->handle_menu_event(Event,&App);
-	    }
 	}
-	
+      //update renderer and logic
+      logic->update(clock.getElapsedTime().asMicroseconds());
+      renderer->update();
+      
+      clock.restart();
     }
-    //update renderer and logic
-    logic->update(clock.getElapsedTime().asMicroseconds());
-    renderer->update();
-
-    clock.restart();
-  }
-
+  
   // Done.
   return 0;
 }
