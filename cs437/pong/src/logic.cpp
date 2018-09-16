@@ -227,5 +227,9 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	{
 	  game->set_state(GameState::Playing);
 	}
+      else if(selected=="Main Menu")
+	{
+	  game->set_state(GameState::MainMenu);
+	}
     }
 }

@@ -53,7 +53,7 @@ void Menu::set_type(MenuType type)
   if(type==MenuType::Main)
     {
       options.push_back("Start Game");
-      options.push_back("Main Menu");
+      options.push_back("Options");
       options.push_back("Quit");
     }
 }
