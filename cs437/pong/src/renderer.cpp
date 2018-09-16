@@ -37,7 +37,7 @@ void Renderer::update()
 
   if(game->get_current_state()==GameState::EndScreen)
     {
-      draw_end_menu_text();
+      draw_end_menu();
     }
   else
     {
@@ -50,6 +50,10 @@ void Renderer::update()
       else if(game->get_current_state()==GameState::CountDown)
 	{
 	  draw_countdown_text();
+	}
+      else if(game->get_current_state()==GameState::Paused)
+	{
+	  draw_pause_menu();
 	}
       else
 	{
@@ -179,7 +183,7 @@ void Renderer::draw_menu_text()
     }
 }
 
-void Renderer::draw_end_menu_text()
+void Renderer::draw_end_menu()
 {
   
   string player_name;
@@ -206,6 +210,25 @@ void Renderer::draw_end_menu_text()
   finish_text.setPosition(400,300);
   
   window->draw(finish_text);
+
+  draw_menu_text();
+}
+
+void Renderer::draw_pause_menu()
+{
+  sf::Text paused_text;
+  
+  paused_text.setFont(font);
+  
+  paused_text.setString("Paused");
+  
+  paused_text.setCharacterSize(128);
+  
+  set_origin_to_center(&paused_text);
+      
+  paused_text.setPosition(400,300);
+  
+  window->draw(paused_text);
 
   draw_menu_text();
 }
