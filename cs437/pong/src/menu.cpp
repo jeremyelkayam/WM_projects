@@ -50,5 +50,4 @@ void Menu::set_type(MenuType type)
       options.push_back("Main Menu");
       options.push_back("Quit");
     }
-
 }

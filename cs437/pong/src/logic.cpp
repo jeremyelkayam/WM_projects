@@ -223,5 +223,9 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	{
 	  game->restart_game();
 	}
+      else if(selected=="Continue")
+	{
+	  game->set_state(GameState::Playing);
+	}
     }
 }

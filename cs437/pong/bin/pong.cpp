@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 	    {
 	      if(game->get_current_state()==GameState::Playing)
 		{
-		  logic->handle_menu_event(Event,&App);	      
+		  game->set_state(GameState::Paused);
 		}
 	      else if(game->get_current_state()==GameState::Paused)
 		{
@@ -66,7 +66,8 @@ int main(int argc, char** argv)
 	    {
 	      game->set_state(GameState::CountDown);
 	    }
-	  else if(game->get_current_state()==GameState::EndScreen)
+	  else if(game->get_current_state()==GameState::EndScreen ||
+		  game->get_current_state()==GameState::Paused)
 	    {
 	      logic->handle_menu_event(Event,&App);
 	    }
