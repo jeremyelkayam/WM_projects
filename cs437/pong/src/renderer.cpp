@@ -37,7 +37,7 @@ void Renderer::update()
 
   if(game->get_current_state()==GameState::EndScreen)
     {
-      draw_menu_text();
+      draw_end_menu_text();
     }
   else
     {
@@ -157,6 +157,31 @@ void Renderer::draw_menu_text()
   vector <string> menu_options=game->get_menu()->get_options();
   int selection=game->get_menu()->get_selection();
 
+  for(int z=0;z<menu_options.size();z++)
+    {
+      sf::Text option;
+      option.setFont(font);
+      
+      option.setString(menu_options[z]);
+      
+      option.setCharacterSize(64);
+      
+      set_origin_to_center(&option);
+      
+      option.setPosition(400,400+48*z);
+
+      if(z==game->get_menu()->get_selection())
+	{
+	  option.setFillColor(sf::Color::Yellow);
+	}
+      
+      window->draw(option);
+    }
+}
+
+void Renderer::draw_end_menu_text()
+{
+  
   string player_name;
 
   if(game->get_p1_score()>game->get_p2_score())
@@ -182,29 +207,8 @@ void Renderer::draw_menu_text()
   
   window->draw(finish_text);
 
-  for(int z=0;z<menu_options.size();z++)
-    {
-      sf::Text option;
-      option.setFont(font);
-      
-      option.setString(menu_options[z]);
-      
-      option.setCharacterSize(64);
-      
-      set_origin_to_center(&option);
-      
-      option.setPosition(400,400+48*z);
-
-      if(z==game->get_menu()->get_selection())
-	{
-	  option.setFillColor(sf::Color::Yellow);
-	}
-      
-      window->draw(option);
-
-    }
+  draw_menu_text();
 }
-
 
 void Renderer::set_origin_to_center(sf::Text *text)
 {
