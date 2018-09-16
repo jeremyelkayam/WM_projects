@@ -134,7 +134,7 @@ void Renderer::draw_countdown_text()
     }
   else if(game->get_countdown()==1)
     {
-      character_size=448;
+      character_size=640;
     }
   else if(game->get_countdown()==0)
     {
@@ -156,6 +156,32 @@ void Renderer::draw_menu_text()
 {
   vector <string> menu_options=game->get_menu()->get_options();
   int selection=game->get_menu()->get_selection();
+
+  string player_name;
+
+  if(game->get_p1_score()>game->get_p2_score())
+    {
+      player_name="Player 1";
+    }
+  else
+    {
+      player_name="Player 2";
+    }
+  
+  sf::Text finish_text;
+  
+  finish_text.setFont(font);
+  
+  finish_text.setString(player_name+" wins!");
+  
+  finish_text.setCharacterSize(128);
+  
+  set_origin_to_center(&finish_text);
+      
+  finish_text.setPosition(400,300);
+  
+  window->draw(finish_text);
+
   for(int z=0;z<menu_options.size();z++)
     {
       sf::Text option;
@@ -167,7 +193,7 @@ void Renderer::draw_menu_text()
       
       set_origin_to_center(&option);
       
-      option.setPosition(400,300+48*z);
+      option.setPosition(400,400+48*z);
 
       if(z==game->get_menu()->get_selection())
 	{

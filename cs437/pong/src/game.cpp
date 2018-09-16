@@ -32,7 +32,7 @@ Game::Game(double x,double y,GameState state)
 
 void Game::increment_p1_score()
 {
-  if(p1score==1)
+  if(p1score==10)
     {
       this->set_state(GameState::EndScreen);
     }
@@ -41,7 +41,7 @@ void Game::increment_p1_score()
 
 void Game::increment_p2_score()
 {
-  if(p2score==1)
+  if(p2score==10)
     {
       this->set_state(GameState::EndScreen);
     }
