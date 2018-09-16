@@ -53,6 +53,8 @@ public:
   double random_angle();
 
   void set_state(GameState new_state);
+
+  void restart_game();
 };
 
 #endif

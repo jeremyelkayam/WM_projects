@@ -168,6 +168,11 @@ void Renderer::draw_menu_text()
       set_origin_to_center(&option);
       
       option.setPosition(400,300+48*z);
+
+      if(z==game->get_menu()->get_selection())
+	{
+	  option.setFillColor(sf::Color::Yellow);
+	}
       
       window->draw(option);
 

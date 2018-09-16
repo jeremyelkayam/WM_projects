@@ -66,7 +66,15 @@ int main(int argc, char** argv)
 		}
 	      else if(Event.key.code == sf::Keyboard::Return)
 		{
-		  
+		  string selected=game->get_menu()->get_selected_option();
+		  if(selected=="Quit")
+		    {
+		      App.close();
+		    }
+		  else if(selected=="New Game")
+		    {
+		      game->restart_game();
+		    }
 		}
 	    }
 	}

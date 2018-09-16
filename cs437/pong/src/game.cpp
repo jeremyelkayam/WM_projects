@@ -32,27 +32,20 @@ Game::Game(double x,double y,GameState state)
 
 void Game::increment_p1_score()
 {
-  if(p1score<1)
-    {
-      p1score++;
-    }
-  else
+  if(p1score==1)
     {
       this->set_state(GameState::EndScreen);
-      cout << "set to end screen\n";  
     }
+  p1score++;
 }
 
 void Game::increment_p2_score()
 {
-  if(p2score<11)
-    {
-      p2score++;
-    }
-  else
+  if(p2score==1)
     {
       this->set_state(GameState::EndScreen);
     }
+  p2score++;
 }
 
 void Game::new_round()
@@ -90,4 +83,11 @@ void Game::set_state(GameState new_state)
     }
   this->current_state=new_state;
   //cout << "setting state\n";
+}
+
+void Game::restart_game()
+{
+  p1score=0;
+  p2score=0;
+  new_round();
 }
