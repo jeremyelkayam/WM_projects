@@ -13,7 +13,7 @@ ComputerPlayer::ComputerPlayer(Game *game)
 {
   this->game=game;
   this->my_paddle=game->get_p1_paddle();//TODO maybe make the AI paddle configurable?
-  this->my_paddle->set_speed(.003);
+  this->my_paddle->set_speed(.004);
 }
 
 void ComputerPlayer::update(int micros_elapsed)
