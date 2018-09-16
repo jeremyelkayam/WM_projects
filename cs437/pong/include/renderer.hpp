@@ -29,7 +29,8 @@ private:
   void draw_countdown_text();
   void draw_end_menu();
   void draw_pause_menu();
-  void draw_menu_text();
+  void draw_main_menu();
+  void draw_menu_text(int starting_ycor);
 
   void set_origin_to_center(sf::Text *text);
 

@@ -27,7 +27,7 @@ int main(int argc, char** argv)
   sf::Color bgcolor=sf::Color::Black;
 
   //set up game
-  Game *game = new Game(App.getSize().x,App.getSize().y,GameState::NewRound);
+  Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
   Renderer *renderer = new Renderer(game,&App);
 
@@ -67,7 +67,8 @@ int main(int argc, char** argv)
 	      game->set_state(GameState::CountDown);
 	    }
 	  else if(game->get_current_state()==GameState::EndScreen ||
-		  game->get_current_state()==GameState::Paused)
+		  game->get_current_state()==GameState::Paused ||
+		  game->get_current_state()==GameState::MainMenu)
 	    {
 	      logic->handle_menu_event(Event,&App);
 	    }

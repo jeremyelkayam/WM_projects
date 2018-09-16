@@ -32,32 +32,38 @@ void Renderer::update()
   //clear window to prepare for rendering
   window->clear(sf::Color::Black);
 
-  
-  draw_scores();
-
-  if(game->get_current_state()==GameState::EndScreen)
+  if(game->get_current_state()==GameState::MainMenu)
     {
-      draw_end_menu();
+      draw_main_menu();
     }
   else
     {
-      draw_paddles();
+      draw_scores();
       
-      if(game->get_current_state()==GameState::NewRound)
+      if(game->get_current_state()==GameState::EndScreen)
 	{
-	  draw_new_round_text();
-	}
-      else if(game->get_current_state()==GameState::CountDown)
-	{
-	  draw_countdown_text();
-	}
-      else if(game->get_current_state()==GameState::Paused)
-	{
-	  draw_pause_menu();
+	  draw_end_menu();
 	}
       else
 	{
-	  draw_ball();
+	  draw_paddles();
+      
+	  if(game->get_current_state()==GameState::NewRound)
+	    {
+	      draw_new_round_text();
+	    }
+	  else if(game->get_current_state()==GameState::CountDown)
+	    {
+	      draw_countdown_text();
+	    }
+	  else if(game->get_current_state()==GameState::Paused)
+	    {
+	      draw_pause_menu();
+	    }
+	  else
+	    {
+	      draw_ball();
+	    }
 	}
     }
   window->display();
@@ -156,7 +162,7 @@ void Renderer::draw_countdown_text()
 }
 
 
-void Renderer::draw_menu_text()
+void Renderer::draw_menu_text(int starting_ycor)
 {
   vector <string> menu_options=game->get_menu()->get_options();
   int selection=game->get_menu()->get_selection();
@@ -172,11 +178,13 @@ void Renderer::draw_menu_text()
       
       set_origin_to_center(&option);
       
-      option.setPosition(400,400+48*z);
+      option.setPosition(400,starting_ycor+48*z);
 
       if(z==game->get_menu()->get_selection())
 	{
-	  option.setFillColor(sf::Color::Yellow);
+	  option.setOutlineThickness(1);
+	  option.setOutlineColor(sf::Color::White);
+	  option.setFillColor(sf::Color::Black);
 	}
       
       window->draw(option);
@@ -211,7 +219,7 @@ void Renderer::draw_end_menu()
   
   window->draw(finish_text);
 
-  draw_menu_text();
+  draw_menu_text(400);
 }
 
 void Renderer::draw_pause_menu()
@@ -230,7 +238,7 @@ void Renderer::draw_pause_menu()
   
   window->draw(paused_text);
 
-  draw_menu_text();
+  draw_menu_text(400);
 }
 
 void Renderer::set_origin_to_center(sf::Text *text)
@@ -240,3 +248,22 @@ text->setOrigin(textRect.left + textRect.width/2,
 		 textRect.top + textRect.height/2);
 }
 
+void Renderer::draw_main_menu()
+{
+  sf::Text text;
+  
+  //TODO: set this to something easy and fun like Mumbo-SSK
+  text.setFont(font);
+  
+  text.setString("Pong");
+  
+  text.setCharacterSize(256);
+  
+  set_origin_to_center(&text);
+      
+  text.setPosition(400,200);
+  
+  window->draw(text);
+
+  draw_menu_text(350);
+}

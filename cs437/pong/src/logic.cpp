@@ -219,7 +219,7 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	{
 	  App->close();
 	}
-      else if(selected=="New Game")
+      else if(selected == "New Game" || selected == "Start Game")
 	{
 	  game->restart_game();
 	}
