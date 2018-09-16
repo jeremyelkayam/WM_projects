@@ -87,7 +87,9 @@ void Game::set_state(GameState new_state)
 
 void Game::restart_game()
 {
-  //TODO: set paddle positions to default
+  p1_paddle->set_ycor(y_dimension/2);
+  p2_paddle->set_ycor(y_dimension/2);
+  
   p1score=0;
   p2score=0;
   new_round();
