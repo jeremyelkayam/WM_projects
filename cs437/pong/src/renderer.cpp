@@ -7,6 +7,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "renderer.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
@@ -17,18 +18,18 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
 
 
   //idea - make set_up_font(), set_up_ball(), etc. methods for this?
-  if (!this->pixel_font.loadFromFile("../assets/fonts/gloryquest.ttf"))
+  if (!this->pixel_font.loadFromFile(Constants::PIXEL_FONT_PATH))
     {
       //TODO - handle this error (immediate exit and popup saying file not found?)
     }
-  if (!this->title_font.loadFromFile("../assets/fonts/mumbold.ttf"))
+  if (!this->title_font.loadFromFile(Constants::TITLE_FONT_PATH))
     {
       //TODO - handle this error (immediate exit and popup saying file not found?)
     }
-  ball.setRadius(5);
+  ball.setRadius(Constants::BALL_RADIUS);
   
-  p1_paddle.setSize(sf::Vector2f(5,game->get_p1_paddle()->get_height()));
-  p2_paddle.setSize(sf::Vector2f(5,game->get_p2_paddle()->get_height()));
+  p1_paddle.setSize(sf::Vector2f(Constants::PADDLE_RENDERED_WIDTH,game->get_p1_paddle()->get_height()));
+  p2_paddle.setSize(sf::Vector2f(Constants::PADDLE_RENDERED_WIDTH,game->get_p2_paddle()->get_height()));
 }
 
 void Renderer::update()
@@ -77,7 +78,7 @@ void Renderer::update()
 
 void Renderer::draw_ball()
 {
-  ball.setPosition(game->get_ball()->get_xcor()-5,game->get_ball()->get_ycor()-5);
+  ball.setPosition(game->get_ball()->get_xcor()-Constants::BALL_RADIUS,game->get_ball()->get_ycor()-Constants::BALL_RADIUS);
 
   window->draw(ball);
 }
@@ -89,17 +90,17 @@ void Renderer::draw_scores()
   p2score.setFont(pixel_font);
 
   //set score texts to display respective scores
-  p1score.setString("P1: " + to_string(game->get_p1_score()) + " points");
-  p2score.setString("P2: " + to_string(game->get_p2_score()) + " points");
+  p1score.setString(Constants::P1_SCORE_DISPLAY_BEGIN + to_string(game->get_p1_score()) + Constants::SCORE_DISPLAY_END);
+  p2score.setString(Constants::P2_SCORE_DISPLAY_BEGIN + to_string(game->get_p2_score()) + Constants::SCORE_DISPLAY_END);
 
-  p1score.setCharacterSize(48);
-  p2score.setCharacterSize(48);
+  p1score.setCharacterSize(Constants::SCORE_CHAR_SIZE);
+  p2score.setCharacterSize(Constants::SCORE_CHAR_SIZE);
 
   set_origin_to_center(&p1score);
   set_origin_to_center(&p2score);
   
-  p1score.setPosition(150,100);
-  p2score.setPosition(650,100);
+  p1score.setPosition(Constants::P1_SCORE_XCOR,Constants::P1_SCORE_YCOR);
+  p2score.setPosition(Constants::P2_SCORE_XCOR,Constants::P2_SCORE_YCOR);
 
   window->draw(p1score);
   window->draw(p2score);
@@ -110,7 +111,7 @@ void Renderer::draw_paddles()
 {
 
   p1_paddle.setPosition(0,game->get_p1_paddle()->get_ycor());
-  p2_paddle.setPosition(game->get_x_dimension()-5,game->get_p2_paddle()->get_ycor());
+  p2_paddle.setPosition(game->get_x_dimension()-Constants::PADDLE_RENDERED_WIDTH,game->get_p2_paddle()->get_ycor());
 
   window->draw(p1_paddle);
   window->draw(p2_paddle);			       
@@ -120,13 +121,13 @@ void Renderer::draw_new_round_text()
 {
   new_round_text.setFont(pixel_font);
 
-  new_round_text.setString("Press any key to continue...");
+  new_round_text.setString(Constants::NEW_ROUND_TEXT);
 
-  new_round_text.setCharacterSize(64);
+  new_round_text.setCharacterSize(Constants::NEW_ROUND_CHAR_SIZE);
 
   set_origin_to_center(&new_round_text);
   
-  new_round_text.setPosition(400,500);
+  new_round_text.setPosition(window->getSize().x/2,window->getSize().y-Constants::NEW_ROUND_YCOR_OFFSET);
 
   window->draw(new_round_text);
 }
@@ -140,15 +141,15 @@ void Renderer::draw_countdown_text()
   int character_size;
   if(game->get_countdown()==3)
     {
-      character_size=192;
+      character_size=Constants::COUNTDOWN_CHAR_SIZE;
     }
   else if(game->get_countdown()==2)
     {
-      character_size=320;
+      character_size=2*Constants::COUNTDOWN_CHAR_SIZE;
     }
   else if(game->get_countdown()==1)
     {
-      character_size=640;
+      character_size=4*Constants::COUNTDOWN_CHAR_SIZE;
     }
   else if(game->get_countdown()==0)
     {
@@ -160,8 +161,7 @@ void Renderer::draw_countdown_text()
   set_origin_to_center(&countdown_text);
   
   
-  countdown_text.setPosition(400,300);
-  //cout << "width " << countdown_text.getLocalBounds().width << ", height " << countdown_text.getLocalBounds().height << "\n";
+  countdown_text.setPosition(window->getSize().x/2,window->getSize().y/2);
   window->draw(countdown_text);
 }
 
@@ -178,11 +178,11 @@ void Renderer::draw_menu_text(int starting_ycor)
       
       option.setString(menu_options[z]);
       
-      option.setCharacterSize(64);
+      option.setCharacterSize(Constants::MENU_CHAR_SIZE);
       
       set_origin_to_center(&option);
       
-      option.setPosition(400,starting_ycor+48*z);
+      option.setPosition(window->getSize().x/2,starting_ycor+Constants::MENU_TEXT_OFFSET*z);
 
       if(z==game->get_menu()->get_selection())
 	{
@@ -205,28 +205,28 @@ void Renderer::draw_end_menu()
 
   if(game->get_p1_score()>game->get_p2_score())
     {
-      player_name="Player 1";
+      player_name=Constants::P1_NAME;
     }
   else
     {
-      player_name="Player 2";
+      player_name=Constants::P2_NAME;
     }
   
   sf::Text finish_text;
   
   finish_text.setFont(pixel_font);
   
-  finish_text.setString(player_name+" wins!");
+  finish_text.setString(player_name+Constants::WINS_TEXT);
   
-  finish_text.setCharacterSize(128);
+  finish_text.setCharacterSize(Constants::FINISH_TEXT_CHAR_SIZE);
   
   set_origin_to_center(&finish_text);
       
-  finish_text.setPosition(400,300);
+  finish_text.setPosition(window->getSize().x/2,window->getSize().y/2);
   
   window->draw(finish_text);
 
-  draw_menu_text(400);
+  draw_menu_text(window->getSize().x/2);
 }
 
 void Renderer::draw_pause_menu()
@@ -235,24 +235,24 @@ void Renderer::draw_pause_menu()
   
   paused_text.setFont(pixel_font);
   
-  paused_text.setString("Paused");
+  paused_text.setString(Constants::PAUSE_TEXT);
   
-  paused_text.setCharacterSize(128);
+  paused_text.setCharacterSize(Constants::PAUSE_TEXT_CHAR_SIZE);
   
   set_origin_to_center(&paused_text);
       
-  paused_text.setPosition(400,300);
+  paused_text.setPosition(window->getSize().x/2,window->getSize().y/2);
   
   window->draw(paused_text);
 
-  draw_menu_text(400);
+  draw_menu_text(window->getSize().x/2);
 }
 
 void Renderer::set_origin_to_center(sf::Text *text)
 {
   sf::FloatRect textRect=text->getLocalBounds();
-text->setOrigin(textRect.left + textRect.width/2,
-		 textRect.top + textRect.height/2);
+  text->setOrigin(textRect.left + textRect.width/2,
+		  textRect.top + textRect.height/2);
 }
 
 void Renderer::draw_main_menu()
@@ -262,15 +262,15 @@ void Renderer::draw_main_menu()
   //TODO: set this to something easy and fun like Mumbo-SSK
   text.setFont(title_font);
   
-  text.setString("PONG");
+  text.setString(Constants::TITLE_SCREEN_TITLE);
   
-  text.setCharacterSize(256);
+  text.setCharacterSize(Constants::TITLE_CHAR_SIZE);
   
   set_origin_to_center(&text);
       
-  text.setPosition(400,200);
+  text.setPosition(window->getSize().x/2,Constants::TITLE_YCOR);
   
   window->draw(text);
 
-  draw_menu_text(350);
+  draw_menu_text(Constants::TITLE_MENU_YCOR);
 }

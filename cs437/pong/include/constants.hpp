@@ -62,6 +62,10 @@ public:
     being set to the ball's angle.
    */
   static constexpr double BALL_MIN_ANGLE = M_PI/7;
+  /*
+    The rendered ball's radius in pixels.
+   */
+  static constexpr double BALL_RADIUS = 5;
 
   // Paddle values
 
@@ -78,7 +82,90 @@ public:
     the ball can bounce off of. This "cheat" makes the game's controls feel better
    */
   static constexpr int PADDLE_BOUNCE_TOLERANCE = 5;
+  /*
+    The width of the paddle as rendered by the Renderer. This DOES NOT define anything
+    regarded to collisions between the paddle and the ball.
+   */
+  static constexpr int PADDLE_RENDERED_WIDTH = 5;
 
+
+  //Text-rendering values
+
+  /*
+    The height of each character in the score display.
+   */
+  static constexpr int SCORE_CHAR_SIZE = 48;
+  /*
+    The x-coordinate of the center of the Player 1 score display text.
+   */
+  static constexpr int P1_SCORE_XCOR = 150;
+  /*
+    The y-coordinate of the center of the Player 1 score display text.
+   */
+  static constexpr int P1_SCORE_YCOR = 100;
+  /*
+    The x-coordinate of the center of the Player 2 score display text.
+   */
+  static constexpr int P2_SCORE_XCOR = 650;
+  /*
+    The y-coordinate of the center of the Player 2 score display text.
+   */
+  static constexpr int P2_SCORE_YCOR = 100;
+
+  
+  /*
+    The height of each character in the new round text display. 
+   */
+  static constexpr int NEW_ROUND_CHAR_SIZE = 64;
+
+  /*
+    The distance between the bottom border of the window and the
+    y-coordinate of the new round text.
+   */
+  static constexpr int NEW_ROUND_YCOR_OFFSET = 100;
+
+  /*
+    The height of the number in the countdown. This is multiplied by 2
+    repeatedly for each successive number in the countdown.
+   */
+  static constexpr int COUNTDOWN_CHAR_SIZE = 160;
+  
+  /*
+    The height of each character in menus.
+   */
+  static constexpr int MENU_CHAR_SIZE = 64;
+  /*
+    The distance between y-coordinates of each option in the game's menus.
+   */
+  static constexpr int MENU_TEXT_OFFSET = 48;
+
+  /*
+    The height of each character in the text displayed at the end of
+    a game.
+   */
+  static constexpr int FINISH_TEXT_CHAR_SIZE = 128;
+
+  /*
+    The height of each character in the title text displayed on the
+    pause screen.
+   */
+  static constexpr int PAUSE_TEXT_CHAR_SIZE = 128;
+
+  /*
+    The height of each character in the title text displayed on the
+    title screen.
+   */
+  static constexpr int TITLE_CHAR_SIZE = 256;
+  /*
+    The y-coordinate of the title text displayed on the title screen.
+   */
+  static constexpr int TITLE_YCOR = 200;
+  /*
+    The y-coordinate of the top of the title menu displayed on the
+    title screen.
+   */
+  static constexpr int TITLE_MENU_YCOR = 350;
+  
   //Strings
 
   //Menu options
@@ -89,8 +176,35 @@ public:
   static const string QUITGAME_MENU_OPTION;
   static const string STARTGAME_MENU_OPTION;
   static const string OPTIONS_MENU_OPTION;
+
+  // Paths to asset files
   
+  static const string PIXEL_FONT_PATH;
+  static const string TITLE_FONT_PATH;
+
+  // Score display strings
   
+  static const string P1_SCORE_DISPLAY_BEGIN;
+  static const string P2_SCORE_DISPLAY_BEGIN;
+  static const string SCORE_DISPLAY_END;
+
+  // New round display strings
+
+  static const string NEW_ROUND_TEXT;
+
+  // End screen display strings
+
+  static const string P1_NAME;
+  static const string P2_NAME;
+  static const string WINS_TEXT;
+
+  //Pause screen display strings
+
+  static const string PAUSE_TEXT;
+
+  //Title screen display strings
+
+  static const string TITLE_SCREEN_TITLE;
 };
 
 #endif
