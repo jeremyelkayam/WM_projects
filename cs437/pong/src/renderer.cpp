@@ -279,23 +279,28 @@ void Renderer::draw_main_menu()
 
 void Renderer::draw_version_author_texts()
 {
-  sf::Text author_text;
+  sf::Text author_text,version_text;
   string author_str = (Constants::AUTHOR_PREFIX + " " +
 		       Constants::RELEASE_YEAR + " " +
 		       Constants::AUTHOR_NAME);
   
   author_text.setFont(pixel_font);
+  version_text.setFont(pixel_font);
 
   author_text.setString(author_str);
+  version_text.setString(Constants::VERSION_NAME);
 
-  author_text.setCharacterSize(32);
+  author_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
+  version_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
 
   set_origin_to_bottom_right(&author_text);
+  set_origin_to_bottom_left(&version_text);
 
   author_text.setPosition(window->getSize().x,window->getSize().y);
-
+  version_text.setPosition(0,window->getSize().y);
+  
   window->draw(author_text);
-    
+  window->draw(version_text);
 }
 
 void Renderer::set_origin_to_bottom_left(sf::Text *text)

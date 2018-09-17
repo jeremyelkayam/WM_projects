@@ -19,7 +19,6 @@ const string Constants::QUITGAME_MENU_OPTION = "Quit";
 const string Constants::STARTGAME_MENU_OPTION = "Start Game";
 const string Constants::OPTIONS_MENU_OPTION = "Options";
 
-
 const string Constants::PIXEL_FONT_PATH = "../assets/fonts/gloryquest.ttf";
 const string Constants::TITLE_FONT_PATH = "../assets/fonts/mumbold.ttf";
 const string Constants::THREE_SOUND_PATH = "../assets/sounds/THREE.wav";

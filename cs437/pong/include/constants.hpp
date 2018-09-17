@@ -191,6 +191,11 @@ public:
     title screen.
    */
   static constexpr int TITLE_MENU_YCOR = 350;
+  /*
+    The height of each character in the version and author text displayed
+    on the title screen.
+   */
+  static constexpr int VERSION_AUTHOR_CHAR_SIZE = 32;
   
   //Strings
 
