@@ -48,7 +48,7 @@ It should be beatable without forcing it to have a much lower speed than the pla
   - idea: calculate where the ball is going, based on speed and location. if it's heading toward the ai's edge of the screen, aim for where the ball is going, but not exactly where it's going. add a random, mild perturbation so that the ai can over or undershoot the ball.
 - end messages referring to the player and computer instead of just "player 1" and "player 2"
  - player name stored in variable?
-- Title Screen with adjustable options.
+- Options Screen with adjustable options.
   - turn AI on/off for each side? i.e. 2 AI players, 2 human players, or one each
   - adjustable speed slider?
   - points required to win?
@@ -60,3 +60,4 @@ It should be beatable without forcing it to have a much lower speed than the pla
 by the magnitude and direction of the paddle's velocity.
 - constants and strings contained in a single class (constants.hpp?)
 - more/better documentation
+- Proper file-not-found errors.
