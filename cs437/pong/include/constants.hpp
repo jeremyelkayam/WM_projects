@@ -48,6 +48,10 @@ public:
     The color of the game background.
    */
   static const sf::Color BACKGROUND_COLOR;
+  /*
+    The color of the game background.
+   */
+  static const sf::Color MENU_HIGHLIGHT_COLOR;
 
   
   /*

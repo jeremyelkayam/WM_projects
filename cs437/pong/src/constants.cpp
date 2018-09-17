@@ -10,6 +10,7 @@
 #include "constants.hpp"
 
 const sf::Color Constants::BACKGROUND_COLOR = sf::Color::Black;
+const sf::Color Constants::MENU_HIGHLIGHT_COLOR = sf::Color::Yellow;
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";

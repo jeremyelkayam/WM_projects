@@ -35,7 +35,7 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
 void Renderer::update()
 {
   //clear window to prepare for rendering
-  window->clear(sf::Color::Black);
+  window->clear(Constants::BACKGROUND_COLOR);
 
   if(game->get_current_state()==GameState::MainMenu)
     {
@@ -191,7 +191,7 @@ void Renderer::draw_menu_text(int starting_ycor)
 	  option.setOutlineColor(sf::Color::White);
 	  option.setFillColor(sf::Color::Black);
 	  */
-	  option.setFillColor(sf::Color::Yellow);
+	  option.setFillColor(Constants::MENU_HIGHLIGHT_COLOR);
 	}
       
       window->draw(option);
