@@ -8,12 +8,13 @@
 
 #include "computer_player.hpp"
 #include "paddle.hpp"
+#include "constants.hpp"
 
 ComputerPlayer::ComputerPlayer(Game *game)
 {
   this->game=game;
   this->my_paddle=game->get_p1_paddle();//TODO maybe make the AI paddle configurable?
-  this->my_paddle->set_speed(.004);
+  this->my_paddle->set_speed(Constants::COMPUTER_PLAYER_SPEED);
 }
 
 void ComputerPlayer::update(int micros_elapsed)

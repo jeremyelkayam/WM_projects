@@ -8,6 +8,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "ball.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
@@ -65,7 +66,7 @@ void Ball::reflect_x()
   angle=-angle;
 
   //generate a random perturbation in the range of -.1 to .1 radians
-  std::uniform_real_distribution<double>unif(-0.1,0.1);
+  std::uniform_real_distribution<double>unif(-Constants::BALL_BOUNCE_PERTURBATION,Constants::BALL_BOUNCE_PERTURBATION);
 
   double perturbation=unif(rng);
   
