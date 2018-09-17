@@ -5,6 +5,7 @@
   @author Jeremy Elkayam
  */
 #include "menu.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
@@ -39,21 +40,21 @@ void Menu::set_type(MenuType type)
   this->options.clear();
   if(type==MenuType::Finish)
     {
-      options.push_back("New Game");
-      options.push_back("Main Menu");
-      options.push_back("Quit");
+      options.push_back(Constants::NEWGAME_MENU_OPTION);
+      options.push_back(Constants::MAINMENU_MENU_OPTION);
+      options.push_back(Constants::QUITGAME_MENU_OPTION);
     }
   else if(type==MenuType::Pause)
     {
-      options.push_back("Continue");
-      options.push_back("New Game");
-      options.push_back("Main Menu");
-      options.push_back("Quit");
+      options.push_back(Constants::CONTINUEGAME_MENU_OPTION);
+      options.push_back(Constants::NEWGAME_MENU_OPTION);
+      options.push_back(Constants::MAINMENU_MENU_OPTION);
+      options.push_back(Constants::QUITGAME_MENU_OPTION);
     }
   if(type==MenuType::Main)
     {
-      options.push_back("Start Game");
-      options.push_back("Options");
-      options.push_back("Quit");
+      options.push_back(Constants::STARTGAME_MENU_OPTION);
+      options.push_back(Constants::OPTIONS_MENU_OPTION);
+      options.push_back(Constants::QUITGAME_MENU_OPTION);
     }
 }

@@ -22,7 +22,7 @@ void ComputerPlayer::update(int micros_elapsed)
   Paddle::Direction dir;
   double ball_ycor = game->get_ball()->get_ycor();
 
-  if(ball_ycor>my_paddle->get_ycor()+40)
+  if(ball_ycor>my_paddle->get_ycor()+my_paddle->get_height()/2)
     {
       dir = Paddle::Direction::Down;
     }
