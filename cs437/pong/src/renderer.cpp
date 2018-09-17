@@ -293,11 +293,11 @@ void Renderer::draw_version_author_texts()
   author_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
   version_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
 
-  set_origin_to_bottom_right(&author_text);
-  set_origin_to_bottom_left(&version_text);
+  set_origin_to_bottom_left(&author_text);
+  set_origin_to_bottom_right(&version_text);
 
-  author_text.setPosition(window->getSize().x,window->getSize().y);
-  version_text.setPosition(0,window->getSize().y);
+  author_text.setPosition(0,window->getSize().y);
+  version_text.setPosition(window->getSize().x,window->getSize().y);
   
   window->draw(author_text);
   window->draw(version_text);
