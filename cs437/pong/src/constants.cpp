@@ -1,8 +1,8 @@
 /*
   Constants.cpp
-  Purpose: Consolidate all game constants/strings into a single class as static variables
-  for easy editing across classes. This source file initializes variables that are
-  not defined in the header file.
+  Purpose: Consolidate all game constants/strings into a single class as static
+  variables for easy editing across classes. This source file initializes
+  variables that are not defined in the header file.
   
   @author Jeremy Elkayam
  */

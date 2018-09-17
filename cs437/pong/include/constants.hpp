@@ -1,7 +1,7 @@
 /*
   Constants.hpp
-  Purpose: Consolidate all game constants/strings into a single class as static variables
-  for easy editing across classes.
+  Purpose: Consolidate all game constants/strings into a single class as static
+  variables for easy editing across classes.
   
   @author Jeremy Elkayam
  */
@@ -34,16 +34,18 @@ public:
 
   
   /*
-    The amount of time in microseconds that passes between each number in the countdown.
+    The amount of time in microseconds that passes between each number in the
+    countdown.
    */
   static constexpr int COUNTDOWN_INTERVAL = 50000;
   
   // Ball values
   
   /* 
-     The upper bound for the random perturbation that occurs when a ball bounces off of 
-     the screen. The lower bound is the negation of this value. The perturbation
-     is a value between these bounds that is added to the ball's reflected angle, in radians.
+     The upper bound for the random perturbation that occurs when a ball bounces
+     off of the screen. The lower bound is the negation of this value. The
+     perturbation is a value between these bounds that is added to the ball's
+     reflected angle, in radians.
   */
   static constexpr double BALL_BOUNCE_PERTURBATION = 0.1;
   /*
@@ -51,15 +53,15 @@ public:
    */
   static constexpr double BALL_SPEED = .008;
   /*
-    The maximum value for the ball's starting angle at the beginning of a round. A value between
-    this value and BALL_MIN_VALUE is generated and then rotated into a random quadrant before
-    being set to the ball's angle.
+    The maximum value for the ball's starting angle at the beginning of a round.
+    A value between this value and BALL_MIN_VALUE is generated and then rotated
+    into a random quadrant before being set to the ball's angle.
    */
   static constexpr double BALL_MAX_ANGLE = 3*M_PI/7;
   /*
-    The minimum value for the ball's starting angle at the beginning of a round. A value between
-    this value and BALL_MAX_VALUE is generated and then rotated into a random quadrant before
-    being set to the ball's angle.
+    The minimum value for the ball's starting angle at the beginning of a round.
+    A value between this value and BALL_MAX_VALUE is generated and then rotated
+    into a random quadrant before being set to the ball's angle.
    */
   static constexpr double BALL_MIN_ANGLE = M_PI/7;
   /*
@@ -78,13 +80,16 @@ public:
    */
   static constexpr double COMPUTER_PLAYER_SPEED = .004;
   /*
-    The amount of space past the top and bottom of a player's paddle in pixels that 
-    the ball can bounce off of. This "cheat" makes the game's controls feel better
+    The amount of space past the top and bottom of a player's paddle in pixels 
+    that the ball can bounce off of. This "cheat" makes the game's controls feel
+    more smooth.
    */
   static constexpr int PADDLE_BOUNCE_TOLERANCE = 5;
   /*
-    The width of the paddle as rendered by the Renderer. This DOES NOT define anything
-    regarded to collisions between the paddle and the ball.
+    The width of the paddle as rendered by the Renderer. This DOES NOT define
+    anything to do with collisions between the paddle and the ball.
+
+    TODO - make the ball hit the entire paddle instead of just the edge?
    */
   static constexpr int PADDLE_RENDERED_WIDTH = 5;
 
