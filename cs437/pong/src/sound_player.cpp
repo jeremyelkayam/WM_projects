@@ -8,13 +8,14 @@
 #include <iostream>
 #include <SFML/Audio.hpp>
 #include "sound_player.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
 void SoundPlayer::play_three()
 {
   sf::SoundBuffer buffer;
-  if(!buffer.loadFromFile("../assets/sounds/THREE.wav"))
+  if(!buffer.loadFromFile(Constants::THREE_SOUND_PATH))
     {
       cout << "error encountered\n";
       //error handling
@@ -30,7 +31,7 @@ void SoundPlayer::play_three()
 void SoundPlayer::play_two()
 {
   sf::SoundBuffer buffer;
-  if(!buffer.loadFromFile("../assets/sounds/TWO.wav"))
+  if(!buffer.loadFromFile(Constants::TWO_SOUND_PATH))
     {
       cout << "error encountered\n";
       //error handling

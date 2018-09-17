@@ -186,6 +186,10 @@ public:
   
   static const string PIXEL_FONT_PATH;
   static const string TITLE_FONT_PATH;
+  static const string THREE_SOUND_PATH;
+  static const string TWO_SOUND_PATH;
+  static const string ONE_SOUND_PATH;
+  static const string GO_SOUND_PATH;
 
   // Score display strings
   
