@@ -59,3 +59,4 @@ It should be beatable without forcing it to have a much lower speed than the pla
 - When bouncing off of a paddle, a ball could have a deterministic perturbation, affected
 by the magnitude and direction of the paddle's velocity.
 - constants and strings contained in a single class (constants.hpp?)
+- more/better documentation
