@@ -11,7 +11,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include <SFML/Audio.hpp>
 #include "ball.hpp"
 #include "game.hpp"
 #include "renderer.hpp"
@@ -25,11 +24,16 @@ using namespace std;
 int main(int argc, char** argv)
 {
   // create main window
-  sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong (working title)",sf::Style::Titlebar | sf::Style::Close); //enable titlebar & close options
-  sf::Color bgcolor=sf::Color::Black;
+  sf::RenderWindow App(sf::VideoMode(Constants::DEFAULT_WINDOW_WIDTH,
+				     Constants::DEFAULT_WINDOW_HEIGHT,
+				     Constants::DEFAULT_PIXEL_DEPTH),
+		       Constants::WINDOW_TITLE,
+		       sf::Style::Titlebar | sf::Style::Close);
+  //enable titlebar & close options
+  sf::Color bgcolor=Constants::BACKGROUND_COLOR;
   
 
-  //set up game
+  //set up gameColor BACKGROUND_COLOR;
   Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
   Renderer *renderer = new Renderer(game,&App);

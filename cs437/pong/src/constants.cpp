@@ -9,6 +9,8 @@
 
 #include "constants.hpp"
 
+const sf::Color Constants::BACKGROUND_COLOR = sf::Color::Black;
+
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";
 const string Constants::MAINMENU_MENU_OPTION = "Main Menu";
@@ -37,3 +39,5 @@ const string Constants::WINS_TEXT = " wins!";
 const string Constants::PAUSE_TEXT = "Paused";
 
 const string Constants::TITLE_SCREEN_TITLE = "PONG";
+
+const string Constants::WINDOW_TITLE = "Pong";

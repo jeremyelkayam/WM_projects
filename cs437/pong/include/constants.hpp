@@ -11,6 +11,7 @@
 
 #include <string>
 #include <cmath>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -24,6 +25,18 @@ public:
   //Game values
 
   /*
+    Default width of the gane window in pixels.
+   */
+  static constexpr unsigned int DEFAULT_WINDOW_WIDTH = 800;
+  /*
+    Default height of the gane window in pixels.
+   */
+  static constexpr unsigned int DEFAULT_WINDOW_HEIGHT = 600;
+  /*
+    Default video pixel depth in bits per pixel.
+   */
+  static constexpr unsigned int DEFAULT_PIXEL_DEPTH = 32;
+  /*
     The amount of points required to win the game.
    */
   static constexpr int WIN_SCORE = 11;
@@ -31,6 +44,10 @@ public:
     The starting value for the countdown at the beginning of each round.
    */
   static constexpr int COUNTDOWN_START = 3;
+  /*
+    The color of the game background.
+   */
+  static const sf::Color BACKGROUND_COLOR;
 
   
   /*
@@ -214,6 +231,8 @@ public:
   //Title screen display strings
 
   static const string TITLE_SCREEN_TITLE;
+
+  static const string WINDOW_TITLE;
 };
 
 #endif
