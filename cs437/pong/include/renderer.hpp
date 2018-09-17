@@ -31,8 +31,11 @@ private:
   void draw_pause_menu();
   void draw_main_menu();
   void draw_menu_text(int starting_ycor);
+  void draw_version_author_texts();
 
   void set_origin_to_center(sf::Text *text);
+  void set_origin_to_bottom_left(sf::Text *text);
+  void set_origin_to_bottom_right(sf::Text *text);
 
 public:
   Renderer(Game *game,sf::RenderWindow *window);

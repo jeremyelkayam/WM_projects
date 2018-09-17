@@ -235,8 +235,11 @@ public:
   //Title screen display strings
 
   static const string TITLE_SCREEN_TITLE;
-
   static const string WINDOW_TITLE;
+  static const string VERSION_NAME;
+  static const string AUTHOR_NAME;
+  static const string RELEASE_YEAR;
+  static const string AUTHOR_PREFIX;
 };
 
 #endif

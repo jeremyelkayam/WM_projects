@@ -273,4 +273,41 @@ void Renderer::draw_main_menu()
   window->draw(text);
 
   draw_menu_text(Constants::TITLE_MENU_YCOR);
+
+  draw_version_author_texts();
+}
+
+void Renderer::draw_version_author_texts()
+{
+  sf::Text author_text;
+  string author_str = (Constants::AUTHOR_PREFIX + " " +
+		       Constants::RELEASE_YEAR + " " +
+		       Constants::AUTHOR_NAME);
+  
+  author_text.setFont(pixel_font);
+
+  author_text.setString(author_str);
+
+  author_text.setCharacterSize(32);
+
+  set_origin_to_bottom_right(&author_text);
+
+  author_text.setPosition(window->getSize().x,window->getSize().y);
+
+  window->draw(author_text);
+    
+}
+
+void Renderer::set_origin_to_bottom_left(sf::Text *text)
+{
+  sf::FloatRect textRect=text->getLocalBounds();
+  text->setOrigin(textRect.left,
+		  textRect.top + textRect.height);
+}
+
+void Renderer::set_origin_to_bottom_right(sf::Text *text)
+{
+  sf::FloatRect textRect=text->getLocalBounds();
+  text->setOrigin(textRect.left + textRect.width,
+		  textRect.top + textRect.height);
 }
