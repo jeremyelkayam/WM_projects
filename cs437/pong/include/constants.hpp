@@ -10,6 +10,7 @@
 #define CONSTANTS_HPP
 
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -19,6 +20,18 @@ public:
 
   // Initialize all string constants to their intended values.
   static void init_strings();
+
+  //Game values
+
+  /*
+    The amount of points required to win the game.
+   */
+  static constexpr int WIN_SCORE = 11;
+  /*
+    The starting value for the countdown at the beginning of each round.
+   */
+  static constexpr int COUNTDOWN_START = 3;
+  
   
   // Ball values
   
@@ -28,9 +41,29 @@ public:
      is a value between these bounds that is added to the ball's reflected angle, in radians.
   */
   static constexpr double BALL_BOUNCE_PERTURBATION = 0.1;
+  /*
+    The value for the magnitude of the ball's velocity in pixels per microsecond.
+   */
+  static constexpr double BALL_SPEED = .008;
+  /*
+    The maximum value for the ball's starting angle at the beginning of a round. A value between
+    this value and BALL_MIN_VALUE is generated and then rotated into a random quadrant before
+    being set to the ball's angle.
+   */
+  static constexpr double BALL_MAX_ANGLE = 3*M_PI/7;
+  /*
+    The minimum value for the ball's starting angle at the beginning of a round. A value between
+    this value and BALL_MAX_VALUE is generated and then rotated into a random quadrant before
+    being set to the ball's angle.
+   */
+  static constexpr double BALL_MIN_ANGLE = M_PI/7;
 
   // Paddle values
 
+  /*
+    The default speed for human-controlled paddles in pixels per microsecond.
+   */
+  static constexpr double HUMAN_PLAYER_SPEED = .02;
   /*
     The default speed for computer-controlled paddles in pixels per microsecond.
    */

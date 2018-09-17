@@ -10,6 +10,7 @@
 #include <iostream>
 #include "game.hpp"
 #include "ball.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
@@ -19,9 +20,9 @@ Game::Game(double x,double y,GameState state)
 
   srand(time(0));
   
-  this->ball=new Ball(random_angle(),.008,x/2,y/2);
-  this->p1_paddle=new Paddle(.02,0,y/2,y/10,y);
-  this->p2_paddle=new Paddle(.013,0,y/2,y/10,y);
+  this->ball=new Ball(random_angle(),Constants::BALL_SPEED,x/2,y/2);
+  this->p1_paddle=new Paddle(Constants::HUMAN_PLAYER_SPEED,0,y/2,y/10,y);
+  this->p2_paddle=new Paddle(Constants::COMPUTER_PLAYER_SPEED,0,y/2,y/10,y);
   this->menu=new Menu(MenuType::Main,0);
   this->p1score=0;
   this->p2score=0;
@@ -32,20 +33,20 @@ Game::Game(double x,double y,GameState state)
 
 void Game::increment_p1_score()
 {
-  if(p1score==10)
+  p1score++;
+  if(p1score==Constants::WIN_SCORE)
     {
       this->set_state(GameState::EndScreen);
     }
-  p1score++;
 }
 
 void Game::increment_p2_score()
 {
-  if(p2score==10)
+  p2score++;
+  if(p2score==Constants::WIN_SCORE)
     {
       this->set_state(GameState::EndScreen);
     }
-  p2score++;
 }
 
 void Game::new_round()
@@ -59,7 +60,7 @@ void Game::new_round()
 
 double Game::random_angle()
 {
-  std::uniform_real_distribution<double>angle_unif((M_PI/7),(3*M_PI/7));
+  std::uniform_real_distribution<double>angle_unif(Constants::BALL_MIN_ANGLE,Constants::BALL_MAX_ANGLE);
 
   double random_angle=angle_unif(starting_angle_rng);
 
@@ -79,7 +80,7 @@ void Game::set_state(GameState new_state)
 {
   if(new_state==GameState::CountDown)
     {
-      this->countdown=3;
+      this->countdown=Constants::COUNTDOWN_START;
     }
   else if(new_state==GameState::EndScreen)
     {
