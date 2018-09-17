@@ -11,6 +11,7 @@
 #include "logic.hpp"
 #include "paddle.hpp"
 #include "sound_player.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ void Logic::update(int micros_elapsed)
 	  
 	  total_time+=micros_elapsed;
 	  
-	  if(total_time>50000)
+	  if(total_time>Constants::COUNTDOWN_INTERVAL)
 	    {
 	      
 	      game->decrement_countdown();
@@ -184,8 +185,8 @@ bool Logic::ball_hit_p2_paddle()
       double ball_ycor=game->get_ball()->get_ycor();
       Paddle *paddle;
       paddle=game->get_p2_paddle();
-      return (ball_ycor>paddle->get_ycor()-5 &&
-	      ball_ycor<paddle->get_ycor()+paddle->get_height()+5);
+      return (ball_ycor>paddle->get_ycor()-Constants::PADDLE_BOUNCE_TOLERANCE &&
+	      ball_ycor<paddle->get_ycor()+paddle->get_height()+Constants::PADDLE_BOUNCE_TOLERANCE);
     }
   return false;
 }

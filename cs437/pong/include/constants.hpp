@@ -31,7 +31,12 @@ public:
     The starting value for the countdown at the beginning of each round.
    */
   static constexpr int COUNTDOWN_START = 3;
+
   
+  /*
+    The amount of time in microseconds that passes between each number in the countdown.
+   */
+  static constexpr int COUNTDOWN_INTERVAL = 50000;
   
   // Ball values
   
@@ -68,7 +73,11 @@ public:
     The default speed for computer-controlled paddles in pixels per microsecond.
    */
   static constexpr double COMPUTER_PLAYER_SPEED = .004;
-
+  /*
+    The amount of space past the top and bottom of a player's paddle in pixels that 
+    the ball can bounce off of. This "cheat" makes the game's controls feel better
+   */
+  static constexpr int PADDLE_BOUNCE_TOLERANCE = 5;
 
   //Strings
 
