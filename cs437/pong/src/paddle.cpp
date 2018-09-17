@@ -21,6 +21,7 @@ Paddle::Paddle(double speed, double accel, double ycor, double height, double ma
 
 void Paddle::move(int micros_elapsed, Direction dir)
 {
+  //cout << "speed: " << speed << "\n";
   if(((ycor > 0 && dir==Direction::Up) || (ycor < max_ycor-height && dir==Direction::Down )))
     {
       int multiplier;
