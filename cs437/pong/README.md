@@ -45,7 +45,9 @@ It should be beatable without forcing it to have a much lower speed than the pla
   - Also: it should try to use all or none of its movement speed. None of this pressing and
   releasing the keys to make it seem slower or faster. I will get points docked if both paddles
   don't move at constant speed.
-  - idea: calculate where the ball is going, based on speed and location. if it's heading toward the ai's edge of the screen, aim for where the ball is going, but not exactly where it's going. add a random, mild perturbation so that the ai can over or undershoot the ball.
+  - idea: calculate where the ball is going, based on speed and location. if it's heading toward the ai's edge of the screen, aim for where the ball is going, but not exactly where it's going. add a random, mild perturbation so that the ai can over or undershoot the ball. wait there for a bit. if the ball is deflected, great. if it's still heading toward you, move again. make it play a little more like a real person
+  - when not attempting to deflect a ball, idle. decide to either move or wait, randomly. if move, move to a random spot. if wait, wait for a random amount of time (probably <1 second). when done, figure out something new. either idle or if the ball is heading toward you, go for it. real people take a moment before noticing they need to go on the defense. this should do the same.
+  - when done, see what the next thing to do is. 
 - end messages referring to the player and computer instead of just "player 1" and "player 2"
  - player name stored in variable?
 - Options Screen with adjustable options.
