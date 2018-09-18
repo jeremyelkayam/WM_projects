@@ -59,7 +59,7 @@ public:
     The amount of time in microseconds that passes between each number in the
     countdown.
    */
-  static constexpr int COUNTDOWN_INTERVAL = 50000;
+  static constexpr int COUNTDOWN_INTERVAL = 1000000;
   
   // Ball values
   
@@ -73,7 +73,7 @@ public:
   /*
     The value for the magnitude of the ball's velocity in pixels per microsecond.
    */
-  static constexpr double BALL_SPEED = .008;
+  static constexpr double BALL_SPEED = .0004;
   /*
     The maximum value for the ball's starting angle at the beginning of a round.
     A value between this value and BALL_MIN_VALUE is generated and then rotated
@@ -96,11 +96,11 @@ public:
   /*
     The default speed for human-controlled paddles in pixels per microsecond.
    */
-  static constexpr double HUMAN_PLAYER_SPEED = .02;
+  static constexpr double HUMAN_PLAYER_SPEED = .001;
   /*
     The default speed for computer-controlled paddles in pixels per microsecond.
    */
-  static constexpr double COMPUTER_PLAYER_SPEED = .004;
+  static constexpr double COMPUTER_PLAYER_SPEED = .0002;
   /*
     The amount of space past the top and bottom of a player's paddle in pixels 
     that the ball can bounce off of. This "cheat" makes the game's controls feel

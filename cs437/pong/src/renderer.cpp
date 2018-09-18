@@ -347,6 +347,8 @@ void Renderer::draw_about_screen()
 }
 //TODO make a render_text function that takes all of these parameters and just does the whole damn process
 
+
+//DOES WEIRD SHIT. APPROACH WITH CAUTION. TRY WORKING WITH THIS IN AN EXPERIMENTAL BRANCH MAYBE.
 void Renderer::render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor)
 {
   sf::Text text;

@@ -45,6 +45,7 @@ int main(int argc, char** argv)
   // start main loop
   while(App.isOpen())
     {
+      int micros_elapsed=clock.restart().asMicroseconds();
       GameState previous_state;
       // process events
       sf::Event Event;
@@ -86,10 +87,9 @@ int main(int argc, char** argv)
 	  
 	}
       //update renderer and logic
-      logic->update(clock.getElapsedTime().asMicroseconds());
+      logic->update(micros_elapsed);
       renderer->update();
       
-      clock.restart();
     }
   
   // Done.
