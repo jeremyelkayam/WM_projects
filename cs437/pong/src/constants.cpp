@@ -12,6 +12,8 @@
 const sf::Color Constants::BACKGROUND_COLOR = sf::Color::Black;
 const sf::Color Constants::MENU_HIGHLIGHT_COLOR = sf::Color::Yellow;
 
+const string Constants::VERSION_NUMBER="1.0";
+
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";
 const string Constants::MAINMENU_MENU_OPTION = "Main Menu";
@@ -42,11 +44,12 @@ const string Constants::PAUSE_TEXT = "Paused";
 
 const string Constants::TITLE_SCREEN_TITLE = "PONG";
 const string Constants::WINDOW_TITLE = "Pong";
-const string Constants::VERSION_TEXT = "Version 0.9";
+const string Constants::VERSION_TEXT = "Version ";
 const string Constants::AUTHOR_NAME = "Jeremy Elkayam";
 const string Constants::RELEASE_YEAR = "2018";
 const string Constants::AUTHOR_PREFIX = "(c)";
 
+const string Constants::ABOUT_VERSION_NUMBER_PREFIX = "Pong version ";
 const string Constants::ABOUT_SCREEN_TITLE = "About";
 const vector<string> Constants::ABOUT_SCREEN_TEXT = {"Game programmed by Jeremy Elkayam.\n\n",
 						     "Created using the Simple Fast Multimedia Library by the SFML Team.\n",

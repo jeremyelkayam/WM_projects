@@ -26,10 +26,6 @@ public:
   //Game values
 
   /*
-    The version of the game as displayed on the title and about screens.
-   */
-  static constexpr double VERSION_NUMBER=1.0;
-  /*
     Default width of the gane window in pixels.
    */
   static constexpr unsigned int DEFAULT_WINDOW_WIDTH = 800;
@@ -228,6 +224,12 @@ public:
   
   //Strings
 
+    /*
+    The version of the game as displayed on the title and about screens.
+   */
+  static const string VERSION_NUMBER;
+
+
   //Menu options
 
   static const string NEWGAME_MENU_OPTION;
@@ -278,6 +280,7 @@ public:
   static const string AUTHOR_PREFIX;
 
   //About screen display strings
+  static const string ABOUT_VERSION_NUMBER_PREFIX;
   static const string ABOUT_SCREEN_TITLE;
   static const vector<string> ABOUT_SCREEN_TEXT;
 };
