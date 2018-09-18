@@ -38,6 +38,7 @@ should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 - At the beginning of each round, game waits for player input and counts down before starting gameplay
 - Game can be paused during gameplay using the escape key
 - Title Screen
+- About screen displaying game information.
 
 ### Planned features/potential ideas and goals
 - _settings screen and improved ai are the main improvements to be made here_
