@@ -43,7 +43,8 @@ should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 ### Planned features/potential ideas and goals
 - _settings screen and improved ai are the main improvements to be made here_
 - ___refactor into human view, ai view, and game logic classes___-- potentially combining game and logic classes??
- - "if you're not doing it this way, you're not doing it right"
+  - "if you're not doing it this way, you're not doing it right"
+- use smart pointers!! they're pointers with garbage collection(basically?) 
 - better AI (more realistic). Make it fuck up sometimes. Under or overshoot the ball.
 It should be beatable without forcing it to have a much lower speed than the player's paddle.
   - Also: it should try to use all or none of its movement speed. None of this pressing and
@@ -68,3 +69,4 @@ by the magnitude and direction of the paddle's velocity.
 - more/better documentation
 - Proper file-not-found errors.
 - Make the about screen look nicer.
+- text factory
