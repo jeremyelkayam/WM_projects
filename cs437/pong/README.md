@@ -61,6 +61,3 @@ by the magnitude and direction of the paddle's velocity.
 - constants and strings contained in a single class (constants.hpp?)
 - more/better documentation
 - Proper file-not-found errors.
-
-## Known Issues
-- Game does not track time correctly.
