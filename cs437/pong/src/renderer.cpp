@@ -292,7 +292,7 @@ void Renderer::draw_version_author_texts()
   version_text.setFont(pixel_font);
 
   author_text.setString(author_str);
-  version_text.setString(Constants::VERSION_NAME);
+  version_text.setString(Constants::VERSION_TEXT);
 
   author_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
   version_text.setCharacterSize(Constants::VERSION_AUTHOR_CHAR_SIZE);
@@ -327,21 +327,32 @@ void Renderer::draw_about_screen()
   sf::Text about_title,about_text;
 
   about_title.setFont(pixel_font);
-  about_text.setFont(pixel_font);
 
   about_title.setString(Constants::ABOUT_SCREEN_TITLE);
-  about_text.setString("a");
   
   about_title.setCharacterSize(Constants::ABOUT_TITLE_CHAR_SIZE);
-  about_text.setCharacterSize(Constants::ABOUT_TEXT_CHAR_SIZE);
   
   set_origin_to_center(&about_title);
-  set_origin_to_center(&about_text);
       
   about_title.setPosition(window->getSize().x/2,Constants::ABOUT_TITLE_YCOR);
-  about_text.setPosition(window->getSize().x/2,200);
   
-  window->draw(about_text);
+  window->draw(about_title);
+
+  for(int z=0;z<Constants::ABOUT_SCREEN_TEXT.size();z++)
+    {
+      about_text.setFont(pixel_font);
+
+      about_text.setString(Constants::ABOUT_SCREEN_TEXT[z]);
+      
+      about_text.setCharacterSize(Constants::ABOUT_TEXT_CHAR_SIZE);
+      
+      set_origin_to_center(&about_text);
+      
+      about_text.setPosition(window->getSize().x/2,
+			     Constants::ABOUT_TEXT_STARTING_YCOR+Constants::ABOUT_TEXT_OFFSET*z);
+  
+      window->draw(about_text);
+    }
 
   draw_menu_text(window->getSize().y-100);
 }

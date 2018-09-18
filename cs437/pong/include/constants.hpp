@@ -26,6 +26,10 @@ public:
   //Game values
 
   /*
+    The version of the game as displayed on the title and about screens.
+   */
+  static constexpr double VERSION_NUMBER=1.0;
+  /*
     Default width of the gane window in pixels.
    */
   static constexpr unsigned int DEFAULT_WINDOW_WIDTH = 800;
@@ -210,9 +214,17 @@ public:
    */
   static constexpr int ABOUT_TITLE_YCOR = 100;
   /*
-    The height of each character in the about text on the about screen.
+    The height of each character in the body text on the about screen.
    */
-  static constexpr int ABOUT_TEXT_CHAR_SIZE = 64;
+  static constexpr int ABOUT_TEXT_CHAR_SIZE = 32;
+  /*
+    The y-coordinate of the top row of body text on the about screen.
+   */
+  static constexpr int ABOUT_TEXT_STARTING_YCOR = 200;
+  /*
+    The interval between rows of the body text on the about screen.
+   */
+  static constexpr int ABOUT_TEXT_OFFSET = 32;
   
   //Strings
 
@@ -260,7 +272,7 @@ public:
 
   static const string TITLE_SCREEN_TITLE;
   static const string WINDOW_TITLE;
-  static const string VERSION_NAME;
+  static const string VERSION_TEXT;
   static const string AUTHOR_NAME;
   static const string RELEASE_YEAR;
   static const string AUTHOR_PREFIX;

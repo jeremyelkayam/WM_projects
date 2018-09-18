@@ -42,13 +42,14 @@ const string Constants::PAUSE_TEXT = "Paused";
 
 const string Constants::TITLE_SCREEN_TITLE = "PONG";
 const string Constants::WINDOW_TITLE = "Pong";
-const string Constants::VERSION_NAME = "Version 0.9";
+const string Constants::VERSION_TEXT = "Version 0.9";
 const string Constants::AUTHOR_NAME = "Jeremy Elkayam";
 const string Constants::RELEASE_YEAR = "2018";
 const string Constants::AUTHOR_PREFIX = "(c)";
 
 const string Constants::ABOUT_SCREEN_TITLE = "About";
-const vector<string> Constants::ABOUT_SCREEN_TEXT = {"Programmed by Jeremy Elkayam",
-						     "using the Simple Fast Multimedia Library by the SFML Team",
-						     "based on the 1972 arcade game Pong by Al Alcorn",
-						     "for CS437: Intro to Game Design and Game Development at William & Mary"};
+const vector<string> Constants::ABOUT_SCREEN_TEXT = {"Game programmed by Jeremy Elkayam.\n\n",
+						     "Created using the Simple Fast Multimedia Library by the SFML Team.\n",
+						     "Based on the 1972 arcade game Pong by Al Alcorn.\n",
+						     "Created for CS437: Intro to Game Design and Game Development",
+						     "at The College of William & Mary."};
