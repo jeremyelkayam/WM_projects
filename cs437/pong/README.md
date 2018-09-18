@@ -40,6 +40,7 @@ should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 - Title Screen
 
 ### Planned features/potential ideas and goals
+- _settings screen and improved ai are the main improvements to be made here_
 - better AI (more realistic). Make it fuck up sometimes. Under or overshoot the ball.
 It should be beatable without forcing it to have a much lower speed than the player's paddle.
   - Also: it should try to use all or none of its movement speed. None of this pressing and
