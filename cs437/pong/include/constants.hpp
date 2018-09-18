@@ -10,6 +10,7 @@
 #define CONSTANTS_HPP
 
 #include <string>
+#include <vector>
 #include <cmath>
 #include <SFML/Graphics.hpp>
 
@@ -176,7 +177,11 @@ public:
     pause screen.
    */
   static constexpr int PAUSE_TEXT_CHAR_SIZE = 128;
-
+  /*
+    The distance below the center of the screen that the pause
+    menu should be displayed.
+   */
+  static constexpr int PAUSE_MENU_OFFSET = 100;
   /*
     The height of each character in the title text displayed on the
     title screen.
@@ -196,6 +201,18 @@ public:
     on the title screen.
    */
   static constexpr int VERSION_AUTHOR_CHAR_SIZE = 32;
+  /*
+    The height of each character in the title of the about screen.
+   */
+  static constexpr int ABOUT_TITLE_CHAR_SIZE = 128;
+  /*
+    The y-coordinate of the title of the about menu.
+   */
+  static constexpr int ABOUT_TITLE_YCOR = 100;
+  /*
+    The height of each character in the about text on the about screen.
+   */
+  static constexpr int ABOUT_TEXT_CHAR_SIZE = 64;
   
   //Strings
 
@@ -207,6 +224,8 @@ public:
   static const string QUITGAME_MENU_OPTION;
   static const string STARTGAME_MENU_OPTION;
   static const string OPTIONS_MENU_OPTION;
+  static const string ABOUT_MENU_OPTION;
+  static const string BACK_MENU_OPTION;
 
   // Paths to asset files
   
@@ -245,6 +264,10 @@ public:
   static const string AUTHOR_NAME;
   static const string RELEASE_YEAR;
   static const string AUTHOR_PREFIX;
+
+  //About screen display strings
+  static const string ABOUT_SCREEN_TITLE;
+  static const vector<string> ABOUT_SCREEN_TEXT;
 };
 
 #endif

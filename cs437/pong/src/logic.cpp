@@ -216,21 +216,28 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
   else if(event.key.code == sf::Keyboard::Return)
     {
       string selected=game->get_menu()->get_selected_option();
-      if(selected=="Quit")
+      if(selected==Constants::QUITGAME_MENU_OPTION)
 	{
 	  App->close();
 	}
-      else if(selected == "New Game" || selected == "Start Game")
+      else if(selected == Constants::NEWGAME_MENU_OPTION ||
+	      selected == Constants::STARTGAME_MENU_OPTION)
 	{
 	  game->restart_game();
 	}
-      else if(selected=="Continue")
+      else if(selected==Constants::CONTINUEGAME_MENU_OPTION)
 	{
 	  game->set_state(GameState::Playing);
 	}
-      else if(selected=="Main Menu")
+      else if(selected==Constants::MAINMENU_MENU_OPTION ||
+	      selected==Constants::BACK_MENU_OPTION)
 	{
+	  //cout << "going to main menu\n";
 	  game->set_state(GameState::MainMenu);
+	}
+      else if(selected==Constants::ABOUT_MENU_OPTION)
+	{
+	  game->set_state(GameState::AboutScreen);
 	}
     }
 }

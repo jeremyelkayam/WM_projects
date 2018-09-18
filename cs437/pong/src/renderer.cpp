@@ -41,6 +41,10 @@ void Renderer::update()
     {
       draw_main_menu();
     }
+  else if(game->get_current_state()==GameState::AboutScreen)
+    {
+      draw_about_screen();
+    }
   else
     {
       draw_scores();
@@ -245,7 +249,7 @@ void Renderer::draw_pause_menu()
   
   window->draw(paused_text);
 
-  draw_menu_text(window->getSize().x/2);
+  draw_menu_text(window->getSize().y/2+Constants::PAUSE_MENU_OFFSET);
 }
 
 void Renderer::set_origin_to_center(sf::Text *text)
@@ -315,4 +319,45 @@ void Renderer::set_origin_to_bottom_right(sf::Text *text)
   sf::FloatRect textRect=text->getLocalBounds();
   text->setOrigin(textRect.left + textRect.width,
 		  textRect.top + textRect.height);
+}
+
+void Renderer::draw_about_screen()
+{
+  
+  sf::Text about_title,about_text;
+
+  about_title.setFont(pixel_font);
+  about_text.setFont(pixel_font);
+
+  about_title.setString(Constants::ABOUT_SCREEN_TITLE);
+  about_text.setString("a");
+  
+  about_title.setCharacterSize(Constants::ABOUT_TITLE_CHAR_SIZE);
+  about_text.setCharacterSize(Constants::ABOUT_TEXT_CHAR_SIZE);
+  
+  set_origin_to_center(&about_title);
+  set_origin_to_center(&about_text);
+      
+  about_title.setPosition(window->getSize().x/2,Constants::ABOUT_TITLE_YCOR);
+  about_text.setPosition(window->getSize().x/2,200);
+  
+  window->draw(about_text);
+
+  draw_menu_text(window->getSize().y-100);
+}
+//TODO make a render_text function that takes all of these parameters and just does the whole damn process
+
+void Renderer::render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor)
+{
+  sf::Text text;
+
+  text.setFont(a_font);
+
+  text.setString(str);
+
+  text.setCharacterSize(char_size);
+
+  text.setPosition(xcor,ycor);
+
+  window->draw(text);
 }

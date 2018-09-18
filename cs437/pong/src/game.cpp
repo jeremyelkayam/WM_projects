@@ -94,6 +94,10 @@ void Game::set_state(GameState new_state)
     {
       menu->set_type(MenuType::Main);
     }
+  else if(new_state==GameState::AboutScreen)
+    {
+      menu->set_type(MenuType::About);
+    }
   
   this->current_state=new_state;
 }

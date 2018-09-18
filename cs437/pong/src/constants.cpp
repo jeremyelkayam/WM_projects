@@ -18,6 +18,8 @@ const string Constants::MAINMENU_MENU_OPTION = "Main Menu";
 const string Constants::QUITGAME_MENU_OPTION = "Quit";
 const string Constants::STARTGAME_MENU_OPTION = "Start Game";
 const string Constants::OPTIONS_MENU_OPTION = "Options";
+const string Constants::ABOUT_MENU_OPTION = "About";
+const string Constants::BACK_MENU_OPTION = "Back";
 
 const string Constants::PIXEL_FONT_PATH = "../assets/fonts/gloryquest.ttf";
 const string Constants::TITLE_FONT_PATH = "../assets/fonts/mumbold.ttf";
@@ -44,3 +46,9 @@ const string Constants::VERSION_NAME = "Version 0.9";
 const string Constants::AUTHOR_NAME = "Jeremy Elkayam";
 const string Constants::RELEASE_YEAR = "2018";
 const string Constants::AUTHOR_PREFIX = "(c)";
+
+const string Constants::ABOUT_SCREEN_TITLE = "About";
+const vector<string> Constants::ABOUT_SCREEN_TEXT = {"Programmed by Jeremy Elkayam",
+						     "using the Simple Fast Multimedia Library by the SFML Team",
+						     "based on the 1972 arcade game Pong by Al Alcorn",
+						     "for CS437: Intro to Game Design and Game Development at William & Mary"};
