@@ -12,7 +12,7 @@
 const sf::Color Constants::BACKGROUND_COLOR = sf::Color::Black;
 const sf::Color Constants::MENU_HIGHLIGHT_COLOR = sf::Color::Yellow;
 
-const string Constants::VERSION_NUMBER="1.0";
+const string Constants::VERSION_NUMBER="1.1";
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";
