@@ -21,6 +21,7 @@ private:
   double next_target;
   int wait_time;
   ActionType current_action;
+  std::mt19937 target_perturbation_rng;
   
 public:
   ComputerPlayer(Game *game);

@@ -22,21 +22,22 @@ ComputerPlayer::ComputerPlayer(Game *game)
   this->next_target=0;
   this->wait_time=0;
   this->current_action=ActionType::None;
-  cout << "constructing computer player\n";
+
+  target_perturbation_rng.seed(std::random_device()());
 }
 
 void ComputerPlayer::update(int micros_elapsed)
 {
-  cout << "current_action is none? " << to_string(current_action==ActionType::None) << "\n"; 
+  //cout << "current_action is none? " << to_string(current_action==ActionType::None) << "\n"; 
   if(!(current_action==ActionType::None))
     {
-      cout << "doing something\n";
+      //cout << "doing something\n";
       if(current_action==ActionType::Moving)
 	{
 	  if(my_paddle->get_center() > (next_target - .5) && my_paddle->get_center() < (next_target + .5))
 	    {
 	      //we're within half a pixel of the goal. it's ok to stop
-	      current_action=ActionType::None;
+	      current_action=ActionType::Waiting;
 	    }
 	  else
 	    {
@@ -59,16 +60,17 @@ void ComputerPlayer::update(int micros_elapsed)
 	  double where_ball_will_hit=(game->get_ball()->get_ycor()-
 				   game->get_ball()->get_xcor()*tan(game->get_ball()->get_angle()));
 	  //if the ball is going to hit the screen between 0 and the window height
-	  cout << "ball will hit: " << where_ball_will_hit << "\n";
+	  //cout << "ball will hit: " << where_ball_will_hit << "\n";
 	  if(0 < where_ball_will_hit && where_ball_will_hit < 600)
 	    {
-	      cout << "determining where to move\n";
-	      next_target=where_ball_will_hit;
+	      //cout << "determining where to move\n";
+
+	      std::uniform_real_distribution<double>unif(-1.5*my_paddle->get_height(),1.5*my_paddle->get_height());
+	      
+	      double perturbation=unif(target_perturbation_rng);
+	      
+	      next_target=where_ball_will_hit+perturbation;
 	      current_action=ActionType::Moving;
-	    }
-	  if(current_action==ActionType::Moving)
-	    {
-	      cout << "current action is to move\n";
 	    }
 	}
     }
