@@ -36,7 +36,7 @@ void ComputerPlayer::update(int micros_elapsed)
       if(my_paddle->get_center() > (next_target - .5) && my_paddle->get_center() < (next_target + .5))
 	{
 	  //we're within half a pixel of the goal. it's ok to stop
-	  current_action=ActionType::None;
+	  start_waiting_for_random_time();
 	}
       else
 	{
@@ -85,7 +85,8 @@ void ComputerPlayer::update(int micros_elapsed)
   
 void ComputerPlayer::set_target_to_nearby_ball_target(double ball_target)
 {
-  std::uniform_real_distribution<double>unif(my_paddle->get_height(),my_paddle->get_height());
+  double perturbation_bound=my_paddle->get_height() * Constants::AIM_PERTURBATION_BOUND_MULTIPLIER;
+  std::uniform_real_distribution<double>unif(-perturbation_bound, perturbation_bound);
   
   double perturbation=unif(target_perturbation_rng);
   
