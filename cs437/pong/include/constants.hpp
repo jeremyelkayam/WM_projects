@@ -115,6 +115,11 @@ public:
    */
   static constexpr int PADDLE_RENDERED_WIDTH = 5;
 
+  //AI values
+
+  static constexpr int MAX_WAITING_TIME = 1000000;
+  static constexpr int MIN_WAITING_TIME = 0;
+
 
   //Text-rendering values
 

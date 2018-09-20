@@ -21,7 +21,7 @@ private:
   double next_target;
   int wait_until,time_waiting;
   ActionType current_action;
-  std::mt19937 target_perturbation_rng,wait_time_rng;
+  std::mt19937 target_perturbation_rng,wait_time_rng,target_rng;
 
   void set_target_to_nearby_ball_target(double ball_target);
   void set_target_to_random_target();
@@ -29,6 +29,7 @@ private:
   
   void move_toward_target(int micros_elapsed);
   void continue_waiting(int micros_elapsed);
+  void pick_random_thing_to_do();
   
 public:
   ComputerPlayer(Game *game);

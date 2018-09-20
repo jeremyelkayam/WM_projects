@@ -25,8 +25,8 @@ ComputerPlayer::ComputerPlayer(Game *game)
   this->current_action=ActionType::None;
 
   target_perturbation_rng.seed(std::random_device()());
-  
   wait_time_rng.seed(std::random_device()());
+  target_rng.seed(std::random_device()());
 }
 
 void ComputerPlayer::update(int micros_elapsed)
@@ -36,7 +36,7 @@ void ComputerPlayer::update(int micros_elapsed)
       if(my_paddle->get_center() > (next_target - .5) && my_paddle->get_center() < (next_target + .5))
 	{
 	  //we're within half a pixel of the goal. it's ok to stop
-	  start_waiting_for_random_time();
+	  current_action=ActionType::None;
 	}
       else
 	{
@@ -61,6 +61,9 @@ void ComputerPlayer::update(int micros_elapsed)
     }
   else
     {
+      pick_random_thing_to_do();
+      //if the following if statements trigger, they'll override the random thing we chose.
+      
       // if the x component of the velocity is less than 0, it's heading left
       if(game->get_ball()->get_x_velocity()<0) 
 	{
@@ -80,32 +83,6 @@ void ComputerPlayer::update(int micros_elapsed)
     }
 }
   
-  /*plan:
-    if(doing_nothing)
-      if(ball_moving_toward_my_side)
-        move_to_where_it_will_hit()
-      else
-        if(rand()%2)
-	  wait(random_time_less_than_1_second)
-        else
-	  move_to_random_place()
-   */
-  
-  /*
-  Paddle::Direction dir;
-  double ball_ycor = game->get_ball()->get_ycor();
-
-  if(ball_ycor>my_paddle->get_ycor()+my_paddle->get_height()/2)
-    {
-      dir = Paddle::Direction::Down;
-    }
-  else
-    {
-      dir = Paddle::Direction::Up;
-    }
-
-  my_paddle->move(micros_elapsed,dir);
-  */
 void ComputerPlayer::set_target_to_nearby_ball_target(double ball_target)
 {
   std::uniform_real_distribution<double>unif(my_paddle->get_height(),my_paddle->get_height());
@@ -129,11 +106,33 @@ void ComputerPlayer::set_target_to_nearby_ball_target(double ball_target)
     
 void ComputerPlayer::start_waiting_for_random_time()
 {
-  wait_until=1000000;
+  std::uniform_int_distribution<int>unif(Constants::MIN_WAITING_TIME,Constants::MAX_WAITING_TIME);
+  wait_until=unif(wait_time_rng);
   current_action=ActionType::Waiting;
 }
 
 void ComputerPlayer::continue_waiting(int micros_elapsed)
 {
   time_waiting+=micros_elapsed;
+}
+
+void ComputerPlayer::set_target_to_random_target()
+{
+  std::uniform_real_distribution<double>unif(my_paddle->get_height() / 2,
+					     game->get_y_dimension() - (my_paddle->get_height() / 2));
+  next_target=unif(target_rng);
+
+  current_action=ActionType::Moving;
+}
+
+void ComputerPlayer::pick_random_thing_to_do()
+{
+  if(rand() % 2)
+    {
+      start_waiting_for_random_time();
+    }
+  else
+    {
+      set_target_to_random_target();
+    }
 }
