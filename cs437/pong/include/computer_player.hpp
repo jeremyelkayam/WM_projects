@@ -14,8 +14,13 @@
 class ComputerPlayer
 {
 private:
+  enum class ActionType{ Moving , Waiting, None };
   Game *game;
   Paddle *my_paddle;
+
+  double next_target;
+  int wait_time;
+  ActionType current_action;
   
 public:
   ComputerPlayer(Game *game);

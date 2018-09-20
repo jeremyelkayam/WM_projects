@@ -43,5 +43,5 @@ void Paddle::move(int micros_elapsed, Direction dir)
 
 double Paddle::get_center()
 {
-  return get_ycor()-(get_height()/2);
+  return get_ycor()+(get_height()/2);
 }

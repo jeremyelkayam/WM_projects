@@ -40,6 +40,7 @@ public:
   double get_y_velocity();
   double get_xcor(){return xcor;}
   double get_ycor(){return ycor;}
+  double get_angle(){return angle;}
   
   void move(double ms_elapsed);
 

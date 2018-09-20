@@ -100,7 +100,7 @@ public:
   /*
     The default speed for computer-controlled paddles in pixels per microsecond.
    */
-  static constexpr double COMPUTER_PLAYER_SPEED = .0002;
+  static constexpr double COMPUTER_PLAYER_SPEED = .001;
   /*
     The amount of space past the top and bottom of a player's paddle in pixels 
     that the ball can bounce off of. This "cheat" makes the game's controls feel
