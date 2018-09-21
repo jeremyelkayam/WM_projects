@@ -51,6 +51,7 @@ should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 - functions that take no args should take void to be more explicit (e.g. foo() -> foo(void))
 - only take input if window has focus.
   - potentially: don't play at all if window doesn't have focus
+- experiment with resizing, make it work better
 - better AI (more realistic). Make it fuck up sometimes. Under or overshoot the ball.
   - tweak it more
 - end messages referring to the player and computer instead of just "player 1" and "player 2"
