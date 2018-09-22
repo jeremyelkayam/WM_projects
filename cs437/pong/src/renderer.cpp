@@ -406,5 +406,32 @@ void Renderer::draw_settings_menu()
   
   window->draw(settings_text);
 
-  draw_menu_text(window->getSize().y/2-1/6*window->getSize().y/2);
+  vector <string> menu_options=game->get_menu()->get_options();
+  int selection=game->get_menu()->get_selection();
+
+  for(int z=0;z<menu_options.size();z++)
+    {
+      sf::Text option;
+      option.setFont(pixel_font);
+      
+      option.setString(menu_options[z]);
+      
+      option.setCharacterSize(Constants::MENU_CHAR_SIZE);
+      
+      set_origin_to_center(&option);
+      
+      option.setPosition(window->getSize().x/2,(.4*window->getSize().y)+Constants::MENU_TEXT_OFFSET*z);
+
+      if(z==game->get_menu()->get_selection())
+	{
+	  /*
+	  option.setOutlineThickness(1);
+	  option.setOutlineColor(sf::Color::White);
+	  option.setFillColor(sf::Color::Black);
+	  */
+	  option.setFillColor(Constants::MENU_HIGHLIGHT_COLOR);
+	}
+      
+      window->draw(option);
+    }
 }

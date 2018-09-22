@@ -65,7 +65,7 @@ void Menu::set_type(MenuType type)
     }
   if(type==MenuType::Settings)
     {
-      options.push_back("stuff");
+      options.push_back(Constants::SPEED_MENU_OPTION);
       options.push_back("more stuff");
       options.push_back(Constants::BACK_MENU_OPTION);      
     }

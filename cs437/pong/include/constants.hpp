@@ -228,6 +228,8 @@ public:
     The interval between rows of the body text on the about screen.
    */
   static constexpr int ABOUT_TEXT_OFFSET = 32;
+
+  static const vector<double> SPEED_VALUES;
   
   //Strings
 
@@ -247,6 +249,7 @@ public:
   static const string OPTIONS_MENU_OPTION;
   static const string ABOUT_MENU_OPTION;
   static const string BACK_MENU_OPTION;
+  static const string SPEED_MENU_OPTION;
 
   // Paths to asset files
   

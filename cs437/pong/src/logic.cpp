@@ -34,6 +34,8 @@ void Logic::update(int micros_elapsed)
 	}
       else
 	{
+	  micros_elapsed*=time_multiplier;
+  
 
 	  keyboard_paddle_movement(micros_elapsed);
 	  
@@ -189,6 +191,7 @@ void Logic::keyboard_paddle_movement(int micros_elapsed)
 
 void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 {
+  string selected=game->get_menu()->get_selected_option();
   if(event.key.code == sf::Keyboard::Up)
     {
       game->get_menu()->move_up();
@@ -199,15 +202,23 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
     }
   else if(event.key.code == sf::Keyboard::Left)
     {
-      
+      if(selected == Constants::SPEED_MENU_OPTION && speed_index>0)
+	{
+	  speed_index--;
+	  time_multiplier=Constants::SPEED_VALUES[speed_index];
+	}
     }
   else if(event.key.code == sf::Keyboard::Right)
     {
-      
+      if(selected == Constants::SPEED_MENU_OPTION
+	 && speed_index<Constants::SPEED_VALUES.size()-1)
+	{
+	  speed_index++;
+	  time_multiplier=Constants::SPEED_VALUES[speed_index];
+	}
     }
   else if(event.key.code == sf::Keyboard::Return)
     {
-      string selected=game->get_menu()->get_selected_option();
       if(selected==Constants::QUITGAME_MENU_OPTION)
 	{
 	  App->close();

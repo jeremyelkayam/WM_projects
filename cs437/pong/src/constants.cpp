@@ -12,6 +12,9 @@
 const sf::Color Constants::BACKGROUND_COLOR = sf::Color::Black;
 const sf::Color Constants::MENU_HIGHLIGHT_COLOR = sf::Color::Yellow;
 
+const vector<double> Constants::SPEED_VALUES = {0.25,0.33,0.5,0.75,1.0,
+						1.5,2.0,3.0,4.0};
+
 const string Constants::VERSION_NUMBER="1.1";
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";
@@ -22,6 +25,8 @@ const string Constants::STARTGAME_MENU_OPTION = "Start Game";
 const string Constants::OPTIONS_MENU_OPTION = "Options";
 const string Constants::ABOUT_MENU_OPTION = "About";
 const string Constants::BACK_MENU_OPTION = "Back";
+const string Constants::SPEED_MENU_OPTION = "Speed: ";
+
 
 const string Constants::PIXEL_FONT_PATH = "../assets/fonts/gloryquest.ttf";
 const string Constants::TITLE_FONT_PATH = "../assets/fonts/mumbold.ttf";
