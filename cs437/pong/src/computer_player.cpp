@@ -71,7 +71,7 @@ void ComputerPlayer::update(int micros_elapsed)
 				      game->get_ball()->get_xcor()*tan(game->get_ball()->get_angle()));
 	  //if the ball is going to hit the screen between 0 and the window height
 	  //cout << "ball will hit: " << where_ball_will_hit << "\n";
-	  if(0 < where_ball_will_hit && where_ball_will_hit < game->get_y_dimension())
+	  if(0 < where_ball_will_hit - 100 && where_ball_will_hit < game->get_y_dimension() + 100)
 	    {
 	      //cout << "determining where to move\n";
 	      
