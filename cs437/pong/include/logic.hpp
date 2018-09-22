@@ -18,8 +18,7 @@ private:
   Game *game;
   ComputerPlayer *cp;
   int total_time;
-  double time_multiplier=1;
-  int speed_index=2;
+  int speed_index=3;
   
   bool ball_past_left_side();
   bool ball_past_right_side();

@@ -34,10 +34,8 @@ void Logic::update(int micros_elapsed)
 	}
       else
 	{
-	  micros_elapsed*=time_multiplier;
-  
 
-	  keyboard_paddle_movement(micros_elapsed);
+	  keyboard_paddle_movement(micros_elapsed*game->get_time_multiplier());
 	  
 	  total_time+=micros_elapsed;
 	  
@@ -51,9 +49,9 @@ void Logic::update(int micros_elapsed)
 	}
     }
   else if(state==GameState::Playing)
-    {
-
-      //TODO: separate this into more functions?
+    { 
+      micros_elapsed*=game->get_time_multiplier();
+       //TODO: separate this into more functions?
       keyboard_paddle_movement(micros_elapsed);
       
       if(ball_above_screen() || ball_below_screen())
@@ -205,7 +203,7 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
       if(selected == Constants::SPEED_MENU_OPTION && speed_index>0)
 	{
 	  speed_index--;
-	  time_multiplier=Constants::SPEED_VALUES[speed_index];
+	  game->set_time_multiplier(Constants::SPEED_VALUES[speed_index]);
 	}
     }
   else if(event.key.code == sf::Keyboard::Right)
@@ -214,7 +212,7 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	 && speed_index<Constants::SPEED_VALUES.size()-1)
 	{
 	  speed_index++;
-	  time_multiplier=Constants::SPEED_VALUES[speed_index];
+	  game->set_time_multiplier(Constants::SPEED_VALUES[speed_index]);
 	}
     }
   else if(event.key.code == sf::Keyboard::Return)

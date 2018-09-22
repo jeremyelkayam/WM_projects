@@ -27,6 +27,7 @@ private:
   std::mt19937 starting_angle_rng;
   GameState current_state;
   int countdown;
+  double time_multiplier=1;
 public:
   
   Game(double x, double y,GameState state);
@@ -48,6 +49,7 @@ public:
 
   double get_x_dimension(){return this->x_dimension;}
   double get_y_dimension(){return this->y_dimension;}
+  double get_time_multiplier(){return this->time_multiplier;}
 
   void new_round();
 
@@ -56,6 +58,8 @@ public:
   void set_state(GameState new_state);
 
   void restart_game();
+
+  void set_time_multiplier(double mult){time_multiplier=mult;};
 
 };
 

@@ -413,8 +413,16 @@ void Renderer::draw_settings_menu()
     {
       sf::Text option;
       option.setFont(pixel_font);
+
+      string display_string=menu_options[z];
+
+      if(menu_options[z]==Constants::SPEED_MENU_OPTION)
+	{
+	  display_string+=to_string(game->get_time_multiplier());
+	}
+	
       
-      option.setString(menu_options[z]);
+      option.setString(display_string);
       
       option.setCharacterSize(Constants::MENU_CHAR_SIZE);
       
