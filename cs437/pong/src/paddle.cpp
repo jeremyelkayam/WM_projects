@@ -10,12 +10,13 @@
 
 using namespace std;
 
-Paddle::Paddle(double speed, double accel, double ycor, double height, double max_ycor)
+Paddle::Paddle(double speed, double accel, double ycor, double height, double max_ycor, double width)
 {
   set_speed(speed);
   set_accel(accel);
   set_ycor(ycor);
   set_height(height);
+  set_width(width);
   this->max_ycor=max_ycor;
 }
 

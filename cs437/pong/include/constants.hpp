@@ -79,7 +79,7 @@ public:
     A value between this value and BALL_MIN_VALUE is generated and then rotated
     into a random quadrant before being set to the ball's angle.
    */
-  static constexpr double BALL_MAX_ANGLE = 3*M_PI/7;
+  static constexpr double BALL_MAX_ANGLE = 2*M_PI/7;
   /*
     The minimum value for the ball's starting angle at the beginning of a round.
     A value between this value and BALL_MAX_VALUE is generated and then rotated

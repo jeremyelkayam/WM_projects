@@ -58,26 +58,25 @@ void Logic::update(int micros_elapsed)
 	{
 	  top_bottom_bounce();
 	}
-      
-      if(ball_past_left_side() || ball_past_right_side())
+
+      if((game->get_ball()->get_x_velocity()<0 && ball_hit_p1_paddle()) ||
+	 (game->get_ball()->get_x_velocity()>0 && ball_hit_p2_paddle()))
 	{
-	  if((ball_hit_p1_paddle() && ball_past_left_side())
-	     || (ball_hit_p2_paddle() && ball_past_right_side()))
-	{
-	  left_right_bounce();
+          left_right_bounce();
 	}
-	  else{
-	    player_score_point(ball_past_right_side());
-	    if(game->get_current_state()!=GameState::EndScreen)
+	    if(ball_past_left_side() || ball_past_right_side())
 	      {
-		start_new_round();
+		player_score_point(ball_past_right_side());
+		if(game->get_current_state()!=GameState::EndScreen)
+		  {
+		    start_new_round();
+		  }
+	    
 	      }
-	  }
-	}
+	  
+	  this->cp->update(micros_elapsed);
       
-      this->cp->update(micros_elapsed);
-      
-      this->game->get_ball()->move(micros_elapsed);
+	  this->game->get_ball()->move(micros_elapsed);
     }
 }
 
@@ -94,12 +93,12 @@ bool Logic::ball_below_screen()
 
 bool Logic::ball_past_left_side()
 {
-  return ball_x()<0;
+  return ball_x() < 0;
 }
 
 bool Logic::ball_past_right_side()
 {
-  return ball_x()>game->get_x_dimension();
+  return ball_x() > game->get_x_dimension() + 50;
 }
 
 void Logic::top_bottom_bounce()
@@ -124,19 +123,7 @@ void Logic::top_bottom_bounce()
 }
 
 void Logic::left_right_bounce()
-{
-  double screen_edge;
-  if(ball_past_left_side())
-    {
-      screen_edge=0;
-    }
-  else if(ball_past_right_side())
-    {
-      screen_edge=game->get_x_dimension();
-    }
-
-  this->game->get_ball()->set_xcor(screen_edge);
-  
+{  
   this->game->get_ball()->reflect_y();
 }
  
@@ -163,28 +150,28 @@ void Logic::start_new_round()
 
 bool Logic::ball_hit_p1_paddle()
 {
-  if(ball_past_left_side())
-    {
       double ball_ycor=game->get_ball()->get_ycor();
+      double ball_xcor=game->get_ball()->get_xcor();
       Paddle *paddle;
       paddle=game->get_p1_paddle();
-      return (ball_ycor>paddle->get_ycor() &&
-	      ball_ycor<paddle->get_ycor()+paddle->get_height());
-    }
+      return (ball_xcor > 0 &&
+	      ball_xcor < paddle->get_width() &&
+	      ball_ycor > paddle->get_ycor() &&
+	      ball_ycor < paddle->get_ycor()+paddle->get_height());
   return false;
 }
 
 
 bool Logic::ball_hit_p2_paddle()
 {
-  if(ball_past_right_side())
-    {
       double ball_ycor=game->get_ball()->get_ycor();
+      double ball_xcor=game->get_ball()->get_xcor();
       Paddle *paddle;
       paddle=game->get_p2_paddle();
-      return (ball_ycor>paddle->get_ycor()-Constants::PADDLE_BOUNCE_TOLERANCE &&
-	      ball_ycor<paddle->get_ycor()+paddle->get_height()+Constants::PADDLE_BOUNCE_TOLERANCE);
-    }
+      return (ball_xcor < game->get_x_dimension() &&
+	      ball_xcor > game->get_x_dimension() - 5 && 
+	      ball_ycor > paddle->get_ycor()-Constants::PADDLE_BOUNCE_TOLERANCE &&
+	      ball_ycor < paddle->get_ycor()+paddle->get_height()+Constants::PADDLE_BOUNCE_TOLERANCE);
   return false;
 }
 
