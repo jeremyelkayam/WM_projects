@@ -31,6 +31,14 @@ Game::Game(double x,double y,GameState state)
   this->current_state=state;
 }
 
+Game::~Game()
+{
+  delete(menu);
+  delete(p2_paddle);
+  delete(p1_paddle);
+  delete(ball);
+}
+
 void Game::increment_p1_score()
 {
   p1score++;

@@ -94,5 +94,11 @@ int main(int argc, char** argv)
     }
   
   // Done.
+
+  delete(renderer);
+  delete(logic);
+  delete(game);
+  
+  
   return 0;
 }

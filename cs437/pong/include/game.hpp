@@ -31,6 +31,7 @@ private:
 public:
   
   Game(double x, double y,GameState state);
+  ~Game();
 
   Ball *get_ball(){return this->ball;}
   Paddle *get_p1_paddle(){return this->p1_paddle;}

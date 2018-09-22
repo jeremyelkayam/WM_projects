@@ -86,7 +86,8 @@ void Renderer::update()
 
 void Renderer::draw_ball()
 {
-  ball.setPosition(game->get_ball()->get_xcor()-Constants::BALL_RADIUS,game->get_ball()->get_ycor()-Constants::BALL_RADIUS);
+  ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/800,
+		   game->get_ball()->get_ycor()-Constants::BALL_RADIUS);
 
   window->draw(ball);
 }
