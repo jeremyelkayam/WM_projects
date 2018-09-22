@@ -45,6 +45,10 @@ void Renderer::update()
     {
       draw_about_screen();
     }
+  else if(game->get_current_state()==GameState::Settings)
+    {
+      draw_settings_menu();
+    }
   else
     {
       draw_scores();
@@ -384,4 +388,23 @@ void Renderer::render_text(sf::Font a_font, string str, int char_size, double xc
   text.setPosition(xcor,ycor);
 
   window->draw(text);
+}
+
+void Renderer::draw_settings_menu()
+{
+  sf::Text settings_text;
+  
+  settings_text.setFont(pixel_font);
+  
+  settings_text.setString("Settings");
+  
+  settings_text.setCharacterSize(Constants::PAUSE_TEXT_CHAR_SIZE);
+  
+  set_origin_to_center(&settings_text);
+      
+  settings_text.setPosition(window->getSize().x/2,.3*window->getSize().y);
+  
+  window->draw(settings_text);
+
+  draw_menu_text(window->getSize().y/2-1/6*window->getSize().y/2);
 }

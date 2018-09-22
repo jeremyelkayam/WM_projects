@@ -197,6 +197,14 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
     {
       game->get_menu()->move_down();		  
     }
+  else if(event.key.code == sf::Keyboard::Left)
+    {
+      
+    }
+  else if(event.key.code == sf::Keyboard::Right)
+    {
+      
+    }
   else if(event.key.code == sf::Keyboard::Return)
     {
       string selected=game->get_menu()->get_selected_option();
@@ -222,6 +230,10 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
       else if(selected==Constants::ABOUT_MENU_OPTION)
 	{
 	  game->set_state(GameState::AboutScreen);
+	}
+      else if(selected==Constants::OPTIONS_MENU_OPTION)
+	{
+	  game->set_state(GameState::Settings);
 	}
     }
 }

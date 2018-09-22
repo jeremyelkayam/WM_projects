@@ -13,7 +13,7 @@
 
 using namespace std;
 
-enum class MenuType { Main, Finish, Pause, About };
+enum class MenuType { Main, Finish, Pause, About, Settings };
 
 class Menu
 {

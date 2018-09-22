@@ -55,12 +55,18 @@ void Menu::set_type(MenuType type)
   if(type==MenuType::Main)
     {
       options.push_back(Constants::STARTGAME_MENU_OPTION);
-      //options.push_back(Constants::OPTIONS_MENU_OPTION);
+      options.push_back(Constants::OPTIONS_MENU_OPTION);
       options.push_back(Constants::ABOUT_MENU_OPTION);
       options.push_back(Constants::QUITGAME_MENU_OPTION);
     }
   if(type==MenuType::About)
     {
       options.push_back(Constants::BACK_MENU_OPTION);
+    }
+  if(type==MenuType::Settings)
+    {
+      options.push_back("stuff");
+      options.push_back("more stuff");
+      options.push_back(Constants::BACK_MENU_OPTION);      
     }
 }

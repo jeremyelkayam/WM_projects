@@ -14,7 +14,7 @@
 #include "menu.hpp"
 
 enum class GameState {NewRound, Playing, CountDown, EndScreen, Paused,
-		      MainMenu, AboutScreen};
+		      MainMenu, AboutScreen, Settings};
 
 class Game
 {

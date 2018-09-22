@@ -98,6 +98,10 @@ void Game::set_state(GameState new_state)
     {
       menu->set_type(MenuType::About);
     }
+  else if(new_state==GameState::Settings)
+    {
+      menu->set_type(MenuType::Settings);
+    }
   
   this->current_state=new_state;
 }

@@ -79,7 +79,8 @@ int main(int argc, char** argv)
 	      else if(game->get_current_state()==GameState::EndScreen ||
 		      game->get_current_state()==GameState::Paused ||
 		      game->get_current_state()==GameState::MainMenu ||
-		      game->get_current_state()==GameState::AboutScreen)
+		      game->get_current_state()==GameState::AboutScreen ||
+		      game->get_current_state()==GameState::Settings)
 		{
 		  logic->handle_menu_event(Event,&App);
 		}
