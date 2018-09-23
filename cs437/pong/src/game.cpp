@@ -1,6 +1,6 @@
 /*
   game.cpp
-  Purpose: A singleton, storing all game properties in a singular class for
+  Purpose: A class storing all game properties in a singular location for
   easy access by any class that needs them.
  */
 

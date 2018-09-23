@@ -1,9 +1,9 @@
 /*
   game.hpp
-  Purpose: Store game properties in a singular class for easy access.
+  Purpose: Store game logic properties in a singular class for easy access.
  */
 
-//TODO: make this class a singleton.
+//potential TODO: make this class a singleton?
 
 #ifndef GAME_HPP
 #define GAME_HPP
@@ -13,6 +13,27 @@
 #include "paddle.hpp"
 #include "menu.hpp"
 
+/*
+  The current state of the game.
+  NewRound: The game has just started a new round and is waiting
+            for confirmation from the player to begin the round
+  CountDown: The round is about to start, and the game is 
+             performing a 3-second countdown before gameplay
+	     begins.
+  Playing: A round of gameplay is in progress. The ball is bouncing
+           around the screen and players are moving paddles to 
+	   attempt to score.
+  EndScreen: The game is over. The end-screen menu is being displayed,
+             and the player who won is indicated. 
+  Paused: The game is in progress, but has been paused by a player.
+          Gameplay is stopped, but the player can choose options from 
+	  the pause menu.
+  Main Menu: The main menu is being displayed. No gameplay is taking
+             place.
+  AboutScreen: The about screen is being displayed.
+  Settings: The settings menu is being displayed. No gameplay is taking
+            place.
+ */
 enum class GameState {NewRound, Playing, CountDown, EndScreen, Paused,
 		      MainMenu, AboutScreen, Settings};
 
