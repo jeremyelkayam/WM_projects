@@ -40,18 +40,42 @@ enum class GameState {NewRound, Playing, CountDown, EndScreen, Paused,
 class Game
 {
 private:
+  //A reference to the game's ball.
   Ball *ball;
+  //References to the 2 paddles.
   Paddle *p1_paddle,*p2_paddle;
+  //Reference to the current menu being displayed (if in a menu state).
   Menu *menu;
+  //These store the scores of each player.
   int p1score,p2score;
+  //Dimensions of the playing area.
   double x_dimension,y_dimension;
+  /*
+    Random number generateor, generating the
+    angle the ball's velocity starts at
+    when a round begins.
+  */
   std::mt19937 starting_angle_rng;
+  //Stores the game's current state as documented above.
   GameState current_state;
+  //Store's the position in the countdown (if counting down).
   int countdown;
+  //Stores the multiplier on game speed. Defaults to 1.
   double time_multiplier=1;
 public:
+  /*
+    Constructor, setting up the game's properties.
   
+    @param x: the x-dimension of the starting window
+    @param y: the y-dimension of the starting window
+    @param state: the starting state of the game
+   */
   Game(double x, double y,GameState state);
+
+  /*
+    Destructor, de-allocating all heap memory the
+    class used during its life.
+   */
   ~Game();
 
   Ball *get_ball(){return this->ball;}
