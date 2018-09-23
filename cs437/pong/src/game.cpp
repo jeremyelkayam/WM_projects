@@ -8,6 +8,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
+#include <cassert>
 #include "game.hpp"
 #include "ball.hpp"
 #include "constants.hpp"
@@ -122,4 +123,14 @@ void Game::restart_game()
   p1score=0;
   p2score=0;
   new_round();
+}
+
+Menu *Game::get_menu()
+{
+  assert(current_state==GameState::EndScreen ||
+	 current_state==GameState::Paused ||
+	 current_state==GameState::MainMenu ||
+	 current_state==GameState::AboutScreen ||
+	 current_state==GameState::Settings);
+  return this->menu;
 }

@@ -78,10 +78,30 @@ public:
    */
   ~Game();
 
+  /*
+    Returns a reference to the game's ball.
+    
+    @return a reference to the ball stored by the game.
+  */
   Ball *get_ball(){return this->ball;}
+  /*
+    Returns a reference to the player one's paddle.
+    
+    @return a reference to the P1 paddle stored by the game.
+  */
   Paddle *get_p1_paddle(){return this->p1_paddle;}
+  /*
+    Returns a reference to player two's paddle.
+    
+    @return a reference to the P2 paddle stored by the game.
+  */
   Paddle *get_p2_paddle(){return this->p2_paddle;}
-  Menu *get_menu(){return this->menu;}
+  /*
+    If game is in a menu state, return a reference to the current game menu.
+    
+    @return a reference to the current menu.
+  */
+  Menu *get_menu();
   
   int get_p1_score(){return this->p1score;}
   int get_p2_score(){return this->p2score;}
