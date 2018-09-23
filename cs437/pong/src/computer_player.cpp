@@ -13,6 +13,7 @@
 #include "paddle.hpp"
 #include "constants.hpp"
 
+// Constructor for the ComputerPlayer class.
 ComputerPlayer::ComputerPlayer(Game *game)
 {
   srand(time(0));
@@ -30,6 +31,7 @@ ComputerPlayer::ComputerPlayer(Game *game)
   target_rng.seed(std::random_device()());
 }
 
+//Loop code for the AI. Decides what to do and tells the paddle to do it.
 void ComputerPlayer::update(int micros_elapsed)
 {
   if(current_action==ActionType::Moving)
@@ -39,11 +41,6 @@ void ComputerPlayer::update(int micros_elapsed)
   else if(current_action==ActionType::Waiting)
     {
       continue_waiting(micros_elapsed);
-      if(time_waiting >= wait_until)
-	{
-	  time_waiting=0;
-	  current_action=ActionType::None;
-	}
     }
   else
     {
@@ -69,7 +66,8 @@ void ComputerPlayer::update(int micros_elapsed)
 	}
     }
 }
-  
+
+//Sets target to the given target, but with a random perturbation.
 void ComputerPlayer::set_target_to_nearby_this_target(double target)
 {
   double perturbation_bound=my_paddle->get_height() * Constants::AIM_PERTURBATION_BOUND_MULTIPLIER;
@@ -92,21 +90,36 @@ void ComputerPlayer::set_target_to_nearby_this_target(double target)
     }
   current_action=ActionType::Moving;
 }   
-    
+
+//Sets action to Waiting and sets a random time for the AI to wait.
 void ComputerPlayer::start_waiting_for_random_time()
 {
+  assert(current_action==ActionType::None);
+  
   std::uniform_int_distribution<int>unif(Constants::MIN_WAITING_TIME,Constants::MAX_WAITING_TIME);
   wait_until=unif(wait_time_rng);
   current_action=ActionType::Waiting;
 }
 
+//If the AI is waiting, keep waiting, and if the wait is over, clear its current action.
 void ComputerPlayer::continue_waiting(int micros_elapsed)
 {
+  //this need only be called if the game state is waiting.
+  assert(current_action==ActionType::Waiting);
+  
   time_waiting+=micros_elapsed;
+  if(time_waiting >= wait_until)
+    {
+      time_waiting=0;
+      current_action=ActionType::None;
+    }
 }
 
+//If the AI has nothing to do, set it to moving and its next_target to a random ycor.
 void ComputerPlayer::set_target_to_random_target()
 {
+  assert(current_action==ActionType::None);
+  
   std::uniform_real_distribution<double>unif(my_paddle->get_height() / 2,
 					     game->get_y_dimension() - (my_paddle->get_height() / 2));
   next_target=unif(target_rng);
@@ -114,8 +127,13 @@ void ComputerPlayer::set_target_to_random_target()
   current_action=ActionType::Moving;
 }
 
+//Decide to either wait a random amount of time or move somewhere random.
 void ComputerPlayer::pick_random_thing_to_do()
 {
+  //this only needs to ever be called if the AI doesn't have
+  //anything it's currently doing
+  assert(current_action=ActionType::None);
+  
   if(rand() % 2)
     {
       start_waiting_for_random_time();
@@ -126,6 +144,7 @@ void ComputerPlayer::pick_random_thing_to_do()
     }
 }
 
+//If moving, move toward the next target. If you're there, stop.
 void ComputerPlayer::move_toward_target(int micros_elapsed)
 {
   //this only ever be called if we're currently moving. if not, we have big problems 

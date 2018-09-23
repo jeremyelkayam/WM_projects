@@ -90,14 +90,53 @@ private:
   void start_waiting_for_random_time();
 
   /*
-    If the paddle is 
+    If the paddle is moving, move it towards its next target by
+    using the built-in move(int micros_elapsed) function of the
+    paddle. This should only ever be called if the paddle is
+    in the Moving state. If the paddle has reached its target,
+    this sets its state to None.
+
+    @param micros_elapsed The amount of time in microseconds 
+                          since the end of the previous game loop.
    */
   void move_toward_target(int micros_elapsed);
+  /*
+    If the AI is waiting, continue to wait for the
+    amount of microseconds specified. If the alloted waiting
+    time is over, set the state to None. Like the above 
+    method, this should only ever be called if the paddle
+    is waiting.
+
+    @param micros_elapsed The amount of time in microseconds 
+                          since the end of the previous game loop.
+   */
   void continue_waiting(int micros_elapsed);
+  /*
+    If the AI isn't doing anything, this will randomly decide
+    to either wait for a random amount of time between 
+    Constants::MIN_WAITING_TIME and Constants::MAX_WAITING_TIME,
+    or start moving toward a random y-coordinate on the screen.
+   */
   void pick_random_thing_to_do();
   
 public:
+  /*
+    Constructor for the ComputerPlayer class. Stores a reference
+    to the game properties and begins controlling the P1 paddle.
+
+    @param game A reference to the class storing the game's properties.
+   */
   ComputerPlayer(Game *game);
+
+  /*
+    Called once every game loop. Makes a decision for what the AI's paddle
+    should do next-- either continuing its current action, or, if its
+    current action is finished, deciding on a new action. Once a decision
+    is made, the AI tells the paddle to behave accordingly.
+    
+    @param micros_elapsed The amount of time elapsed since the
+                          previous game loop.
+   */
   void update(int micros_elapsed);
 };
 
