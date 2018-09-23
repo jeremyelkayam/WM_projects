@@ -52,8 +52,6 @@ should have the option to restart the game or quit __(10%)__.~~ _Completed!_
 - only take input if window has focus.
   - potentially: don't play at all if window doesn't have focus
 - experiment with resizing, make it work better
-- better AI (more realistic). Make it fuck up sometimes. Under or overshoot the ball.
-  - tweak it more
 - end messages referring to the player and computer instead of just "player 1" and "player 2"
  - player name stored in variable?
 - Options Screen with adjustable options.
@@ -70,3 +68,5 @@ by the magnitude and direction of the paddle's velocity.
 - Proper file-not-found errors __and errors in general, for example constructor errors__
 - Make the about screen look nicer.
 - text factory?
+- attract mode where the game plays itself in the background while you select an option?
+- 4 player option????
