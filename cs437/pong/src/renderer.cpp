@@ -421,8 +421,11 @@ void Renderer::draw_settings_menu()
 	{
 	  display_string+=to_string(game->get_time_multiplier());
 	}
+      else if(menu_options[z]==Constants::WIN_THRESHOLD_OPTION)
+	{
+	  display_string+=to_string(Constants::WIN_SCORE);
+	}
 	
-      
       option.setString(display_string);
       
       option.setCharacterSize(Constants::MENU_CHAR_SIZE);

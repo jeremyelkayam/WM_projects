@@ -40,7 +40,7 @@ public:
   /*
     The amount of points required to win the game.
    */
-  static constexpr int WIN_SCORE = 11;
+  static int WIN_SCORE;
   /*
     The starting value for the countdown at the beginning of each round.
    */
@@ -250,6 +250,7 @@ public:
   static const string ABOUT_MENU_OPTION;
   static const string BACK_MENU_OPTION;
   static const string SPEED_MENU_OPTION;
+  static const string WIN_THRESHOLD_OPTION;
 
   // Paths to asset files
   
