@@ -33,7 +33,7 @@ int main(int argc, char** argv)
   sf::Color bgcolor=Constants::BACKGROUND_COLOR;
   
 
-  //set up gameColor BACKGROUND_COLOR;
+  //set up game components
   Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
   Renderer *renderer = new Renderer(game,&App);
@@ -45,7 +45,9 @@ int main(int argc, char** argv)
   // start main loop
   while(App.isOpen())
     {
+      //Reset clock and track elapsed time since last loop.
       int micros_elapsed=clock.restart().asMicroseconds();
+      
       GameState previous_state;
       // process events
       sf::Event Event;
@@ -58,7 +60,6 @@ int main(int argc, char** argv)
 	    }
 	  else if(Event.type == sf::Event::KeyPressed)
 	    {
-	      
 	      if(Event.key.code == sf::Keyboard::Escape)
 		{ 
 		  if(game->get_current_state()==GameState::Playing )
@@ -95,6 +96,7 @@ int main(int argc, char** argv)
   
   // Done.
 
+  //Delete allocated classes from heap space.
   delete(renderer);
   delete(logic);
   delete(game);
