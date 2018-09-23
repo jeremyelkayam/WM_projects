@@ -80,14 +80,14 @@ void Renderer::update()
 	}
     }
   window->display();
-
+  cout << "window size:" << window->getSize().x << "x" << window->getSize().y << "\n";
 }
 
 
 void Renderer::draw_ball()
 {
-  ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/800,
-		   game->get_ball()->get_ycor()-Constants::BALL_RADIUS);
+  ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/80,
+		   window->getSize().y*(game->get_ball()->get_ycor()-Constants::BALL_RADIUS)/60);
 
   window->draw(ball);
 }
@@ -108,8 +108,10 @@ void Renderer::draw_scores()
   set_origin_to_center(&p1score);
   set_origin_to_center(&p2score);
   
-  p1score.setPosition(Constants::P1_SCORE_XCOR,Constants::P1_SCORE_YCOR);
-  p2score.setPosition(Constants::P2_SCORE_XCOR,Constants::P2_SCORE_YCOR);
+  p1score.setPosition(window->getSize().x*(Constants::P1_SCORE_XCOR)/800,
+		      window->getSize().y*(Constants::P1_SCORE_YCOR)/600);
+  p2score.setPosition(window->getSize().x*(Constants::P2_SCORE_XCOR)/800,
+		      window->getSize().y*(Constants::P2_SCORE_YCOR)/600);
 
   window->draw(p1score);
   window->draw(p2score);
