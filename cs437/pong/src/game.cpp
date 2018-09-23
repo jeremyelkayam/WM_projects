@@ -15,6 +15,7 @@
 
 using namespace std;
 
+//Constructor for the Game class
 Game::Game(double x,double y,GameState state)
 {
   starting_angle_rng.seed(std::random_device()());
@@ -32,6 +33,7 @@ Game::Game(double x,double y,GameState state)
   this->current_state=state;
 }
 
+//Destructor for Game
 Game::~Game()
 {
   delete(menu);
@@ -40,6 +42,7 @@ Game::~Game()
   delete(ball);
 }
 
+//Increments p1 score, and ends game if p1 won
 void Game::increment_p1_score()
 {
   p1score++;
@@ -48,7 +51,7 @@ void Game::increment_p1_score()
       this->set_state(GameState::EndScreen);
     }
 }
-
+//Increments p2 score, ending the game if p2 won
 void Game::increment_p2_score()
 {
   p2score++;
@@ -57,7 +60,7 @@ void Game::increment_p2_score()
       this->set_state(GameState::EndScreen);
     }
 }
-
+//Resets gameplay, beginning a new round.
 void Game::new_round()
 {
 
@@ -66,7 +69,7 @@ void Game::new_round()
   ball->set_angle(random_angle());
   set_state(GameState::NewRound);
 }
-
+//Generates a new random angle according to specifications.
 double Game::random_angle()
 {
   std::uniform_real_distribution<double>angle_unif(Constants::BALL_MIN_ANGLE,Constants::BALL_MAX_ANGLE);
@@ -85,6 +88,7 @@ double Game::random_angle()
   return random_angle;
 }
 
+//Sets the game state to the corresponding state.
 void Game::set_state(GameState new_state)
 {
   if(new_state==GameState::CountDown)
@@ -114,7 +118,7 @@ void Game::set_state(GameState new_state)
   
   this->current_state=new_state;
 }
-
+//Resets all game properties and restarts the game.
 void Game::restart_game()
 {
   p1_paddle->set_ycor(y_dimension/2);
@@ -125,12 +129,25 @@ void Game::restart_game()
   new_round();
 }
 
+//Returns the game menu.
 Menu *Game::get_menu()
 {
+  /*
+    you should only need the menu if we're in a menu state.
+    if you're asking for the menu and we're not in a menu state,
+    there are other problems we should be dealing with.
+  */
   assert(current_state==GameState::EndScreen ||
 	 current_state==GameState::Paused ||
 	 current_state==GameState::MainMenu ||
 	 current_state==GameState::AboutScreen ||
-	 current_state==GameState::Settings);
+	 current_state==GameState::Settings &&
+	 "Game should be in a menu state when calling get_menu");
   return this->menu;
+}
+//Returns place in the countdown.
+int Game::get_countdown()
+{
+  assert(current_state==GameState::CountDown);
+  return this->countdown;
 }

@@ -102,29 +102,103 @@ public:
     @return a reference to the current menu.
   */
   Menu *get_menu();
-  
-  int get_p1_score(){return this->p1score;}
-  int get_p2_score(){return this->p2score;}
-  int get_countdown(){return this->countdown;}
 
+  /*
+    Return player 1's stored score.
+
+    @return the score accumulated by player 1 in total points.
+   */
+  int get_p1_score(){return this->p1score;}
+  /*
+    Return player 2's stored score.
+
+    @return the score accumulated by player 2 in total points.
+   */
+  int get_p2_score(){return this->p2score;}
+  /*
+    Return the number in the countdown.
+
+    @return the current number in the countdown.
+   */
+  int get_countdown();
+
+  /*
+    Return the game's current state.
+
+    @return the current state of the game.
+   */
   GameState get_current_state(){return this->current_state;}
 
+  /*
+    Increment player 1's score by one. If the score reaches the
+    number of points required to win, end the game.
+   */
   void increment_p1_score();
+  /*
+    Increment player 2's score by one. If the score reaches the
+    number of points required to win, end the game.
+   */
   void increment_p2_score();
+  /*
+    Decrements the countdown by one. If the countdown reaches 0,
+    gameplay starts.
+   */
   void decrement_countdown(){this->countdown--;}
 
+  /*
+    Return the initial x-dimension of the game window.
+
+    @return the x-dimension of the window in which the game started
+   */
   double get_x_dimension(){return this->x_dimension;}
+  /*
+    Return the initial y-dimension of the game window.
+
+    @return the y-dimension of the window in which the game started
+   */
   double get_y_dimension(){return this->y_dimension;}
+  /*
+    Return the multiplier on game time as set by the settings menu.
+
+    @return the multiplier on game time
+   */
   double get_time_multiplier(){return this->time_multiplier;}
 
+  /*
+    Begin a new round, resetting the ball's angle and the positions
+    for ball and paddles. Sets game state accordingly and prompts
+    player for input.
+   */
   void new_round();
 
+  /*
+    Generates a random angle between Constants::BALL_MIN_ANGLE
+    and Constants::BALL_MAX_ANGLE, and rotates it randomly into
+    one of the four quadrants.
+
+    @return an angle in radians between Constants::BALL_MIN_ANGLE and Constants::BALL_MAX_ANGLE, in a random quadrant.
+   */
   double random_angle();
 
+  /*
+    Sets game state to the specified state. If this is a menu
+    state, also sets up the corresponding menu.
+    
+    @param new_state The new state for the game to use.
+   */
   void set_state(GameState new_state);
 
+  /*
+    Starts a new game with scores at 0 and gameplay in
+    its initial state.
+   */
   void restart_game();
 
+  /*
+    Sets the game's time multiplier to the specified value.
+
+    @param mult The new multiplier on game time.
+   */
   void set_time_multiplier(double mult){time_multiplier=mult;};
 
 };
