@@ -39,6 +39,7 @@ private:
   void keyboard_paddle_movement(int micros_elapsed);
 public:
   Logic(Game *game);
+  ~Logic();
   void update(int micros_elapsed);
 
   void handle_menu_event(sf::Event event, sf::RenderWindow *App);

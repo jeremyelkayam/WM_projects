@@ -22,6 +22,11 @@ Logic::Logic(Game *game)
   this->total_time=0;
 }
 
+Logic::~Logic()
+{
+  delete(cp);
+}
+
 void Logic::update(int micros_elapsed)
 {
   GameState state=game->get_current_state();
