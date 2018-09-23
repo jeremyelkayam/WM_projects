@@ -8,6 +8,7 @@
  
 #include <cstdlib>
 #include <cmath>
+#include <cassert>
 #include "computer_player.hpp"
 #include "paddle.hpp"
 #include "constants.hpp"
@@ -33,22 +34,7 @@ void ComputerPlayer::update(int micros_elapsed)
 {
   if(current_action==ActionType::Moving)
     {
-      if(my_paddle->get_center() > (next_target - .5) && my_paddle->get_center() < (next_target + .5))
-	{
-	  //we're within half a pixel of the goal. it's ok to stop
-	  start_waiting_for_random_time();
-	}
-      else
-	{
-	  if(my_paddle->get_center() > next_target)
-	    {
-	      my_paddle->move(micros_elapsed, Paddle::Direction::Up);
-	    }
-	  else
-	    {
-	      my_paddle->move(micros_elapsed, Paddle::Direction::Down);
-	    }
-	}
+      move_toward_target(micros_elapsed);
     }
   else if(current_action==ActionType::Waiting)
     {
@@ -63,9 +49,12 @@ void ComputerPlayer::update(int micros_elapsed)
     {
       pick_random_thing_to_do();
       //if the following if statements trigger, they'll override the random thing we chose.
+
+      //if the AI decided to wait, we should wait. if it decided to move, we should correct
+      //its movement to be toward where the ball's going to go.
       
       // if the x component of the velocity is less than 0, it's heading left
-      if(game->get_ball()->get_x_velocity()<0) 
+      if(current_action==ActionType::Moving && game->get_ball()->get_x_velocity()<0) 
 	{
 	  double where_ball_will_hit=(game->get_ball()->get_ycor()-
 				      game->get_ball()->get_xcor()*tan(game->get_ball()->get_angle()));
@@ -75,22 +64,20 @@ void ComputerPlayer::update(int micros_elapsed)
 	    {
 	      //cout << "determining where to move\n";
 	      
-	      set_target_to_nearby_ball_target(where_ball_will_hit);
-	      
-	      current_action=ActionType::Moving;
+	      set_target_to_nearby_this_target(where_ball_will_hit);
 	    }
 	}
     }
 }
   
-void ComputerPlayer::set_target_to_nearby_ball_target(double ball_target)
+void ComputerPlayer::set_target_to_nearby_this_target(double target)
 {
   double perturbation_bound=my_paddle->get_height() * Constants::AIM_PERTURBATION_BOUND_MULTIPLIER;
   std::uniform_real_distribution<double>unif(-perturbation_bound, perturbation_bound);
   
   double perturbation=unif(target_perturbation_rng);
   
-  next_target= ball_target + perturbation;
+  next_target= target + perturbation;
   
   
   //if the target is too close to either edge, it'll never line up with the center of the paddle.
@@ -103,6 +90,7 @@ void ComputerPlayer::set_target_to_nearby_ball_target(double ball_target)
     {
       next_target = game->get_y_dimension() - (my_paddle->get_height() / 2);
     }
+  current_action=ActionType::Moving;
 }   
     
 void ComputerPlayer::start_waiting_for_random_time()
@@ -135,5 +123,28 @@ void ComputerPlayer::pick_random_thing_to_do()
   else
     {
       set_target_to_random_target();
+    }
+}
+
+void ComputerPlayer::move_toward_target(int micros_elapsed)
+{
+  //this only ever be called if we're currently moving. if not, we have big problems 
+  assert(current_action==ActionType::Moving);
+  
+  if(my_paddle->get_center() > (next_target - .5) && my_paddle->get_center() < (next_target + .5))
+    {
+      //we're within half a pixel of the goal. it's ok to stop
+      current_action=ActionType::None;
+    }
+  else
+    {
+      if(my_paddle->get_center() > next_target)
+	{
+	  my_paddle->move(micros_elapsed, Paddle::Direction::Up);
+	}
+      else
+	{
+	  my_paddle->move(micros_elapsed, Paddle::Direction::Down);
+	}
     }
 }

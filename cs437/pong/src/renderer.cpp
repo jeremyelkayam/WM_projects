@@ -80,14 +80,14 @@ void Renderer::update()
 	}
     }
   window->display();
-  cout << "window size:" << window->getSize().x << "x" << window->getSize().y << "\n";
+  //cout << "window size:" << window->getSize().x << "x" << window->getSize().y << "\n";
 }
 
 
 void Renderer::draw_ball()
 {
-  ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/80,
-		   window->getSize().y*(game->get_ball()->get_ycor()-Constants::BALL_RADIUS)/60);
+  ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/800,
+		   window->getSize().y*(game->get_ball()->get_ycor()-Constants::BALL_RADIUS)/600);
 
   window->draw(ball);
 }
