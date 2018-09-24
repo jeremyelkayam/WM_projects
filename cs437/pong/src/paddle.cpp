@@ -1,6 +1,6 @@
 /*
   paddle.cpp
-  Purpose:
+  Purpose: Simulate a paddle and store its properties.
 
   @author Jeremy Elkayam
   */
