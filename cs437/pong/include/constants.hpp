@@ -264,6 +264,10 @@ public:
   static const string GO_SOUND_PATH;
   static const string GAME_SET_SOUND_PATH;
   static const string MENU_SELECT_SOUND_PATH;
+  static const string COMPUTER_SCORE_SOUND_PATH;
+  static const string PLAYER_SCORE_SOUND_PATH;
+  static const string PADDLE_DEFLECT_SOUND_PATH;
+  static const string WALL_DEFLECT_SOUND_PATH;
 
   // Score display strings
   

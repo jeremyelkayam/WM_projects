@@ -51,6 +51,10 @@ void Game::increment_p1_score()
     {
       this->set_state(GameState::EndScreen);
     }
+  else
+    {
+      SoundPlayer::play_computer_score();
+    }
 }
 //Increments p2 score, ending the game if p2 won
 void Game::increment_p2_score()
@@ -59,6 +63,10 @@ void Game::increment_p2_score()
   if(p2score==Constants::WIN_SCORE)
     {
       this->set_state(GameState::EndScreen);
+    }
+  else
+    {
+      SoundPlayer::play_player_score();
     }
 }
 //Resets gameplay, beginning a new round.

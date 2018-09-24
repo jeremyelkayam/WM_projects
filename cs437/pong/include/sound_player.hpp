@@ -14,8 +14,8 @@
 class SoundPlayer
 {
 private:
-  static sf::SoundBuffer three_buffer,two_buffer,one_buffer,go_buffer,game_set_buffer,menu_select_buffer;
-  static sf::Sound three,two,one,go,game_set,menu_select;
+  static sf::SoundBuffer three_buffer,two_buffer,one_buffer,go_buffer,game_set_buffer,menu_select_buffer,player_score_buffer,computer_score_buffer;
+  static sf::Sound three,two,one,go,game_set,menu_select,player_score,computer_score;
 public:
   static void play_three();
   static void play_two();
@@ -23,6 +23,8 @@ public:
   static void play_go();
   static void play_game_set();
   static void play_menu_select();
+  static void play_player_score();
+  static void play_computer_score();
   static void init();
 };
 

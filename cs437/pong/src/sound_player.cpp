@@ -11,8 +11,8 @@
 
 using namespace std;
 
-sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer,SoundPlayer::menu_select_buffer;
-sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set,SoundPlayer::menu_select;
+sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer,SoundPlayer::menu_select_buffer,SoundPlayer::player_score_buffer,SoundPlayer::computer_score_buffer;
+sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set,SoundPlayer::menu_select,SoundPlayer::player_score,SoundPlayer::computer_score;
 
 void SoundPlayer::init()
 {
@@ -57,6 +57,20 @@ void SoundPlayer::init()
       //error handling
     }
   SoundPlayer::menu_select.setBuffer(SoundPlayer::menu_select_buffer);
+
+  if(!SoundPlayer::player_score_buffer.loadFromFile(Constants::PLAYER_SCORE_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::player_score.setBuffer(SoundPlayer::player_score_buffer);
+  
+  if(!SoundPlayer::computer_score_buffer.loadFromFile(Constants::COMPUTER_SCORE_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::computer_score.setBuffer(SoundPlayer::computer_score_buffer);
 }
 void SoundPlayer::play_three()
 {
@@ -86,4 +100,12 @@ void SoundPlayer::play_game_set()
 void SoundPlayer::play_menu_select()
 {
   if(Constants::SOUNDS_ON) SoundPlayer::menu_select.play();
+}
+void SoundPlayer::play_player_score()
+{
+  if(Constants::SOUNDS_ON) SoundPlayer::player_score.play();
+}
+void SoundPlayer::play_computer_score()
+{
+  if(Constants::SOUNDS_ON) SoundPlayer::computer_score.play();
 }

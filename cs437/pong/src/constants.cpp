@@ -41,6 +41,10 @@ const string Constants::ONE_SOUND_PATH = "../assets/sounds/ONE.wav";
 const string Constants::GO_SOUND_PATH = "../assets/sounds/GO.wav";
 const string Constants::GAME_SET_SOUND_PATH = "../assets/sounds/GAMESET.wav";
 const string Constants::MENU_SELECT_SOUND_PATH = "../assets/sounds/MENU_SELECT.wav";
+const string Constants::COMPUTER_SCORE_SOUND_PATH = "../assets/sounds/COMPUTER_SCORE.wav";
+const string Constants::PLAYER_SCORE_SOUND_PATH = "../assets/sounds/PLAYER_SCORE.wav";
+const string Constants::PADDLE_DEFLECT_SOUND_PATH = "../assets/sounds/PADDLE_DEFLECT.wav";
+const string Constants::WALL_DEFLECT_SOUND_PATH = "../assets/sounds/WALL_DEFLECT.wav";
 
 const string Constants::P1_SCORE_DISPLAY_BEGIN = "P1: ";
 const string Constants::P2_SCORE_DISPLAY_BEGIN = "P2: ";
