@@ -12,6 +12,7 @@
 #include "game.hpp"
 #include "ball.hpp"
 #include "constants.hpp"
+#include "sound_player.hpp"
 
 using namespace std;
 
@@ -94,6 +95,7 @@ void Game::set_state(GameState new_state)
   if(new_state==GameState::CountDown)
     {
       this->countdown=Constants::COUNTDOWN_START;
+      SoundPlayer::play_three();
     }
   else if(new_state==GameState::EndScreen)
     {

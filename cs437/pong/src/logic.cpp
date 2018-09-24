@@ -46,8 +46,19 @@ void Logic::update(int micros_elapsed)
 	  
 	  if(total_time>Constants::COUNTDOWN_INTERVAL)
 	    {
-	      SoundPlayer::play_three();
 	      game->decrement_countdown();
+	      if(game->get_countdown()==2)
+		{
+		  SoundPlayer::play_two();
+		}
+	      else if(game->get_countdown()==1)
+		{
+		  SoundPlayer::play_one();
+		}
+	      else if(game->get_countdown()==0)
+		{
+		  SoundPlayer::play_go();
+		}
 	      total_time=0;
 	      //cout << "new total time: " <<total_time << "\n";
 	    }

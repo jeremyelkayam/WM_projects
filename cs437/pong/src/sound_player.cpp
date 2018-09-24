@@ -30,12 +30,19 @@ void SoundPlayer::init()
     }
   SoundPlayer::two.setBuffer(SoundPlayer::two_buffer);
   
-  if(!SoundPlayer::three_buffer.loadFromFile(Constants::THREE_SOUND_PATH))
+  if(!SoundPlayer::one_buffer.loadFromFile(Constants::ONE_SOUND_PATH))
     {
       cout << "error encountered\n";
       //error handling
     }
-  SoundPlayer::three.setBuffer(SoundPlayer::three_buffer);
+  SoundPlayer::one.setBuffer(SoundPlayer::one_buffer);
+
+  if(!SoundPlayer::go_buffer.loadFromFile(Constants::GO_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::go.setBuffer(SoundPlayer::go_buffer);
 }
 void SoundPlayer::play_three()
 {
@@ -46,4 +53,14 @@ void SoundPlayer::play_three()
 void SoundPlayer::play_two()
 {
   SoundPlayer::two.play();
+}
+
+void SoundPlayer::play_one()
+{
+  SoundPlayer::one.play();
+}
+
+void SoundPlayer::play_go()
+{
+  SoundPlayer::go.play();
 }
