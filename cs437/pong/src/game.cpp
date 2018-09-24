@@ -100,6 +100,7 @@ void Game::set_state(GameState new_state)
   else if(new_state==GameState::EndScreen)
     {
       menu->set_type(MenuType::Finish);
+      SoundPlayer::play_game_set();
     }
   else if(new_state==GameState::Paused)
     {
