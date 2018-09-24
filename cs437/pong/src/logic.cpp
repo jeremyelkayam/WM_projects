@@ -83,7 +83,9 @@ void Logic::update(int micros_elapsed)
       
       this->game->get_ball()->move(micros_elapsed);
     }
-  else if(state==GameState::MainMenu)
+  else if(state==GameState::MainMenu ||
+	  state==GameState::AboutScreen ||
+	  state==GameState::Settings)
     {
       
       if(ball_above_screen() || ball_below_screen())

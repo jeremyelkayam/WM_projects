@@ -269,15 +269,20 @@ void Renderer::set_origin_to_center(sf::Text *text)
 		  textRect.top + textRect.height/2);
 }
 
+void Renderer::draw_attract_mode()
+{
+  draw_ball(sf::Color(75,75,75));
+  
+  draw_paddles(sf::Color(75,75,75));
+}
+
 void Renderer::draw_main_menu()
 {
+  draw_attract_mode();
+  
   sf::Text text;
   
   //TODO: set this to something easy and fun like Mumbo-SSK
-
-  draw_ball(sf::Color(75,75,75));
-
-  draw_paddles(sf::Color(75,75,75));
   
   text.setFont(title_font);
   
@@ -294,6 +299,7 @@ void Renderer::draw_main_menu()
   draw_menu_text(Constants::TITLE_MENU_YCOR);
 
   draw_version_author_texts();
+
 }
 
 void Renderer::draw_version_author_texts()
@@ -338,6 +344,7 @@ void Renderer::set_origin_to_bottom_right(sf::Text *text)
 
 void Renderer::draw_about_screen()
 {
+  draw_attract_mode();
   
   sf::Text about_title,about_text;
 
@@ -403,6 +410,8 @@ void Renderer::render_text(sf::Font a_font, string str, int char_size, double xc
 
 void Renderer::draw_settings_menu()
 {
+  draw_attract_mode();
+  
   sf::Text settings_text;
   
   settings_text.setFont(pixel_font);
@@ -442,7 +451,7 @@ void Renderer::draw_settings_menu()
       
       set_origin_to_center(&option);
       
-      option.setPosition(window->getSize().x/2,(.4*window->getSize().y)+Constants::MENU_TEXT_OFFSET*z);
+      option.setPosition(window->getSize().x/2,window->getSize().y/2+Constants::MENU_TEXT_OFFSET*z);
 
       if(z==game->get_menu()->get_selection())
 	{
