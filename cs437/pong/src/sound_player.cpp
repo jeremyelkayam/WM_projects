@@ -11,8 +11,8 @@
 
 using namespace std;
 
-sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer,SoundPlayer::menu_select_buffer,SoundPlayer::player_score_buffer,SoundPlayer::computer_score_buffer;
-sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set,SoundPlayer::menu_select,SoundPlayer::player_score,SoundPlayer::computer_score;
+sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer,SoundPlayer::menu_select_buffer,SoundPlayer::player_score_buffer,SoundPlayer::computer_score_buffer,SoundPlayer::wall_deflect_buffer,SoundPlayer::paddle_deflect_buffer;
+sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set,SoundPlayer::menu_select,SoundPlayer::player_score,SoundPlayer::computer_score,SoundPlayer::wall_deflect,SoundPlayer::paddle_deflect;
 
 void SoundPlayer::init()
 {
@@ -71,6 +71,20 @@ void SoundPlayer::init()
       //error handling
     }
   SoundPlayer::computer_score.setBuffer(SoundPlayer::computer_score_buffer);
+  
+  if(!SoundPlayer::wall_deflect_buffer.loadFromFile(Constants::WALL_DEFLECT_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::wall_deflect.setBuffer(SoundPlayer::wall_deflect_buffer);
+  
+  if(!SoundPlayer::paddle_deflect_buffer.loadFromFile(Constants::PADDLE_DEFLECT_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::paddle_deflect.setBuffer(SoundPlayer::paddle_deflect_buffer);
 }
 void SoundPlayer::play_three()
 {
@@ -97,15 +111,28 @@ void SoundPlayer::play_game_set()
 {
   if(Constants::SOUNDS_ON) SoundPlayer::game_set.play();
 }
+
 void SoundPlayer::play_menu_select()
 {
   if(Constants::SOUNDS_ON) SoundPlayer::menu_select.play();
 }
+
 void SoundPlayer::play_player_score()
 {
   if(Constants::SOUNDS_ON) SoundPlayer::player_score.play();
 }
+
 void SoundPlayer::play_computer_score()
 {
   if(Constants::SOUNDS_ON) SoundPlayer::computer_score.play();
+}
+
+void SoundPlayer::play_wall_deflect()
+{
+  if(Constants::SOUNDS_ON) SoundPlayer::wall_deflect.play();
+}
+
+void SoundPlayer::play_paddle_deflect()
+{
+  if(Constants::SOUNDS_ON) SoundPlayer::paddle_deflect.play();
 }

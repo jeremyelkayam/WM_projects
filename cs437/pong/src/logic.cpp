@@ -72,12 +72,14 @@ void Logic::update(int micros_elapsed)
       
       if(ball_above_screen() || ball_below_screen())
 	{
+	  SoundPlayer::play_wall_deflect();
 	  top_bottom_bounce();
 	}
 
       if((game->get_ball()->get_x_velocity()<0 && ball_hit_p1_paddle()) ||
 	 (game->get_ball()->get_x_velocity()>0 && ball_hit_p2_paddle()))
 	{
+	  SoundPlayer::play_paddle_deflect();
           left_right_bounce();
 	}
       if(ball_past_left_side() || ball_past_right_side())
@@ -157,7 +159,7 @@ bool Logic::ball_past_left_side()
 
 bool Logic::ball_past_right_side()
 {
-  return ball_x() > game->get_x_dimension() + 50;
+  return ball_x() > game->get_x_dimension() + 10;
 }
 
 void Logic::top_bottom_bounce()
