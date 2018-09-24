@@ -46,7 +46,7 @@ void Logic::update(int micros_elapsed)
 	  
 	  if(total_time>Constants::COUNTDOWN_INTERVAL)
 	    {
-	      //cout << "decrementing countdown\ntotal time: " <<total_time << "\n";
+	      SoundPlayer::play_three();
 	      game->decrement_countdown();
 	      total_time=0;
 	      //cout << "new total time: " <<total_time << "\n";

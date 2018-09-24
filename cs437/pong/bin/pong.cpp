@@ -31,12 +31,23 @@ int main(int argc, char** argv)
 		       sf::Style::Titlebar | sf::Style::Close);
   //enable titlebar & close options
   sf::Color bgcolor=Constants::BACKGROUND_COLOR;
+
+  sf::SoundBuffer buffer;
+		      
+  if(!buffer.loadFromFile("../assets/sounds/THREE.wav"))
+    {
+      
+    }
+  sf::Sound sound;
   
+  sound.setBuffer(buffer);
+		      
 
   //set up game components
   Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
   Renderer *renderer = new Renderer(game,&App);
+  SoundPlayer::init();
 
   sf::Clock clock;
   
@@ -61,7 +72,10 @@ int main(int argc, char** argv)
 	      else if(Event.type == sf::Event::KeyPressed)
 		{
 		  if(Event.key.code == sf::Keyboard::Escape)
-		    { 
+		    {
+		      
+		      //sound.play();
+		      
 		      if(game->get_current_state()==GameState::Playing )
 			//||game->get_current_state()==GameState::CountDown)
 			{

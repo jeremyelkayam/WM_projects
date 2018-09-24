@@ -6,40 +6,44 @@
  */
 
 #include <iostream>
-#include <SFML/Audio.hpp>
 #include "sound_player.hpp"
 #include "constants.hpp"
 
 using namespace std;
 
-void SoundPlayer::play_three()
+sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer;
+sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go;
+
+void SoundPlayer::init()
 {
-  sf::SoundBuffer buffer;
-  if(!buffer.loadFromFile(Constants::THREE_SOUND_PATH))
+  if(!SoundPlayer::three_buffer.loadFromFile(Constants::THREE_SOUND_PATH))
     {
       cout << "error encountered\n";
       //error handling
     }
+  SoundPlayer::three.setBuffer(SoundPlayer::three_buffer);
+
+  if(!SoundPlayer::two_buffer.loadFromFile(Constants::TWO_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::two.setBuffer(SoundPlayer::two_buffer);
   
-  sf::Sound sound;
-  
-  sound.setBuffer(buffer);
-  sound.play();
-  //cout << "play sound\n";
+  if(!SoundPlayer::three_buffer.loadFromFile(Constants::THREE_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::three.setBuffer(SoundPlayer::three_buffer);
+}
+void SoundPlayer::play_three()
+{
+  SoundPlayer::three.play();
+  //cout << "hi\n";
 }
 
 void SoundPlayer::play_two()
 {
-  sf::SoundBuffer buffer;
-  if(!buffer.loadFromFile(Constants::TWO_SOUND_PATH))
-    {
-      cout << "error encountered\n";
-      //error handling
-    }
-  
-  sf::Sound sound;
-
-  sound.setBuffer(buffer);
-  sound.play();
-  //cout << "play sound\n";
+  SoundPlayer::two.play();
 }
