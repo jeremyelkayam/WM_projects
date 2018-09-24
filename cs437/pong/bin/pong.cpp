@@ -46,7 +46,7 @@ int main(int argc, char** argv)
   //set up game components
   Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
-  Renderer *renderer = new Renderer(game,&App);
+  Renderer *renderer = new Renderer(logic,game,&App);
   SoundPlayer::init();
 
   sf::Clock clock;
@@ -59,48 +59,11 @@ int main(int argc, char** argv)
       if(App.hasFocus())
 	{
 	  
-	  GameState previous_state;
 	  // process events
 	  sf::Event Event;
 	  while(App.pollEvent(Event))
 	    {
-	      //TODO: put all event handling into the logic class.
-	      if(Event.type == sf::Event::Closed)
-		{
-		  App.close();
-		}
-	      else if(Event.type == sf::Event::KeyPressed)
-		{
-		  if(Event.key.code == sf::Keyboard::Escape)
-		    {
-		      
-		      //sound.play();
-		      
-		      if(game->get_current_state()==GameState::Playing )
-			//||game->get_current_state()==GameState::CountDown)
-			{
-			  game->set_state(GameState::Paused);
-			  previous_state=game->get_current_state();
-			}
-		      else if(game->get_current_state()==GameState::Paused)
-			{
-			  game->set_state(previous_state);
-			}
-		    }
-		  if(game->get_current_state()==GameState::NewRound)
-		    {
-		      game->set_state(GameState::CountDown);
-		    }
-		  else if(game->get_current_state()==GameState::EndScreen ||
-			  game->get_current_state()==GameState::Paused ||
-			  game->get_current_state()==GameState::MainMenu ||
-			  game->get_current_state()==GameState::AboutScreen ||
-			  game->get_current_state()==GameState::Settings)
-		    {
-		      logic->handle_menu_event(Event,&App);
-		    }
-		}
-	      
+	      logic->handle_event(Event,&App);
 	    }
 	  //update renderer and logic
 	  logic->update(micros_elapsed);

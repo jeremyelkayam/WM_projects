@@ -11,12 +11,14 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "game.hpp"
+#include "logic.hpp"
 
 class Renderer
 {
 private:
   //A reference to the properties of the game being played.
   Game *game;
+  Logic *logic;
   sf::RenderWindow *window;
   sf::Font pixel_font,title_font;
   sf::CircleShape ball;
@@ -36,6 +38,7 @@ private:
   void draw_version_author_texts();
   void draw_settings_menu();
   void draw_attract_mode();
+  void draw_go_text();
 
   void set_origin_to_center(sf::Text *text);
   void set_origin_to_bottom_left(sf::Text *text);
@@ -44,7 +47,7 @@ private:
   void render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor);
 
 public:
-  Renderer(Game *game,sf::RenderWindow *window);
+  Renderer(Logic *logic,Game *game,sf::RenderWindow *window);
   
   void update();
   

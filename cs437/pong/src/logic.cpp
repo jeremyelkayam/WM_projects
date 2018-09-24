@@ -60,12 +60,12 @@ void Logic::update(int micros_elapsed)
 		  SoundPlayer::play_go();
 		}
 	      total_time=0;
-	      //cout << "new total time: " <<total_time << "\n";
 	    }
 	}
     }
   else if(state==GameState::Playing)
-    { 
+    {      
+      total_time+=micros_elapsed;
       micros_elapsed*=game->get_time_multiplier();
        //TODO: separate this into more functions?
       keyboard_paddle_movement(micros_elapsed);
@@ -319,6 +319,51 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	{
 	  SoundPlayer::play_menu_select();
 	  game->set_state(GameState::Settings);
+	}
+    }
+}
+
+bool Logic::displaying_GO()
+{
+  assert(current_state==GameState::Playing);
+
+  return total_time < 1000000;
+}
+
+void Logic::handle_event(sf::Event Event,sf::RenderWindow *App)
+{
+  GameState previous_state;
+	  
+  if(Event.type == sf::Event::Closed)
+    {
+      App->close();
+    }
+  else if(Event.type == sf::Event::KeyPressed)
+    {
+      if(Event.key.code == sf::Keyboard::Escape)
+	{	      
+	  if(game->get_current_state()==GameState::Playing )
+	    {
+	      game->set_state(GameState::Paused);
+	      previous_state=game->get_current_state();
+	    }
+	  else if(game->get_current_state()==GameState::Paused)
+	    {
+	      game->set_state(previous_state);
+	    }
+	}
+      if(game->get_current_state()==GameState::NewRound)
+	{
+	  game->set_state(GameState::CountDown);
+	  total_time=0;
+	}
+      else if(game->get_current_state()==GameState::EndScreen ||
+	      game->get_current_state()==GameState::Paused ||
+	      game->get_current_state()==GameState::MainMenu ||
+	      game->get_current_state()==GameState::AboutScreen ||
+	      game->get_current_state()==GameState::Settings)
+	{
+	  handle_menu_event(Event,App);
 	}
     }
 }

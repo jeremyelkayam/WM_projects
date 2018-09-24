@@ -11,11 +11,11 @@
 
 using namespace std;
 
-Renderer::Renderer(Game *game, sf::RenderWindow *window)
+Renderer::Renderer(Logic *logic,Game *game, sf::RenderWindow *window)
 {
   this->game=game;
   this->window=window;
-
+  this->logic=logic;
 
   //idea - make set_up_font(), set_up_ball(), etc. methods for this?
   if (!this->pixel_font.loadFromFile(Constants::PIXEL_FONT_PATH))
@@ -87,11 +87,14 @@ void Renderer::update()
 	  else
 	    {
 	      draw_ball();
+	      if(logic->displaying_GO())
+		{
+		  draw_go_text();
+		}
 	    }
 	}
     }
   window->display();
-  //cout << "window size:" << window->getSize().x << "x" << window->getSize().y << "\n";
 }
 
 
@@ -488,4 +491,20 @@ void Renderer::draw_settings_menu()
   //cout << game->get_speed_index() << "\n";
   window->draw(speed_bar);
   window->draw(speed_selector);
+}
+
+void Renderer::draw_go_text()
+{
+  sf::Text go_text;
+  go_text.setFont(pixel_font);
+  
+  go_text.setString("GO!!");
+
+  go_text.setCharacterSize(Constants::COUNTDOWN_CHAR_SIZE);
+  
+  set_origin_to_center(&go_text);
+  
+  
+  go_text.setPosition(window->getSize().x/2,window->getSize().y-100);
+  window->draw(go_text);
 }

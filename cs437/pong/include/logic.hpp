@@ -9,6 +9,7 @@
 #define LOGIC_HPP
 
 #include <SFML/Graphics.hpp>
+#include <cassert>
 #include "game.hpp"
 #include "computer_player.hpp"
 
@@ -125,6 +126,17 @@ private:
                           in microseconds.
    */
   void paddle_follow_ball(Paddle *paddle,int micros_elapsed);
+  
+  /*
+    When on a menu screen, this function takes the context of 
+    the game state and selected menu option, and performs logic
+    accordingly.
+
+    @param event the event that the function should be responding to
+    @param App a reference to the RenderWindow that the game is being
+               viewed through.
+  */
+  void handle_menu_event(sf::Event event, sf::RenderWindow *App);
 public:
   /*
     Constructor for the Logic class.
@@ -148,16 +160,24 @@ public:
                            last game loop in microseconds.
    */
   void update(int micros_elapsed);
-  /*
-    When on a menu screen, this function takes the context of 
-    the game state and selected menu option, and performs logic
-    accordingly.
 
+  /*
+    Returns whether or not the "GO!!" text at the beginning of a round
+    should be displayed.
+
+    @return true if "GO!!" is being displayed, false if not.
+   */
+  bool displaying_GO();
+  
+  /*
+    Perform the correct behavior for the given event, depending on current 
+    game properties.
+    
     @param event the event that the function should be responding to
     @param App a reference to the RenderWindow that the game is being
                viewed through.
-  */
-  void handle_menu_event(sf::Event event, sf::RenderWindow *App);
+   */
+  void handle_event(sf::Event event, sf::RenderWindow *App);
 };
 
 #endif
