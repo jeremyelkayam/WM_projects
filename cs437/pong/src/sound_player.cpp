@@ -60,30 +60,30 @@ void SoundPlayer::init()
 }
 void SoundPlayer::play_three()
 {
-  SoundPlayer::three.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::three.play();
   //cout << "hi\n";
 }
 
 void SoundPlayer::play_two()
 {
-  SoundPlayer::two.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::two.play();
 }
 
 void SoundPlayer::play_one()
 {
-  SoundPlayer::one.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::one.play();
 }
 
 void SoundPlayer::play_go()
 {
-  SoundPlayer::go.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::go.play();
 }
 
 void SoundPlayer::play_game_set()
 {
-  SoundPlayer::game_set.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::game_set.play();
 }
 void SoundPlayer::play_menu_select()
 {
-  SoundPlayer::menu_select.play();
+  if(Constants::SOUNDS_ON) SoundPlayer::menu_select.play();
 }

@@ -17,6 +17,8 @@ const vector<double> Constants::SPEED_VALUES = {0.25, 0.33, 0.5, 0.75, 1.0,
 
 int Constants::WIN_SCORE = 11;
 
+bool Constants::SOUNDS_ON = true;
+
 const string Constants::VERSION_NUMBER="1.3";
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";

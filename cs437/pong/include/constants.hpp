@@ -230,6 +230,8 @@ public:
   static constexpr int ABOUT_TEXT_OFFSET = 32;
 
   static const vector<double> SPEED_VALUES;
+
+  static bool SOUNDS_ON;
   
   //Strings
 
