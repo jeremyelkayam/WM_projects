@@ -132,7 +132,7 @@ void ComputerPlayer::pick_random_thing_to_do()
 {
   //this only needs to ever be called if the AI doesn't have
   //anything it's currently doing
-  assert(current_action=ActionType::None);
+  assert(current_action==ActionType::None);
   
   if(rand() % 2)
     {
