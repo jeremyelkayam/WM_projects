@@ -1,6 +1,7 @@
 /*
   human_view.cpp
-  Purpose: 
+  Purpose: Consolidate all rendering operations into a single class, with one
+           function that executes with each iteration of the main loop.
 
   @author Jeremy Elkayam
  */
@@ -402,24 +403,6 @@ void HumanView::draw_about_screen()
     }
 
   draw_menu_text(window->getSize().y-100);
-}
-//TODO make a render_text function that takes all of these parameters and just does the whole damn process
-
-
-//DOES WEIRD SHIT. APPROACH WITH CAUTION. TRY WORKING WITH THIS IN AN EXPERIMENTAL BRANCH MAYBE.
-void HumanView::render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor)
-{
-  sf::Text text;
-
-  text.setFont(a_font);
-
-  text.setString(str);
-
-  text.setCharacterSize(char_size);
-
-  text.setPosition(xcor,ycor);
-
-  window->draw(text);
 }
 
 void HumanView::draw_settings_menu()
