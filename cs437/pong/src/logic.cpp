@@ -87,6 +87,7 @@ void Logic::update(int micros_elapsed)
 	  state==GameState::AboutScreen ||
 	  state==GameState::Settings)
     {
+      micros_elapsed*=game->get_time_multiplier();
       
       if(ball_above_screen() || ball_below_screen())
 	{
