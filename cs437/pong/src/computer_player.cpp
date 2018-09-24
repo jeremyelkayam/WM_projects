@@ -14,11 +14,11 @@
 #include "constants.hpp"
 
 // Constructor for the ComputerPlayer class.
-ComputerPlayer::ComputerPlayer(Game *game)
+ComputerPlayer::ComputerPlayer(AIView *view)
 {
   srand(time(0));
-  this->game=game;
-  this->my_paddle=game->get_p1_paddle();//TODO maybe make the AI paddle configurable?
+  this->view=view;
+  this->my_paddle=view->get_p1_paddle();//TODO maybe make the AI paddle configurable?
   this->my_paddle->set_speed(Constants::COMPUTER_PLAYER_SPEED);
   
   this->next_target=0;
@@ -51,13 +51,13 @@ void ComputerPlayer::update(int micros_elapsed)
       //its movement to be toward where the ball's going to go.
       
       // if the x component of the velocity is less than 0, it's heading left
-      if(current_action==ActionType::Moving && game->get_ball()->get_x_velocity()<0) 
+      if(current_action==ActionType::Moving && view->ball_x_velocity()<0) 
 	{
-	  double where_ball_will_hit=(game->get_ball()->get_ycor()-
-				      game->get_ball()->get_xcor()*tan(game->get_ball()->get_angle()));
+	  double where_ball_will_hit=(view->ball_ycor()-
+				      view->ball_xcor()*tan(view->ball_angle()));
 	  //if the ball is going to hit the screen between 0 and the window height
 	  //cout << "ball will hit: " << where_ball_will_hit << "\n";
-	  if(0 < where_ball_will_hit - 100 && where_ball_will_hit < game->get_y_dimension() + 100)
+	  if(0 < where_ball_will_hit - 100 && where_ball_will_hit < Constants::DEFAULT_WINDOW_HEIGHT + 100)
 	    {
 	      //cout << "determining where to move\n";
 	      
@@ -84,9 +84,9 @@ void ComputerPlayer::set_target_to_nearby_this_target(double target)
     {
       next_target = my_paddle->get_height() / 2;
     }
-  if(next_target > (game->get_y_dimension() - (my_paddle->get_height() / 2)))
+  if(next_target > (Constants::DEFAULT_WINDOW_HEIGHT - (my_paddle->get_height() / 2)))
     {
-      next_target = game->get_y_dimension() - (my_paddle->get_height() / 2);
+      next_target = Constants::DEFAULT_WINDOW_HEIGHT - (my_paddle->get_height() / 2);
     }
   current_action=ActionType::Moving;
 }   
@@ -121,7 +121,7 @@ void ComputerPlayer::set_target_to_random_target()
   assert(current_action==ActionType::None);
   
   std::uniform_real_distribution<double>unif(my_paddle->get_height() / 2,
-					     game->get_y_dimension() - (my_paddle->get_height() / 2));
+					     Constants::DEFAULT_WINDOW_HEIGHT - (my_paddle->get_height() / 2));
   next_target=unif(target_rng);
 
   current_action=ActionType::Moving;

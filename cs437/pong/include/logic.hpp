@@ -12,6 +12,7 @@
 #include <cassert>
 #include "game.hpp"
 #include "computer_player.hpp"
+#include "ai_view.hpp"
 
 class Logic
 {
@@ -20,6 +21,8 @@ private:
   Game *game;
   //A reference to the computer player's class.
   ComputerPlayer *cp;
+  //A reference to the view used by the AI.
+  AIView *ai_view;
   //Stores the total time elapsed when waiting between counts of the countdown.
   int total_time;
 

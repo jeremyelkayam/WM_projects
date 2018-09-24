@@ -18,13 +18,15 @@ using namespace std;
 Logic::Logic(Game *game)
 {
   this->game=game;
-  this->cp=new ComputerPlayer(game);
+  this->ai_view=new AIView(game);
+  this->cp=new ComputerPlayer(ai_view);
   this->total_time=0;
 }
 
 Logic::~Logic()
 {
   delete(cp);
+  delete(ai_view);
 }
 
 void Logic::update(int micros_elapsed)

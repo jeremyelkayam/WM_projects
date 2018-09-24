@@ -9,7 +9,7 @@
 #ifndef COMP_PLAY_HPP
 #define COMP_PLAY_HPP
 
-#include "game.hpp"
+#include "ai_view.hpp"
 
 class ComputerPlayer
 {
@@ -25,8 +25,8 @@ private:
    */
   enum class ActionType{ Moving , Waiting, None };
   
-  // A reference to the stored properties of the game logic.
-  Game *game;
+  // A reference to the ai's view of the game.
+  AIView *view;
   
   // A reference to the paddle being controlled by the AI.
   Paddle *my_paddle;
@@ -126,7 +126,7 @@ public:
 
     @param game A reference to the class storing the game's properties.
    */
-  ComputerPlayer(Game *game);
+  ComputerPlayer(AIView *view);
 
   /*
     Called once every game loop. Makes a decision for what the AI's paddle
