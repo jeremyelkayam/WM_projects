@@ -341,7 +341,7 @@ void Renderer::draw_about_screen()
   
   sf::Text about_title,about_text;
 
-  about_title.setFont(pixel_font);
+  about_title.setFont(title_font);
 
   about_title.setString(Constants::ABOUT_SCREEN_TITLE);
   

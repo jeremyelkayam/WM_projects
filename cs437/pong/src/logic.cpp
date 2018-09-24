@@ -85,6 +85,7 @@ void Logic::update(int micros_elapsed)
     }
   else if(state==GameState::MainMenu)
     {
+      
       if(ball_above_screen() || ball_below_screen())
 	{
 	  top_bottom_bounce();
@@ -96,8 +97,14 @@ void Logic::update(int micros_elapsed)
 	}
       this->game->get_ball()->move(micros_elapsed);
 
-      paddle_follow_ball(game->get_p1_paddle(),micros_elapsed);
+      //if(game->get_ball()->get_x_velocity() > 0)
+      //{
       paddle_follow_ball(game->get_p2_paddle(),micros_elapsed);
+      //}
+      //else
+      //{
+      paddle_follow_ball(game->get_p1_paddle(),micros_elapsed);
+      //}
     }
 }
 
