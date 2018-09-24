@@ -330,7 +330,7 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 
 bool Logic::displaying_GO()
 {
-  assert(current_state==GameState::Playing);
+  assert(game->get_current_state()==GameState::Playing);
 
   return total_time < 1000000;
 }
