@@ -19,7 +19,7 @@ int Constants::WIN_SCORE = 11;
 
 bool Constants::SOUNDS_ON = true;
 
-const string Constants::VERSION_NUMBER="1.4";
+const string Constants::VERSION_NUMBER="1.5";
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";
