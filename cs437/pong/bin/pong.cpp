@@ -13,7 +13,7 @@
 #include <iostream>
 #include "ball.hpp"
 #include "game.hpp"
-#include "renderer.hpp"
+#include "human_view.hpp"
 #include "logic.hpp"
 #include "sound_player.hpp"
 #include "constants.hpp"
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
   //set up game components
   Game *game = new Game(App.getSize().x,App.getSize().y,GameState::MainMenu);
   Logic *logic = new Logic(game);
-  Renderer *renderer = new Renderer(logic,game,&App);
+  HumanView *human_view = new HumanView(logic,game,&App);
   SoundPlayer::init();
 
   sf::Clock clock;
@@ -67,14 +67,14 @@ int main(int argc, char** argv)
 	    }
 	  //update renderer and logic
 	  logic->update(micros_elapsed);
-	  renderer->update();
+	  human_view->update();
 	}
     }
   
   // Done.
 
   //Delete allocated classes from heap space.
-  delete(renderer);
+  delete(human_view);
   delete(logic);
   delete(game);
   

@@ -1,5 +1,5 @@
 /*
-  renderer.hpp
+  human_view.hpp
   Purpose: Consolidate all rendering operations into a single class, with one
            function that executes with each iteration of the main loop.
 
@@ -13,7 +13,7 @@
 #include "game.hpp"
 #include "logic.hpp"
 
-class Renderer
+class HumanView
 {
 private:
   //A reference to the properties of the game being played.
@@ -47,7 +47,7 @@ private:
   void render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor);
 
 public:
-  Renderer(Logic *logic,Game *game,sf::RenderWindow *window);
+  HumanView(Logic *logic,Game *game,sf::RenderWindow *window);
   
   void update();
   

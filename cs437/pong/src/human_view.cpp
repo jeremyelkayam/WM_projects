@@ -1,17 +1,17 @@
 /*
-  view.cpp
+  human_view.cpp
   Purpose: 
 
   @author Jeremy Elkayam
  */
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "renderer.hpp"
+#include "human_view.hpp"
 #include "constants.hpp"
 
 using namespace std;
 
-Renderer::Renderer(Logic *logic,Game *game, sf::RenderWindow *window)
+HumanView::HumanView(Logic *logic,Game *game, sf::RenderWindow *window)
 {
   this->game=game;
   this->window=window;
@@ -43,7 +43,7 @@ Renderer::Renderer(Logic *logic,Game *game, sf::RenderWindow *window)
   speed_bar.setPosition(100,window->getSize().y/2-25);
 }
 
-void Renderer::update()
+void HumanView::update()
 {
   //clear window to prepare for rendering
   window->clear(Constants::BACKGROUND_COLOR);
@@ -98,7 +98,7 @@ void Renderer::update()
 }
 
 
-void Renderer::draw_ball(sf::Color color)
+void HumanView::draw_ball(sf::Color color)
 {
   ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/800,
 		   window->getSize().y*(game->get_ball()->get_ycor()-Constants::BALL_RADIUS)/600);
@@ -107,7 +107,7 @@ void Renderer::draw_ball(sf::Color color)
   window->draw(ball);
 }
 
-void Renderer::draw_scores()
+void HumanView::draw_scores()
 {
   //set font for both score texts
   p1score.setFont(pixel_font);
@@ -133,7 +133,7 @@ void Renderer::draw_scores()
   
 }
 
-void Renderer::draw_paddles(sf::Color color)
+void HumanView::draw_paddles(sf::Color color)
 {
   p1_paddle.setFillColor(color);
   p2_paddle.setFillColor(color);
@@ -145,7 +145,7 @@ void Renderer::draw_paddles(sf::Color color)
   window->draw(p2_paddle);			       
 }
 
-void Renderer::draw_new_round_text()
+void HumanView::draw_new_round_text()
 {
   new_round_text.setFont(pixel_font);
 
@@ -160,7 +160,7 @@ void Renderer::draw_new_round_text()
   window->draw(new_round_text);
 }
 
-void Renderer::draw_countdown_text()
+void HumanView::draw_countdown_text()
 {
   countdown_text.setFont(pixel_font);
 
@@ -194,7 +194,7 @@ void Renderer::draw_countdown_text()
 }
 
 
-void Renderer::draw_menu_text(int starting_ycor)
+void HumanView::draw_menu_text(int starting_ycor)
 {
   vector <string> menu_options=game->get_menu()->get_options();
   int selection=game->get_menu()->get_selection();
@@ -226,7 +226,7 @@ void Renderer::draw_menu_text(int starting_ycor)
     }
 }
 
-void Renderer::draw_end_menu()
+void HumanView::draw_end_menu()
 {
   
   string player_name;
@@ -257,7 +257,7 @@ void Renderer::draw_end_menu()
   draw_menu_text(window->getSize().x/2);
 }
 
-void Renderer::draw_pause_menu()
+void HumanView::draw_pause_menu()
 {
   sf::Text paused_text;
   
@@ -276,21 +276,21 @@ void Renderer::draw_pause_menu()
   draw_menu_text(window->getSize().y/2+Constants::PAUSE_MENU_OFFSET);
 }
 
-void Renderer::set_origin_to_center(sf::Text *text)
+void HumanView::set_origin_to_center(sf::Text *text)
 {
   sf::FloatRect textRect=text->getLocalBounds();
   text->setOrigin(textRect.left + textRect.width/2,
 		  textRect.top + textRect.height/2);
 }
 
-void Renderer::draw_attract_mode()
+void HumanView::draw_attract_mode()
 {
   draw_ball(sf::Color(75,75,75));
   
   draw_paddles(sf::Color(75,75,75));
 }
 
-void Renderer::draw_main_menu()
+void HumanView::draw_main_menu()
 {
   draw_attract_mode();
   
@@ -316,7 +316,7 @@ void Renderer::draw_main_menu()
 
 }
 
-void Renderer::draw_version_author_texts()
+void HumanView::draw_version_author_texts()
 {
   sf::Text author_text,version_text;
   string author_str = (Constants::AUTHOR_PREFIX + " " +
@@ -342,21 +342,21 @@ void Renderer::draw_version_author_texts()
   window->draw(version_text);
 }
 
-void Renderer::set_origin_to_bottom_left(sf::Text *text)
+void HumanView::set_origin_to_bottom_left(sf::Text *text)
 {
   sf::FloatRect textRect=text->getLocalBounds();
   text->setOrigin(textRect.left,
 		  textRect.top + textRect.height);
 }
 
-void Renderer::set_origin_to_bottom_right(sf::Text *text)
+void HumanView::set_origin_to_bottom_right(sf::Text *text)
 {
   sf::FloatRect textRect=text->getLocalBounds();
   text->setOrigin(textRect.left + textRect.width,
 		  textRect.top + textRect.height);
 }
 
-void Renderer::draw_about_screen()
+void HumanView::draw_about_screen()
 {
   draw_attract_mode();
   
@@ -407,7 +407,7 @@ void Renderer::draw_about_screen()
 
 
 //DOES WEIRD SHIT. APPROACH WITH CAUTION. TRY WORKING WITH THIS IN AN EXPERIMENTAL BRANCH MAYBE.
-void Renderer::render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor)
+void HumanView::render_text(sf::Font a_font, string str, int char_size, double xcor, double ycor)
 {
   sf::Text text;
 
@@ -422,7 +422,7 @@ void Renderer::render_text(sf::Font a_font, string str, int char_size, double xc
   window->draw(text);
 }
 
-void Renderer::draw_settings_menu()
+void HumanView::draw_settings_menu()
 {
   draw_attract_mode();
   
@@ -504,7 +504,7 @@ void Renderer::draw_settings_menu()
   window->draw(speed_selector);
 }
 
-void Renderer::draw_go_text()
+void HumanView::draw_go_text()
 {
   sf::Text go_text;
   go_text.setFont(pixel_font);
