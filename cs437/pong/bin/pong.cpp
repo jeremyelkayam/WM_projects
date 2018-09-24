@@ -40,58 +40,58 @@ int main(int argc, char** argv)
 
   sf::Clock clock;
   
-  
-  
   // start main loop
   while(App.isOpen())
     {
       //Reset clock and track elapsed time since last loop.
       int micros_elapsed=clock.restart().asMicroseconds();
-      
-      GameState previous_state;
-      // process events
-      sf::Event Event;
-      while(App.pollEvent(Event))
+      if(App.hasFocus())
 	{
-	  //TODO: put all event handling into the logic class.
-	  if(Event.type == sf::Event::Closed)
-	    {
-	      App.close();
-	    }
-	  else if(Event.type == sf::Event::KeyPressed)
-	    {
-	      if(Event.key.code == sf::Keyboard::Escape)
-		{ 
-		  if(game->get_current_state()==GameState::Playing )
-		    //||game->get_current_state()==GameState::CountDown)
-		    {
-		      game->set_state(GameState::Paused);
-		      previous_state=game->get_current_state();
-		    }
-		  else if(game->get_current_state()==GameState::Paused)
-		    {
-		      game->set_state(previous_state);
-		    }
-		}
-	      if(game->get_current_state()==GameState::NewRound)
-		{
-		  game->set_state(GameState::CountDown);
-		}
-	      else if(game->get_current_state()==GameState::EndScreen ||
-		      game->get_current_state()==GameState::Paused ||
-		      game->get_current_state()==GameState::MainMenu ||
-		      game->get_current_state()==GameState::AboutScreen ||
-		      game->get_current_state()==GameState::Settings)
-		{
-		  logic->handle_menu_event(Event,&App);
-		}
-	    }
 	  
+	  GameState previous_state;
+	  // process events
+	  sf::Event Event;
+	  while(App.pollEvent(Event))
+	    {
+	      //TODO: put all event handling into the logic class.
+	      if(Event.type == sf::Event::Closed)
+		{
+		  App.close();
+		}
+	      else if(Event.type == sf::Event::KeyPressed)
+		{
+		  if(Event.key.code == sf::Keyboard::Escape)
+		    { 
+		      if(game->get_current_state()==GameState::Playing )
+			//||game->get_current_state()==GameState::CountDown)
+			{
+			  game->set_state(GameState::Paused);
+			  previous_state=game->get_current_state();
+			}
+		      else if(game->get_current_state()==GameState::Paused)
+			{
+			  game->set_state(previous_state);
+			}
+		    }
+		  if(game->get_current_state()==GameState::NewRound)
+		    {
+		      game->set_state(GameState::CountDown);
+		    }
+		  else if(game->get_current_state()==GameState::EndScreen ||
+			  game->get_current_state()==GameState::Paused ||
+			  game->get_current_state()==GameState::MainMenu ||
+			  game->get_current_state()==GameState::AboutScreen ||
+			  game->get_current_state()==GameState::Settings)
+		    {
+		      logic->handle_menu_event(Event,&App);
+		    }
+		}
+	      
+	    }
+	  //update renderer and logic
+	  logic->update(micros_elapsed);
+	  renderer->update();
 	}
-      //update renderer and logic
-      logic->update(micros_elapsed);
-      renderer->update();
-      
     }
   
   // Done.
