@@ -69,19 +69,49 @@ void Logic::update(int micros_elapsed)
 	{
           left_right_bounce();
 	}
-	    if(ball_past_left_side() || ball_past_right_side())
-	      {
-		player_score_point(ball_past_right_side());
-		if(game->get_current_state()!=GameState::EndScreen)
-		  {
-		    start_new_round();
-		  }
-	    
-	      }
+      if(ball_past_left_side() || ball_past_right_side())
+	{
+	  player_score_point(ball_past_right_side());
+	  if(game->get_current_state()!=GameState::EndScreen)
+	    {
+	      start_new_round();
+	    }
 	  
-	  this->cp->update(micros_elapsed);
+	}
       
-	  this->game->get_ball()->move(micros_elapsed);
+      this->cp->update(micros_elapsed);
+      
+      this->game->get_ball()->move(micros_elapsed);
+    }
+  else if(state==GameState::MainMenu)
+    {
+      if(ball_above_screen() || ball_below_screen())
+	{
+	  top_bottom_bounce();
+	}
+      if((game->get_ball()->get_x_velocity()<0 && ball_hit_p1_paddle()) ||
+	 (game->get_ball()->get_x_velocity()>0 && ball_hit_p2_paddle()))
+	{
+          left_right_bounce();
+	}
+      this->game->get_ball()->move(micros_elapsed);
+
+      paddle_follow_ball(game->get_p1_paddle(),micros_elapsed);
+      paddle_follow_ball(game->get_p2_paddle(),micros_elapsed);
+    }
+}
+
+void Logic::paddle_follow_ball(Paddle *paddle,int micros_elapsed)
+{
+  double ball_x=this->game->get_ball()->get_xcor();
+  double ball_y=this->game->get_ball()->get_ycor();  
+  if(ball_y < paddle->get_center())
+    {
+      paddle->move(micros_elapsed,Paddle::Direction::Up);
+    }
+  if(ball_y > paddle->get_center())
+    {
+      paddle->move(micros_elapsed,Paddle::Direction::Down);
     }
 }
 

@@ -84,10 +84,11 @@ void Renderer::update()
 }
 
 
-void Renderer::draw_ball()
+void Renderer::draw_ball(sf::Color color)
 {
   ball.setPosition(window->getSize().x*(game->get_ball()->get_xcor()-Constants::BALL_RADIUS)/800,
 		   window->getSize().y*(game->get_ball()->get_ycor()-Constants::BALL_RADIUS)/600);
+  ball.setFillColor(color);
 
   window->draw(ball);
 }
@@ -118,8 +119,10 @@ void Renderer::draw_scores()
   
 }
 
-void Renderer::draw_paddles()
+void Renderer::draw_paddles(sf::Color color)
 {
+  p1_paddle.setFillColor(color);
+  p2_paddle.setFillColor(color);
 
   p1_paddle.setPosition(0,game->get_p1_paddle()->get_ycor());
   p2_paddle.setPosition(game->get_x_dimension()-Constants::PADDLE_RENDERED_WIDTH,game->get_p2_paddle()->get_ycor());
@@ -271,6 +274,11 @@ void Renderer::draw_main_menu()
   sf::Text text;
   
   //TODO: set this to something easy and fun like Mumbo-SSK
+
+  draw_ball(sf::Color(75,75,75));
+
+  draw_paddles(sf::Color(75,75,75));
+  
   text.setFont(title_font);
   
   text.setString(Constants::TITLE_SCREEN_TITLE);

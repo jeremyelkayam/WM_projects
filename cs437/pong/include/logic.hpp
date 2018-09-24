@@ -37,6 +37,7 @@ private:
   void player_score_point(bool player_one_scored);
   void start_new_round();
   void keyboard_paddle_movement(int micros_elapsed);
+  void paddle_follow_ball(Paddle *paddle,int micros_elapsed);
 public:
   Logic(Game *game);
   ~Logic();

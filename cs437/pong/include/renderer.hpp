@@ -23,9 +23,9 @@ private:
   sf::Text p1score,p2score,new_round_text,countdown_text;
   sf::RectangleShape p1_paddle,p2_paddle;
 
-  void draw_ball();
+  void draw_ball(sf::Color color=sf::Color::White);
   void draw_scores();
-  void draw_paddles();
+  void draw_paddles(sf::Color color=sf::Color::White);
   void draw_new_round_text();
   void draw_countdown_text();
   void draw_end_menu();
