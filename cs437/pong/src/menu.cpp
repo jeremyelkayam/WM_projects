@@ -9,12 +9,14 @@
 
 using namespace std;
 
+//Constructor.
 Menu::Menu(MenuType type, int default_selection)
 {
   set_type(type);
   selection=default_selection;
 }
 
+//Moves the selection down if there's room to do so.
 void Menu::move_down()
 {
   if(selection+1<options.size())
@@ -22,6 +24,8 @@ void Menu::move_down()
       selection++;
     }
 }
+
+//Moves the selection up if there's room to do so.
 void Menu::move_up()
 {
   if(selection-1>-1)
@@ -30,6 +34,7 @@ void Menu::move_up()
     }
 }
 
+//Resets the menu and changes its type to the given type.
 void Menu::set_type(MenuType type)
 {
   this->type=type;
