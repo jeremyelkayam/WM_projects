@@ -287,29 +287,35 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
     {
       if(selected==Constants::QUITGAME_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  App->close();
 	}
       else if(selected == Constants::NEWGAME_MENU_OPTION ||
 	      selected == Constants::STARTGAME_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  game->restart_game();
 	}
       else if(selected==Constants::CONTINUEGAME_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  game->set_state(GameState::Playing);
 	}
       else if(selected==Constants::MAINMENU_MENU_OPTION ||
 	      selected==Constants::BACK_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  //cout << "going to main menu\n";
 	  game->set_state(GameState::MainMenu);
 	}
       else if(selected==Constants::ABOUT_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  game->set_state(GameState::AboutScreen);
 	}
       else if(selected==Constants::OPTIONS_MENU_OPTION)
 	{
+	  SoundPlayer::play_menu_select();
 	  game->set_state(GameState::Settings);
 	}
     }

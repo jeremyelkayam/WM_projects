@@ -11,8 +11,8 @@
 
 using namespace std;
 
-sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer;
-sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set;
+sf::SoundBuffer SoundPlayer::three_buffer,SoundPlayer::two_buffer,SoundPlayer::one_buffer,SoundPlayer::go_buffer,SoundPlayer::game_set_buffer,SoundPlayer::menu_select_buffer;
+sf::Sound SoundPlayer::three,SoundPlayer::two,SoundPlayer::one,SoundPlayer::go,SoundPlayer::game_set,SoundPlayer::menu_select;
 
 void SoundPlayer::init()
 {
@@ -50,6 +50,13 @@ void SoundPlayer::init()
       //error handling
     }
   SoundPlayer::game_set.setBuffer(SoundPlayer::game_set_buffer);
+
+  if(!SoundPlayer::menu_select_buffer.loadFromFile(Constants::MENU_SELECT_SOUND_PATH))
+    {
+      cout << "error encountered\n";
+      //error handling
+    }
+  SoundPlayer::menu_select.setBuffer(SoundPlayer::menu_select_buffer);
 }
 void SoundPlayer::play_three()
 {
@@ -75,4 +82,8 @@ void SoundPlayer::play_go()
 void SoundPlayer::play_game_set()
 {
   SoundPlayer::game_set.play();
+}
+void SoundPlayer::play_menu_select()
+{
+  SoundPlayer::menu_select.play();
 }

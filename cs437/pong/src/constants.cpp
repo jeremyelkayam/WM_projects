@@ -38,6 +38,7 @@ const string Constants::TWO_SOUND_PATH = "../assets/sounds/TWO.wav";
 const string Constants::ONE_SOUND_PATH = "../assets/sounds/ONE.wav";
 const string Constants::GO_SOUND_PATH = "../assets/sounds/GO.wav";
 const string Constants::GAME_SET_SOUND_PATH = "../assets/sounds/GAMESET.wav";
+const string Constants::MENU_SELECT_SOUND_PATH = "../assets/sounds/MENU_SELECT.wav";
 
 const string Constants::P1_SCORE_DISPLAY_BEGIN = "P1: ";
 const string Constants::P2_SCORE_DISPLAY_BEGIN = "P2: ";
