@@ -320,6 +320,11 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
 	  SoundPlayer::play_menu_select();
 	  game->set_state(GameState::Settings);
 	}
+      else if(selected==Constants::SOUND_TOGGLE_OPTION)
+	{
+	  Constants::SOUNDS_ON ? Constants::SOUNDS_ON = false : Constants::SOUNDS_ON = true;
+	  SoundPlayer::play_menu_select();
+	}
     }
 }
 

@@ -253,6 +253,7 @@ public:
   static const string BACK_MENU_OPTION;
   static const string SPEED_MENU_OPTION;
   static const string WIN_THRESHOLD_OPTION;
+  static const string SOUND_TOGGLE_OPTION;
 
   // Paths to asset files
   
@@ -302,6 +303,10 @@ public:
   static const string ABOUT_VERSION_NUMBER_PREFIX;
   static const string ABOUT_SCREEN_TITLE;
   static const vector<string> ABOUT_SCREEN_TEXT;
+
+  //Settings screen display strings
+  static const string ON_TEXT;
+  static const string OFF_TEXT;
 };
 
 #endif

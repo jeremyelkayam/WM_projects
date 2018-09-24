@@ -19,7 +19,7 @@ int Constants::WIN_SCORE = 11;
 
 bool Constants::SOUNDS_ON = true;
 
-const string Constants::VERSION_NUMBER="1.3";
+const string Constants::VERSION_NUMBER="1.4";
 
 const string Constants::NEWGAME_MENU_OPTION="New Game";
 const string Constants::CONTINUEGAME_MENU_OPTION = "Continue";
@@ -31,6 +31,7 @@ const string Constants::ABOUT_MENU_OPTION = "About";
 const string Constants::BACK_MENU_OPTION = "Back";
 const string Constants::SPEED_MENU_OPTION = "Speed: ";
 const string Constants::WIN_THRESHOLD_OPTION = "Points required to win: ";
+const string Constants::SOUND_TOGGLE_OPTION = "Sound effects: ";
 
 
 const string Constants::PIXEL_FONT_PATH = "../assets/fonts/gloryquest.ttf";
@@ -72,3 +73,8 @@ const vector<string> Constants::ABOUT_SCREEN_TEXT = {"Game programmed by Jeremy 
 						     "Based on the 1972 arcade game Pong by Al Alcorn.\n",
 						     "Created for CS437: Intro to Game Design and Game Development",
 						     "at The College of William & Mary."};
+
+
+
+const string Constants::ON_TEXT = "On";
+const string Constants::OFF_TEXT = "Off";

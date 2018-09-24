@@ -458,6 +458,17 @@ void Renderer::draw_settings_menu()
 	{
 	  display_string+=to_string(Constants::WIN_SCORE);
 	}
+      else if(menu_options[z]==Constants::SOUND_TOGGLE_OPTION)
+	{
+	  if(Constants::SOUNDS_ON)
+	    {
+	      display_string+=Constants::ON_TEXT;
+	    }
+	  else
+	    {
+	      display_string+=Constants::OFF_TEXT;
+	    }
+	}
 	
       option.setString(display_string);
       

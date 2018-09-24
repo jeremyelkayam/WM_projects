@@ -29,10 +29,6 @@ void Menu::move_up()
       selection--;
     }
 }
-void Menu::select()
-{
-  
-}
 
 void Menu::set_type(MenuType type)
 {
@@ -67,6 +63,7 @@ void Menu::set_type(MenuType type)
     {
       options.push_back(Constants::SPEED_MENU_OPTION);
       options.push_back(Constants::WIN_THRESHOLD_OPTION);
+      options.push_back(Constants::SOUND_TOGGLE_OPTION);
       options.push_back(Constants::BACK_MENU_OPTION);      
     }
 }
