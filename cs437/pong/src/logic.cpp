@@ -248,10 +248,10 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
     }
   else if(event.key.code == sf::Keyboard::Left)
     {
-      if(selected == Constants::SPEED_MENU_OPTION && speed_index>0)
+      if(selected == Constants::SPEED_MENU_OPTION && game->get_speed_index() > 0)
 	{
-	  speed_index--;
-	  game->set_time_multiplier(Constants::SPEED_VALUES[speed_index]);
+	  game->decrement_speed_index();
+	  game->set_time_multiplier(Constants::SPEED_VALUES[game->get_speed_index()]);
 	}
       else if(selected == Constants::WIN_THRESHOLD_OPTION &&
 	      Constants::WIN_SCORE > 1)
@@ -262,10 +262,10 @@ void Logic::handle_menu_event(sf::Event event, sf::RenderWindow *App)
   else if(event.key.code == sf::Keyboard::Right)
     {
       if(selected == Constants::SPEED_MENU_OPTION
-	 && speed_index<Constants::SPEED_VALUES.size()-1)
+	 && game->get_speed_index() < Constants::SPEED_VALUES.size()-1)
 	{
-	  speed_index++;
-	  game->set_time_multiplier(Constants::SPEED_VALUES[speed_index]);
+	  game->increment_speed_index();
+	  game->set_time_multiplier(Constants::SPEED_VALUES[game->get_speed_index()]);
 	}
       else if(selected == Constants::WIN_THRESHOLD_OPTION)
 	{

@@ -30,6 +30,17 @@ Renderer::Renderer(Game *game, sf::RenderWindow *window)
   
   p1_paddle.setSize(sf::Vector2f(Constants::PADDLE_RENDERED_WIDTH,game->get_p1_paddle()->get_height()));
   p2_paddle.setSize(sf::Vector2f(Constants::PADDLE_RENDERED_WIDTH,game->get_p2_paddle()->get_height()));
+
+  speed_bar.setSize(sf::Vector2f(600,50));
+  speed_selector.setSize(sf::Vector2f(50,100));
+
+  speed_selector.setOutlineColor(sf::Color(100,100,100));
+  speed_selector.setOutlineThickness(5);
+
+  speed_bar.setOutlineColor(sf::Color(100,100,100));
+  speed_bar.setOutlineThickness(5);
+		    
+  speed_bar.setPosition(100,window->getSize().y/2-25);
 }
 
 void Renderer::update()
@@ -451,18 +462,30 @@ void Renderer::draw_settings_menu()
       
       set_origin_to_center(&option);
       
-      option.setPosition(window->getSize().x/2,window->getSize().y/2+Constants::MENU_TEXT_OFFSET*z);
+      option.setPosition(window->getSize().x/2,window->getSize().y/2+100+Constants::MENU_TEXT_OFFSET*z);
 
       if(z==game->get_menu()->get_selection())
 	{
-	  /*
-	  option.setOutlineThickness(1);
-	  option.setOutlineColor(sf::Color::White);
-	  option.setFillColor(sf::Color::Black);
-	  */
 	  option.setFillColor(Constants::MENU_HIGHLIGHT_COLOR);
 	}
       
       window->draw(option);
     }
+
+
+  if(game->get_menu()->get_selected_option()==Constants::SPEED_MENU_OPTION)
+    {      
+      speed_selector.setFillColor(Constants::MENU_HIGHLIGHT_COLOR);
+    }
+  else
+    {
+      speed_selector.setFillColor(sf::Color::White);
+    }
+
+  speed_selector.setPosition(window->getSize().x/2-265+
+			     game->get_speed_index()*60,
+			     window->getSize().y/2-50);
+  //cout << game->get_speed_index() << "\n";
+  window->draw(speed_bar);
+  window->draw(speed_selector);
 }

@@ -21,8 +21,6 @@ private:
   ComputerPlayer *cp;
   //Stores the total time elapsed when waiting between counts of the countdown.
   int total_time;
-  //Stores the current index in the array of potential multipliers for the game's speed.
-  int speed_index=3;
 
   /*
     Returns whether or not the ball is off-screen, specifically, whether or not

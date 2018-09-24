@@ -62,6 +62,8 @@ private:
   int countdown;
   //Stores the multiplier on game speed. Defaults to 1.
   double time_multiplier=1;
+  //Stores the current index in the array of potential multipliers for the game's speed.
+  int speed_index=4;
 public:
   /*
     Constructor, setting up the game's properties.
@@ -201,6 +203,23 @@ public:
    */
   void set_time_multiplier(double mult){time_multiplier=mult;};
 
+  /*
+    Return the current selected index in the array storing speed values.
+
+    @return the selected index in the array storing speed values.
+   */
+  int get_speed_index(){return speed_index;}
+  
+  /*
+    Increase the current selected index in the array storing speed values
+    by one.
+   */
+  void increment_speed_index(){speed_index++;}
+  /*
+    Decrease the current selected index in the array storing speed values
+    by one.
+   */
+  void decrement_speed_index(){speed_index--;}
 };
 
 #endif

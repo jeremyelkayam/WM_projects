@@ -21,7 +21,7 @@ private:
   sf::Font pixel_font,title_font;
   sf::CircleShape ball;
   sf::Text p1score,p2score,new_round_text,countdown_text;
-  sf::RectangleShape p1_paddle,p2_paddle;
+  sf::RectangleShape p1_paddle,p2_paddle,speed_bar,speed_selector;
 
   void draw_ball(sf::Color color=sf::Color::White);
   void draw_scores();
