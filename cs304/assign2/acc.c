@@ -44,8 +44,12 @@ int main(void)
       {
 	stored_value=get_operand(mode);
       }
+    else
+      {
+	printf("Invalid option specified.\n");
+      }
     
-    printf("result: %c\n",result);
+    //printf("result: %c\n",result);
 
   }while(result!='q');
 
@@ -73,11 +77,11 @@ void print_acc(short acc)
 char print_menu(void)
 {
   printf("Option: ");
-  char output;
+  char output[100];
   
-  scanf("%c",&output);
+  scanf("%s",output);
   
-  output=tolower(output);
+  output[0]=tolower(output[0]);
 
   /*
   while(output!='o' &&
@@ -90,5 +94,5 @@ char print_menu(void)
     scanf("%c",&output);
   }
   */
-  return output;
+  return output[0];
 }
