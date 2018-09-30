@@ -18,7 +18,6 @@ int main(void)
   short stored_value=0;
   char result;
   do{
-    printf("mode: %c\n",mode);
     
     print_acc(stored_value);
     result=print_menu();
@@ -59,8 +58,6 @@ int main(void)
 	stored_value=get_operand(mode);
       }
 
-    
-    printf("mode: %c\n",mode);
 
   }while(result!='q');
 
