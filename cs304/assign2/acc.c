@@ -46,15 +46,19 @@ int main(void)
 	if(mode=='d')
 	  {
 	    mode_display="decimal";
+	    printf("%c\n",mode);
 	  }
 	else if(mode=='o')
 	  {
 	    mode_display="octal";
+	    printf("%c\n",mode);
 	  }
 	else
 	  {
 	    mode_display=="hex";
+	    printf("%c\n",mode);
 	  }
+	printf("%c\n",mode);
 	printf("Enter %s value: ",mode_display);
 	stored_value=get_operand(mode);
       }
