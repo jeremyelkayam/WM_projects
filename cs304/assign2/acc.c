@@ -55,7 +55,7 @@ int main(void)
 	  }
 	else
 	  {
-	    mode_display=="hex";
+	    mode_display="hex";
 	    printf("%c\n",mode);
 	  }
 	printf("%c\n",mode);
