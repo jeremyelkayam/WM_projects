@@ -14,8 +14,8 @@ char print_menu(void);
 //main menu loop; execute option or call appropriate function
 int main(void)
 {
-  short stored_value=0;
   char mode='d';
+  short stored_value=0;
   char result;
   do{
     printf("mode: %c\n",mode);
@@ -60,7 +60,7 @@ int main(void)
       }
 
     
-    //printf("\nnumber of digits\n\ndecimal: %d\noctal: %d\nhex: %d",d_digits,o_digits,x_digits);
+    printf("mode: %c\n",mode);
 
   }while(result!='q');
 
