@@ -42,7 +42,20 @@ int main(void)
       }
     else if(result=='s')
       {
-	printf("Value: ");
+	char *mode_display;
+	if(mode=='d')
+	  {
+	    mode_display="decimal";
+	  }
+	else if(mode=='o')
+	  {
+	    mode_display="octal";
+	  }
+	else
+	  {
+	    mode_display=="hex";
+	  }
+	printf("Enter %s value: ",mode_display);
 	stored_value=get_operand(mode);
       }
 
