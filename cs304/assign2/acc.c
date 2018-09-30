@@ -102,20 +102,22 @@ void print_acc(short acc)
   
   printf("*\n*   Octal   :  ");
 
-  for(int z=0;z<6-octal_digits;z++)
+  int z;
+  
+  for(z=0;z<6-octal_digits;z++)
     {
       printf("0");
     }
 
   printf("%ho",acc);
   
-  for(int z=0;z<18;z++)
+  for(z=0;z<18;z++)
     {
       printf(" ");
     }
   
   printf("*\n*   Decimal :  %d",acc);
-  for(int z=0;z<24-decimal_digits-(acc<0);z++)
+  for(z=0;z<24-decimal_digits-(acc<0);z++)
     {
       printf(" ");
     }
