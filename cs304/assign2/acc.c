@@ -88,8 +88,16 @@ void print_acc(short acc)
       printf(" ");
     }
   
-  printf("*\n*   Octal   :  %o",acc);
-  for(int z=0;z<24-octal_digits;z++)
+  printf("*\n*   Octal   :  ");
+
+  for(int z=0;z<6-octal_digits;z++)
+    {
+      printf("0");
+    }
+
+  printf("%o",acc);
+  
+  for(int z=0;z<18;z++)
     {
       printf(" ");
     }
@@ -124,6 +132,7 @@ char print_menu(void)
     //printf("length of output: %d\n",strlen(output));
     printf("\nInvalid option: %s\n\n%s",output,menu);
     scanf("%s",output);
+    lower_output=tolower(output[0]);
   }
   return lower_output;
 }
