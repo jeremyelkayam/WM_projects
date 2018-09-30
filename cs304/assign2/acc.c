@@ -70,12 +70,24 @@ int main(void)
 short get_operand(char mode)
 {
   short result;
-  
-  char asking_for[8]="%x";
-  asking_for[1]=mode;
 
-  scanf(asking_for,&result);
+  printf("get_operand ");
   
+  if(mode=='x')
+    {
+      scanf("%hx",&result);
+      printf("hex ");
+    }
+  else if(mode=='d')
+    {
+      scanf("%hd",&result);
+      printf("deci ");
+    }
+  else
+    {
+      scanf("%ho",&result);
+      printf("octal ");
+    }
   return result;
 }
 
