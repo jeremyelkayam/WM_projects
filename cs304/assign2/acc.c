@@ -87,23 +87,23 @@ void print_acc(short acc)
   int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
   
   printf("\n****************************************\n* Accumulator:                         *\n*   Hex     :  ");
+
+  int z=0;
   
-  for(int z=0;z<4-hex_digits;z++)
+  for(z=0;z<4-hex_digits;z++)
     {
       printf("0");
     }
 
   printf("%hX",acc);
   
-  for(int z=0;z<20;z++)
+  for(z=0;z<20;z++)
     {
       printf(" ");
     }
   
   printf("*\n*   Octal   :  ");
 
-  int z;
-  
   for(z=0;z<6-octal_digits;z++)
     {
       printf("0");
