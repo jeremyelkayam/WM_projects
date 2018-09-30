@@ -71,9 +71,10 @@ short get_operand(char mode)
 {
   short result;
   
-  char asking_for[2];
+  char asking_for[3];
   asking_for[0]='%';
   asking_for[1]=mode;
+  asking_for[2]='\0';
 
   scanf(asking_for,&result);
   
