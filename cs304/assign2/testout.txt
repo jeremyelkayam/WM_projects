@@ -1,0 +1,301 @@
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0000                  *
+*   Octal   :  000000                *
+*   Decimal :  0                     *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: s
+Enter decimal value: 1693
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  069D                  *
+*   Octal   :  003235                *
+*   Decimal :  1693                  *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: c
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0000                  *
+*   Octal   :  000000                *
+*   Decimal :  0                     *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: s
+Enter decimal value: -1
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  FFFF                  *
+*   Octal   :  177777                *
+*   Decimal :  -1                    *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: h
+Mode is Hexadecimal
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  FFFF                  *
+*   Octal   :  177777                *
+*   Decimal :  -1                    *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: s
+Enter hex value: 888
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0888                  *
+*   Octal   :  004210                *
+*   Decimal :  2184                  *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: s
+Enter hex value: FFFF
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  FFFF                  *
+*   Octal   :  177777                *
+*   Decimal :  -1                    *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: C
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0000                  *
+*   Octal   :  000000                *
+*   Decimal :  0                     *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: O
+Mode is Octal
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0000                  *
+*   Octal   :  000000                *
+*   Decimal :  0                     *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: S
+Enter octal value: 5777
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  0BFF                  *
+*   Octal   :  005777                *
+*   Decimal :  3071                  *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: S
+Enter octal value: 32065
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  3435                  *
+*   Octal   :  032065                *
+*   Decimal :  13365                 *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: D
+Mode is Decimal
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  3435                  *
+*   Octal   :  032065                *
+*   Decimal :  13365                 *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: s
+Enter decimal value: -29787
+
+**************************************
+* Accumulator:                       *
+*   Hex     :  8BA5                  *
+*   Octal   :  105645                *
+*   Decimal :  -29787                *
+**************************************
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: g
+
+Invalid option: g
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: quit
+
+Invalid option: quit
+
+Please select one of the following options: 
+
+O  Octal Mode 
+H  Hexadecimal Mode 
+D  Decimal Mode 
+
+C  Clear Accumulator 
+S  Set Accumulator 
+
+Q  Quit 
+
+Option: q
+
