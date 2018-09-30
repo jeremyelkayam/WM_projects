@@ -17,7 +17,6 @@ int main(void)
   short stored_value=0;
   char mode='d';
   char result;
-  char *mode_display;
   do{
     print_acc(stored_value);
     result=print_menu();
@@ -45,21 +44,16 @@ int main(void)
       {
 	if(mode=='d')
 	  {
-	    mode_display="decimal";
-	    printf("%c\n",mode);
+	    printf("Enter decimal value: ");
 	  }
 	else if(mode=='o')
 	  {
-	    mode_display="octal";
-	    printf("%c\n",mode);
+	    printf("Enter octal value: ");
 	  }
 	else
 	  {
-	    mode_display="hex";
-	    printf("%c\n",mode);
+	    printf("Enter hex value: ");
 	  }
-	printf("%c\n",mode);
-	printf("Enter %s value: ",mode_display);
 	stored_value=get_operand(mode);
       }
 
