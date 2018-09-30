@@ -17,6 +17,7 @@ int main(void)
   short stored_value=0;
   char mode='d';
   char result;
+  char *mode_display;
   do{
     print_acc(stored_value);
     result=print_menu();
@@ -42,7 +43,6 @@ int main(void)
       }
     else if(result=='s')
       {
-	char *mode_display;
 	if(mode=='d')
 	  {
 	    mode_display="decimal";
