@@ -71,7 +71,7 @@ short get_operand(char mode)
 {
   short result;
   
-  char asking_for[3]="%x";
+  char asking_for[8]="%x";
   asking_for[1]=mode;
 
   scanf(asking_for,&result);
@@ -126,10 +126,10 @@ void print_acc(short acc)
 
 char print_menu(void)
 {
-  char menu[180]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
+  char menu[200]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
   
   printf("%s",menu);
-  char output[100];
+  char output[110];
   
   scanf("%s",output);
   
