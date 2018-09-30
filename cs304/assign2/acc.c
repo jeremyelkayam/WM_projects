@@ -1,6 +1,7 @@
 // @author Jeremy Elkayam
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 //read in numeric value in mode, return value
 short get_operand(char mode);
@@ -45,14 +46,6 @@ int main(void)
 	printf("Value: ");
 	stored_value=get_operand(mode);
       }
-    else if(result=='q')
-      {
-	printf("Hope to see you again soon!\n");
-      }
-    else
-      {
-	printf("Invalid option specified.\n");
-      }
 
     
     //printf("\nnumber of digits\n\ndecimal: %d\noctal: %d\nhex: %d",d_digits,o_digits,x_digits);
@@ -81,8 +74,16 @@ void print_acc(short acc)
   int octal_digits=snprintf(NULL, 0, "%o", acc) - (acc < 0);
   int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
   
-  printf("****************************************\n* Accumulator:                         *\n*   Hex     :  %X",acc);
-  for(int z=0;z<24-hex_digits;z++)
+  printf("****************************************\n* Accumulator:                         *\n*   Hex     :  ");
+  
+  for(int z=0;z<4-hex_digits;z++)
+    {
+      printf("0");
+    }
+
+  printf("%X",acc);
+  
+  for(int z=0;z<20;z++)
     {
       printf(" ");
     }
@@ -104,24 +105,25 @@ void print_acc(short acc)
 
 char print_menu(void)
 {
+  char menu[180]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
   
-  printf("Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ");
+  printf("%s",menu);
   char output[100];
   
   scanf("%s",output);
   
-  output[0]=tolower(output[0]);
+  char lower_output=tolower(output[0]);
 
-  /*
-  while(output!='o' &&
-	output!='h' &&
-	output!='d' &&
-	output!='c' &&
-	output!='s' &&
-	output!='q'){
-    printf("No valid input received.\nOption: ");
-    scanf("%c",&output);
+  while(strlen(output)!=1 ||
+	(lower_output!='o' &&
+	 lower_output!='h' &&
+	 lower_output!='d' &&
+	 lower_output!='c' &&
+	 lower_output!='s' &&
+	 lower_output!='q')){
+    //printf("length of output: %d\n",strlen(output));
+    printf("\nInvalid option: %s\n\n%s",output,menu);
+    scanf("%s",output);
   }
-  */
-  return output[0];
+  return lower_output;
 }
