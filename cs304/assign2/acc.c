@@ -24,22 +24,21 @@ int main(void)
     if(result=='d')
       {
 	mode=result;
-	printf("Mode is Decimal.\n");
+	printf("Mode is Decimal\n");
       }
     else if(result=='h')
       {
 	mode='x';
-	printf("Mode is Hexadecimal.\n");
+	printf("Mode is Hexadecimal\n");
       }
     else if(result=='o')
       {
 	mode=result;
-	printf("Mode is Octal.\n");
+	printf("Mode is Octal\n");
       }
     else if(result=='c')
       {
 	stored_value=0;
-	printf("Cleared.\n");
       }
     else if(result=='s')
       {
@@ -74,14 +73,14 @@ void print_acc(short acc)
   int octal_digits=snprintf(NULL, 0, "%o", acc) - (acc < 0);
   int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
   
-  printf("****************************************\n* Accumulator:                         *\n*   Hex     :  ");
+  printf("\n****************************************\n* Accumulator:                         *\n*   Hex     :  ");
   
   for(int z=0;z<4-hex_digits;z++)
     {
       printf("0");
     }
 
-  printf("%X",acc);
+  printf("%hX",acc);
   
   for(int z=0;z<20;z++)
     {
@@ -95,7 +94,7 @@ void print_acc(short acc)
       printf("0");
     }
 
-  printf("%o",acc);
+  printf("%ho",acc);
   
   for(int z=0;z<18;z++)
     {
@@ -103,7 +102,7 @@ void print_acc(short acc)
     }
   
   printf("*\n*   Decimal :  %d",acc);
-  for(int z=0;z<24-decimal_digits;z++)
+  for(int z=0;z<24-decimal_digits-(acc<0);z++)
     {
       printf(" ");
     }
