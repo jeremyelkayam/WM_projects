@@ -42,14 +42,20 @@ int main(void)
       }
     else if(result=='s')
       {
+	printf("Value: ");
 	stored_value=get_operand(mode);
+      }
+    else if(result=='q')
+      {
+	printf("Hope to see you again soon!\n");
       }
     else
       {
 	printf("Invalid option specified.\n");
       }
+
     
-    //printf("result: %c\n",result);
+    //printf("\nnumber of digits\n\ndecimal: %d\noctal: %d\nhex: %d",d_digits,o_digits,x_digits);
 
   }while(result!='q');
 
@@ -71,12 +77,35 @@ short get_operand(char mode)
 
 void print_acc(short acc)
 {
-  printf("****************************************\n* Accumulator:                         *\n*   Hex     :  %X                    *\n*   Octal   :  %o                  *\n*   Decimal :  %d                       *\n****************************************\nPlease select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\n",acc,acc,acc);
+  int decimal_digits=snprintf(NULL, 0, "%d", acc) - (acc < 0);
+  int octal_digits=snprintf(NULL, 0, "%o", acc) - (acc < 0);
+  int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
+  
+  printf("****************************************\n* Accumulator:                         *\n*   Hex     :  %X",acc);
+  for(int z=0;z<24-hex_digits;z++)
+    {
+      printf(" ");
+    }
+  
+  printf("*\n*   Octal   :  %o",acc);
+  for(int z=0;z<24-octal_digits;z++)
+    {
+      printf(" ");
+    }
+  
+  printf("*\n*   Decimal :  %d",acc);
+  for(int z=0;z<24-decimal_digits;z++)
+    {
+      printf(" ");
+    }
+  printf("*\n****************************************\n");
+  
 }
 
 char print_menu(void)
 {
-  printf("Option: ");
+  
+  printf("Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ");
   char output[100];
   
   scanf("%s",output);
