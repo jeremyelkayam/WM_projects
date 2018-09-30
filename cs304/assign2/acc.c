@@ -18,6 +18,8 @@ int main(void)
   char mode='d';
   char result;
   do{
+    printf("mode: %c\n",mode);
+    
     print_acc(stored_value);
     result=print_menu();
 
