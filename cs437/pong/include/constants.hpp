@@ -117,9 +117,9 @@ public:
 
   //AI values
 
-  static constexpr int MAX_WAITING_TIME = 1000000;
+  static constexpr int MAX_WAITING_TIME = 250000;
   
-  static constexpr int MIN_WAITING_TIME = 250000;
+  static constexpr int MIN_WAITING_TIME = 0;
 
   static constexpr int AIM_PERTURBATION_BOUND_MULTIPLIER = 1;
   
