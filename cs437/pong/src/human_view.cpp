@@ -497,7 +497,8 @@ void HumanView::draw_go_text()
   go_text.setCharacterSize(Constants::COUNTDOWN_CHAR_SIZE);
   
   set_origin_to_center(&go_text);
-  
+
+  go_text.setFillColor(sf::Color::Green);
   
   go_text.setPosition(window->getSize().x/2,window->getSize().y-100);
   window->draw(go_text);
