@@ -58,7 +58,6 @@ int main(void)
 	stored_value=get_operand(mode);
       }
 
-
   }while(result!='q');
 
   return 0;
@@ -68,23 +67,23 @@ short get_operand(char mode)
 {
   short result;
 
-  printf("get_operand ");
   
   if(mode=='x')
     {
       scanf("%hx",&result);
-      printf("hex ");
+      printf("%hX\n",result);
     }
   else if(mode=='d')
     {
       scanf("%hd",&result);
-      printf("deci ");
+      printf("%hd\n",result);
     }
   else
     {
       scanf("%ho",&result);
-      printf("octal ");
+      printf("%ho\n",result);
     }
+  
   return result;
 }
 
@@ -141,6 +140,7 @@ char print_menu(void)
   char output[110];
   
   scanf("%s",output);
+  printf("%s\n",output);
   
   char lower_output=tolower(output[0]);
 
@@ -154,6 +154,7 @@ char print_menu(void)
     //printf("length of output: %d\n",strlen(output));
     printf("\nInvalid option: %s\n\n%s",output,menu);
     scanf("%s",output);
+    printf("%s\n",output);
     lower_output=tolower(output[0]);
   }
   return lower_output;
