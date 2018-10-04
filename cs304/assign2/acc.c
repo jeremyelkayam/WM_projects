@@ -7,7 +7,7 @@
    @author Jeremy Elkayam
  */
 #include <stdio.h>
-#include <ctype.h>
+//#include <ctype.h>
 #include <string.h>
 
 //read in numeric value in mode, return value
