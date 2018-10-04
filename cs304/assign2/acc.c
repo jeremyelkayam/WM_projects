@@ -74,6 +74,8 @@ int main(void)
       }
   }while(result!='q');
 
+  printf("\n");
+
   return 0;
 }
 
