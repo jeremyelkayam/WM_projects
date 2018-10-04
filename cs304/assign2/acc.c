@@ -152,7 +152,7 @@ void print_acc(short acc)
 
 char print_menu(void)
 {
-  char menu[200]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexadecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
+  char menu[200]="\nPlease select one of the following options: \n\nO  Octal Mode \nH  Hexadecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \n\nQ  Quit \n\nOption: ";
   
   printf("%s",menu);
   char output[110];
@@ -171,7 +171,7 @@ char print_menu(void)
 	 lower_output!='s' &&
 	 lower_output!='q')){
 
-    printf("\nInvalid option: %s\n\n%s",output,menu);
+    printf("\nInvalid option: %s\n%s",output,menu);
     
     scanf("%s",output);
     printf("%s\n",output);
