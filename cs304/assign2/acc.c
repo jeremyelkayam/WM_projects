@@ -1,4 +1,11 @@
-// @author Jeremy Elkayam
+/* 
+   acc.c
+   Purpose: An integer accumulation program. Allows for the user to enter any integer in
+   octal, hexadecimal, or decimal mode, and have that integer displayed in octal, hex,
+   and decimal bases.
+   
+   @author Jeremy Elkayam
+ */
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -14,50 +21,57 @@ char print_menu(void);
 //main menu loop; execute option or call appropriate function
 int main(void)
 {
+  
   char mode='d';
   short stored_value=0;
   char result;
+
   do{
-    
     print_acc(stored_value);
     result=print_menu();
 
-    if(result=='d')
+    switch(result)
       {
+      case 'd':
 	mode=result;
 	printf("Mode is Decimal\n");
-      }
-    else if(result=='h')
-      {
+	break;
+	
+      case 'h':
 	mode='x';
 	printf("Mode is Hexadecimal\n");
-      }
-    else if(result=='o')
-      {
+	break;
+	
+      case 'o':
 	mode=result;
 	printf("Mode is Octal\n");
-      }
-    else if(result=='c')
-      {
+	break;
+	
+      case 'c':
 	stored_value=0;
-      }
-    else if(result=='s')
-      {
-	if(mode=='d')
+	break;
+	
+      case 's':
+	switch(mode)
 	  {
+	  case 'd':
 	    printf("Enter decimal value: ");
-	  }
-	else if(mode=='o')
-	  {
+	    break;
+	    
+	  case 'o':
 	    printf("Enter octal value: ");
-	  }
-	else
-	  {
+	    break;
+	    
+	  case 'x':
 	    printf("Enter hex value: ");
+	    break;
+	    
 	  }
+	
 	stored_value=get_operand(mode);
+	break;
+	
       }
-
   }while(result!='q');
 
   return 0;
@@ -67,21 +81,23 @@ short get_operand(char mode)
 {
   short result;
 
-  
-  if(mode=='x')
+  switch(mode)
     {
+    case 'x':
       scanf("%hx",&result);
       printf("%hX\n",result);
-    }
-  else if(mode=='d')
-    {
+      break;
+      
+    case 'd':
       scanf("%hd",&result);
       printf("%hd\n",result);
-    }
-  else
-    {
+      break;
+      
+    case 'o':
       scanf("%ho",&result);
       printf("%ho\n",result);
+      break;
+      
     }
   
   return result;
@@ -93,7 +109,7 @@ void print_acc(short acc)
   int octal_digits=snprintf(NULL, 0, "%o", acc) - (acc < 0);
   int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
   
-  printf("\n****************************************\n* Accumulator:                         *\n*   Hex     :  ");
+  printf("\n**************************************\n* Accumulator:                       *\n*   Hex     :  ");
 
   int z=0;
   
@@ -104,7 +120,7 @@ void print_acc(short acc)
 
   printf("%hX",acc);
   
-  for(z=0;z<20;z++)
+  for(z=0;z<18;z++)
     {
       printf(" ");
     }
@@ -118,23 +134,25 @@ void print_acc(short acc)
 
   printf("%ho",acc);
   
-  for(z=0;z<18;z++)
+  for(z=0;z<16;z++)
     {
       printf(" ");
     }
   
   printf("*\n*   Decimal :  %d",acc);
-  for(z=0;z<24-decimal_digits-(acc<0);z++)
+
+  for(z=0;z<22-decimal_digits-(acc<0);z++)
     {
       printf(" ");
     }
-  printf("*\n****************************************\n");
+  
+  printf("*\n**************************************\n");
   
 }
 
 char print_menu(void)
 {
-  char menu[200]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexidecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
+  char menu[200]="Please select one of the following options: \n\nO  Octal Mode \nH  Hexadecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \nQ  Quit \n\nOption: ";
   
   printf("%s",menu);
   char output[110];
@@ -145,17 +163,22 @@ char print_menu(void)
   char lower_output=tolower(output[0]);
 
   while(strlen(output)!=1 ||
+	
 	(lower_output!='o' &&
 	 lower_output!='h' &&
 	 lower_output!='d' &&
 	 lower_output!='c' &&
 	 lower_output!='s' &&
 	 lower_output!='q')){
-    //printf("length of output: %d\n",strlen(output));
+
     printf("\nInvalid option: %s\n\n%s",output,menu);
+    
     scanf("%s",output);
     printf("%s\n",output);
+    
     lower_output=tolower(output[0]);
+    
   }
+  
   return lower_output;
 }
