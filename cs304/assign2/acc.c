@@ -7,8 +7,15 @@
    @author Jeremy Elkayam
  */
 #include <stdio.h>
-//#include <ctype.h>
 #include <string.h>
+/*
+  The below include statement is commented out because the assignment required
+  students to only use the stdio.h and string.h built-in libraries. On the
+  William & Mary CS department's lab machines, tolower is a member of string.h
+  and not ctype.h. If you get errors or warnings when trying to compile, just
+  un-comment the line below and it should work.
+ */
+//#include <ctype.h>
 
 //read in numeric value in mode, return value
 short get_operand(char mode);
