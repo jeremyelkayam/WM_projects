@@ -264,11 +264,23 @@ char print_menu(void)
 
 unsigned short get_binary_op (char *bin)
 {
-  return 0;
+  int total=0;
+
+  for(int dex=0;bin[dex]!=0;dex++)
+    {
+      total *= 2;
+      if(bin[dex]=='1')
+	{
+	  total++;
+	}
+    }
+  
+  return total;
 }
 
 void convert_to_binary (short acc, char *bin)
 {
+  //convert acc to an unsigned short
   unsigned short max_u_short=-1;
   unsigned short u_acc=acc+max_u_short+1;
   
