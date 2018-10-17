@@ -79,8 +79,13 @@ int main(void)
 	break;
 
       case '<':
-	printf("Number of bits to be shifted (decimal):");
+	printf("Number of bits to be shifted (decimal): ");
         stored_value=stored_value<<get_operand('d');
+	break;
+
+      case '>':
+	printf("Number of bits to be shifted (decimal): ");
+        stored_value=stored_value>>get_operand('d');
 	break;
 	
       case 's':
@@ -239,7 +244,8 @@ char print_menu(void)
 
   while(strlen(output)!=1 ||
 	
-	(lower_output!='<' &&
+	(lower_output!='>' &&
+	 lower_output!='<' &&
 	 lower_output!='~' &&
 	 lower_output!='n' &&
 	 lower_output!='b' &&
