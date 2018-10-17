@@ -15,7 +15,7 @@
   and not ctype.h. If you get errors or warnings when trying to compile, just
   un-comment the line below and it should work.
  */
-//#include <ctype.h>
+#include <ctype.h>
 
 //read in numeric value in mode, return value
 short get_operand(char mode);
@@ -23,7 +23,14 @@ short get_operand(char mode);
 void print_acc(short acc);
 //print menu and get option
 char print_menu(void);
-
+// convert bin str to short; return value
+unsigned short get_binary_op (char *bin);
+// convert acc to binary str for output
+void convert_to_binary (short acc, char *bin);
+// call get_operand to get val in mode to add to accum; detect pos/neg overflow
+void add (short *acc, char mode);
+// similar to add, but subtract
+void subtract (short *acc, char mode);
 
 //main menu loop; execute option or call appropriate function
 int main(void)
@@ -39,6 +46,7 @@ int main(void)
 
     switch(result)
       {
+	
       case 'd':
 	mode=result;
 	printf("Mode is Decimal\n");
@@ -190,4 +198,27 @@ char print_menu(void)
   }
   
   return lower_output;
+}
+
+
+//TODO: implement the following
+
+unsigned short get_binary_op (char *bin)
+{
+  return 0;
+}
+
+void convert_to_binary (short acc, char *bin)
+{
+
+}
+
+void add (short *acc, char mode)
+{
+
+}
+
+void subtract (short *acc, char mode)
+{
+
 }
