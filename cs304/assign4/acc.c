@@ -105,9 +105,27 @@ int main(void)
 short get_operand(char mode)
 {
   short result;
+  char bin[200];
+  int count;
 
   switch(mode)
     {
+    case 'b':
+      do{
+	  scanf("%s",bin);
+	  printf("%s\n",bin);
+
+	  for(count=0;bin[count]!=0;count++);
+	  if(count>16)
+	    {
+	      printf("Invalid input: %s \n",bin);
+	      printf("Input must be 16 digits or less, without spaces.\n\nEnter binary value: ");
+	    }
+      }while(count>16);
+      
+      result=get_binary_op(bin);
+
+      break;
       
     case 'x':
       scanf("%hx",&result);
@@ -178,9 +196,18 @@ void print_acc(short acc)
 
 char print_menu(void)
 {
-  char menu[200]="\nPlease select one of the following options: \n\nO  Octal Mode \nH  Hexadecimal Mode \nD  Decimal Mode \n\nC  Clear Accumulator \nS  Set Accumulator \n\nQ  Quit \n\nOption: ";
   
-  printf("%s",menu);
+  printf("\nPlease select one of the following options: \n\n");
+  printf("B  Binary Mode             &  AND with Accumulator           +  Add to Accumulator\n");
+  printf("O  Octal Mode              |  OR  with Accumulator           -  Subtract from Accumulator\n");
+  printf("H  Hexadecimal Mode        ^  XOR with Accumulator           N  Negate Accumulator\n");
+  printf("D  Decimal Mode            ~  Complement Accumulator\n\n");
+  printf("C  Clear Accumulator       <  Shift Accumulator Left\n");
+  printf("S  Set Accumulator         >  Shift Accumulator Right\n\n");
+  printf("Q  Quit \n\n");
+  printf("Option: ");
+  
+
   char output[110];
   
   scanf("%s",output);
@@ -190,14 +217,28 @@ char print_menu(void)
 
   while(strlen(output)!=1 ||
 	
-	(lower_output!='o' &&
+	(lower_output!='b' &&
+	 lower_output!='o' &&
 	 lower_output!='h' &&
 	 lower_output!='d' &&
 	 lower_output!='c' &&
 	 lower_output!='s' &&
 	 lower_output!='q')){
 
-    printf("\nInvalid option: %s\n%s",output,menu);
+    printf("\nInvalid option: %s\n",output);
+    
+
+    printf("\nPlease select one of the following options: \n\n");
+    printf("B  Binary Mode             &  AND with Accumulator           +  Add to Accumulator\n");
+    printf("O  Octal Mode              |  OR  with Accumulator           -  Subtract from Accumulator\n");
+    printf("H  Hexadecimal Mode        ^  XOR with Accumulator           N  Negate Accumulator\n");
+    printf("D  Decimal Mode            ~  Complement Accumulator\n\n");
+    printf("C  Clear Accumulator       <  Shift Accumulator Left\n");
+    printf("S  Set Accumulator         >  Shift Accumulator Right\n\n");
+    printf("Q  Quit \n\n");
+    printf("Option: ");
+
+
     
     scanf("%s",output);
     printf("%s\n",output);
@@ -219,15 +260,15 @@ unsigned short get_binary_op (char *bin)
 
 void convert_to_binary (short acc, char *bin)
 {
-
+  
 }
 
 void add (short *acc, char mode)
 {
-
+  
 }
 
 void subtract (short *acc, char mode)
 {
-
+  
 }
