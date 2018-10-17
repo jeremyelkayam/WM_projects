@@ -160,6 +160,56 @@ int main(void)
 	stored_value = stored_value ^ get_operand(mode);
 	break;
 	
+      case '+':
+	switch(mode)
+	  {
+	  case 'b':
+	    printf("Enter binary value: ");
+	    break;
+	    
+	  case 'd':
+	    printf("Enter decimal value: ");
+	    break;
+	    
+	  case 'o':
+	    printf("Enter octal value: ");
+	    break;
+	    
+	  case 'x':
+	    printf("Enter hex value: ");
+	    break;
+	    
+	  }
+	
+	add(&stored_value,mode);
+	
+	break;
+	
+      case '-':
+	switch(mode)
+	  {
+	  case 'b':
+	    printf("Enter binary value: ");
+	    break;
+	    
+	  case 'd':
+	    printf("Enter decimal value: ");
+	    break;
+	    
+	  case 'o':
+	    printf("Enter octal value: ");
+	    break;
+	    
+	  case 'x':
+	    printf("Enter hex value: ");
+	    break;
+	    
+	  }
+	
+	subtract(&stored_value,mode);
+	
+	break;
+	
       case 's':
 	switch(mode)
 	  {
@@ -316,7 +366,9 @@ char print_menu(void)
 
   while(strlen(output)!=1 ||
 	
-	(lower_output!='^' &&
+	(lower_output!='+' &&
+	 lower_output!='-' &&
+	 lower_output!='^' &&
 	 lower_output!='|' &&
 	 lower_output!='&' &&
 	 lower_output!='>' &&
