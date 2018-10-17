@@ -153,7 +153,16 @@ void print_acc(short acc)
   int octal_digits=snprintf(NULL, 0, "%o", acc) - (acc < 0);
   int hex_digits=snprintf(NULL, 0, "%x", acc) - (acc < 0);
   
-  printf("\n**************************************\n* Accumulator:                       *\n*   Hex     :  ");
+  printf("\n**************************************\n");
+  printf("* Accumulator:                       *\n");
+
+  char bin_str[20];
+  convert_to_binary(acc,bin_str);
+  
+  printf("*   Binary  :  %s   *\n",bin_str);
+  
+  
+  printf("*   Hex     :  ");
 
   int z=0;
   
@@ -260,7 +269,24 @@ unsigned short get_binary_op (char *bin)
 
 void convert_to_binary (short acc, char *bin)
 {
+  unsigned short max_u_short=-1;
+  unsigned short u_acc=acc+max_u_short+1;
   
+  short rem;
+  for(int dex=18;dex>=0;dex--)
+    {
+      if(dex==4 || dex==9 || dex==14)
+	{
+	  bin[dex]=' ';
+	}
+      else
+	{
+	  rem=u_acc%2;
+	  u_acc=u_acc/2;
+	  bin[dex]=rem+'0';
+	}
+    }
+  bin[19]=0;
 }
 
 void add (short *acc, char mode)
