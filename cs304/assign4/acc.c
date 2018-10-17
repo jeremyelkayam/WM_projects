@@ -46,6 +46,10 @@ int main(void)
 
     switch(result)
       {
+      case 'b':
+	mode=result;
+	printf("Mode is Binary\n");
+	break;
 	
       case 'd':
 	mode=result;
@@ -69,6 +73,10 @@ int main(void)
       case 's':
 	switch(mode)
 	  {
+	  case 'b':
+	    printf("Enter binary value: ");
+	    break;
+	    
 	  case 'd':
 	    printf("Enter decimal value: ");
 	    break;
@@ -100,6 +108,7 @@ short get_operand(char mode)
 
   switch(mode)
     {
+      
     case 'x':
       scanf("%hx",&result);
       printf("%hX\n",result);
