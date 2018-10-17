@@ -80,12 +80,36 @@ int main(void)
 
       case '<':
 	printf("Number of bits to be shifted (decimal): ");
-        stored_value=stored_value<<get_operand('d');
+        stored_value = stored_value << get_operand('d');
 	break;
 
       case '>':
 	printf("Number of bits to be shifted (decimal): ");
-        stored_value=stored_value>>get_operand('d');
+        stored_value = stored_value >> get_operand('d');
+	break;
+
+      case '&':
+	switch(mode)
+	  {
+	  case 'b':
+	    printf("Enter binary value: ");
+	    break;
+	    
+	  case 'd':
+	    printf("Enter decimal value: ");
+	    break;
+	    
+	  case 'o':
+	    printf("Enter octal value: ");
+	    break;
+	    
+	  case 'x':
+	    printf("Enter hex value: ");
+	    break;
+	    
+	  }
+	
+	stored_value = stored_value & get_operand(mode);
 	break;
 	
       case 's':
@@ -244,7 +268,8 @@ char print_menu(void)
 
   while(strlen(output)!=1 ||
 	
-	(lower_output!='>' &&
+	(lower_output!='&' &&
+	 lower_output!='>' &&
 	 lower_output!='<' &&
 	 lower_output!='~' &&
 	 lower_output!='n' &&
