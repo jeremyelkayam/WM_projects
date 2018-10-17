@@ -69,6 +69,14 @@ int main(void)
       case 'c':
 	stored_value=0;
 	break;
+
+      case 'n':
+	stored_value=-stored_value;
+	break;
+
+      case '~':
+	stored_value=~stored_value;
+	break;
 	
       case 's':
 	switch(mode)
@@ -226,7 +234,9 @@ char print_menu(void)
 
   while(strlen(output)!=1 ||
 	
-	(lower_output!='b' &&
+	(lower_output!='~' &&
+	 lower_output!='n' &&
+	 lower_output!='b' &&
 	 lower_output!='o' &&
 	 lower_output!='h' &&
 	 lower_output!='d' &&
