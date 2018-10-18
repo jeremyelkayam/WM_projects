@@ -417,8 +417,9 @@ char print_menu(void)
 unsigned short get_binary_op (char *bin)
 {
   int total=0;
+  int dex;
 
-  for(int dex=0;bin[dex]!=0;dex++)
+  for(dex=0;bin[dex]!=0;dex++)
     {
       total *= 2;
       if(bin[dex]=='1')
@@ -437,7 +438,8 @@ void convert_to_binary (short acc, char *bin)
   unsigned short u_acc=acc+max_u_short+1;
   
   short rem;
-  for(int dex=18;dex>=0;dex--)
+  int dex;
+  for(dex=18;dex>=0;dex--)
     {
       if(dex==4 || dex==9 || dex==14)
 	{
