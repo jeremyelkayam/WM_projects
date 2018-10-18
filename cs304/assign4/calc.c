@@ -32,6 +32,9 @@ void add (short *acc, char mode);
 // similar to add, but subtract
 void subtract (short *acc, char mode);
 
+const short MIN_SHORT=-32768;
+const short MAX_SHORT=32767;  
+
 //main menu loop; execute option or call appropriate function
 int main(void)
 {
@@ -452,10 +455,43 @@ void convert_to_binary (short acc, char *bin)
 
 void add (short *acc, char mode)
 {
+  short part=get_operand(mode);
+  if(part > 0)//adding a positive
+    {
+      if(part > MAX_SHORT - *acc)
+	{
+	  printf("Positive overflow detected.");
+	}
+    }
+  else if(part < 0)//adding a negative
+    {
+      if(part < MIN_SHORT + *acc)
+	{
+	  printf("Negative underflow detected.");
+	}
+    }
   
+  *acc+=part;
 }
 
 void subtract (short *acc, char mode)
 {
-  
+  short part=get_operand(mode);
+
+  if(part > 0) // subtract a positive
+    {
+      if(*acc - MIN_SHORT < part )
+	{
+	  printf("Negative underflow detected");
+	}
+    }
+  else if(part < 0)// subtract a negative
+    {
+      if(*acc + MAX_SHORT > part )
+	{
+	  printf("Positive overflow detected");
+	}
+    }
+
+  *acc-=part;
 }
