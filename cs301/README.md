@@ -1,4 +1,4 @@
-#CS301 - Software Development
+# CS301 - Software Development
 
 This directory houses the final version of the main assignment for CS301--
 a maze game built for Android, based on Paul Falstad's Maze. Played with
