@@ -82,12 +82,12 @@ int main(void)
 	break;
 
       case '<':
-	printf("Number of bits to be shifted (decimal): ");
+	printf("Enter number of positions to left shift accumulator: ");
         stored_value = stored_value << get_operand('d');
 	break;
 
       case '>':
-	printf("Number of bits to be shifted (decimal): ");
+	printf("Enter number of positions to right shift accumulator: ");
         stored_value = stored_value >> get_operand('d');
 	break;
 
@@ -462,14 +462,14 @@ void add (short *acc, char mode)
     {
       if(part > MAX_SHORT - *acc)
 	{
-	  printf("Positive overflow detected.");
+	  printf("Overflow Error\n");
 	}
     }
   else if(part < 0)//adding a negative
     {
       if(part < MIN_SHORT + *acc)
 	{
-	  printf("Negative underflow detected.");
+	  printf("Negative Overflow Error\n");
 	}
     }
   
@@ -484,14 +484,14 @@ void subtract (short *acc, char mode)
     {
       if(*acc - MIN_SHORT < part )
 	{
-	  printf("Negative underflow detected");
+	  printf("Negative Overflow Error\n");
 	}
     }
   else if(part < 0)// subtract a negative
     {
       if(*acc + MAX_SHORT > part )
 	{
-	  printf("Positive overflow detected");
+	  printf("Overflow Error\n");
 	}
     }
 
