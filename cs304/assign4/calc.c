@@ -467,7 +467,7 @@ void add (short *acc, char mode)
     }
   else if(part < 0)//adding a negative
     {
-      if(part < MIN_SHORT + *acc)
+      if(part < MIN_SHORT - *acc)
 	{
 	  printf("Negative Overflow Error\n");
 	}
@@ -482,14 +482,14 @@ void subtract (short *acc, char mode)
 
   if(part > 0) // subtract a positive
     {
-      if(*acc - MIN_SHORT < part )
+      if(*acc < MIN_SHORT + part )
 	{
 	  printf("Negative Overflow Error\n");
 	}
     }
   else if(part < 0)// subtract a negative
     {
-      if(*acc + MAX_SHORT > part )
+      if(*acc > MAX_SHORT + part )
 	{
 	  printf("Overflow Error\n");
 	}
