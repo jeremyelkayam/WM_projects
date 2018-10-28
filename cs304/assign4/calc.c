@@ -17,7 +17,7 @@
   and not ctype.h. If you get errors or warnings when trying to compile, just
   un-comment the line below and it should work.
  */
-#include <ctype.h>
+//#include <ctype.h>
 
 //read in numeric value in mode, return value
 short get_operand(char mode);
