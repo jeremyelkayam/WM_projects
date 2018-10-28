@@ -1,8 +1,10 @@
 /* 
    acc.c
-   Purpose: An integer accumulation program. Allows for the user to enter any integer in
-   octal, hexadecimal, or decimal mode, and have that integer displayed in octal, hex,
-   and decimal bases.
+   Purpose: An integer accumulation and calculation program. Allows for the user
+   to enter any integer in binary, octal, hexadecimal, or decimal mode, and have
+   that integer displayed in binary, octal, hex, and decimal bases. Also allows
+   simple bit-level calculations including negation, bitwise boolean operations,
+   and addition.
    
    @author Jeremy Elkayam
  */
@@ -15,7 +17,7 @@
   and not ctype.h. If you get errors or warnings when trying to compile, just
   un-comment the line below and it should work.
  */
-//#include <ctype.h>
+#include <ctype.h>
 
 //read in numeric value in mode, return value
 short get_operand(char mode);
@@ -32,13 +34,15 @@ void add (short *acc, char mode);
 // similar to add, but subtract
 void subtract (short *acc, char mode);
 
+//minimum and maximum short 
 const short MIN_SHORT=-32768;
 const short MAX_SHORT=32767;  
 
 //main menu loop; execute option or call appropriate function
 int main(void)
 {
-  
+
+  //mode defaults to decimal and accumulator to 0
   char mode='d';
   short stored_value=0;
   char result;
@@ -74,20 +78,25 @@ int main(void)
 	break;
 
       case 'n':
+	//just use built-in negation as the machine does two's complement for us
 	stored_value=-stored_value;
 	break;
 
       case '~':
+	//once again, C has built-in bitwise negation so no need to do anything
+	//fiddly
 	stored_value=~stored_value;
 	break;
 
       case '<':
 	printf("Enter number of positions to left shift accumulator: ");
+	//built-in left shift
         stored_value = stored_value << get_operand('d');
 	break;
 
       case '>':
 	printf("Enter number of positions to right shift accumulator: ");
+	//built-in right shift
         stored_value = stored_value >> get_operand('d');
 	break;
 
@@ -111,7 +120,8 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//just use the built-in bitwise and for the current value and the
+	//entered value
 	stored_value = stored_value & get_operand(mode);
 	break;
 	
@@ -135,7 +145,8 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//this assignment was much easier for me than the first one, since you
+	//mostly just need to use a bunch of built-in operators, as seen below.
 	stored_value = stored_value | get_operand(mode);
 	break;
 	
@@ -159,7 +170,7 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//bitwise xor
 	stored_value = stored_value ^ get_operand(mode);
 	break;
 	
@@ -183,7 +194,7 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//call appropriate function
 	add(&stored_value,mode);
 	
 	break;
@@ -208,7 +219,7 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//call appropriate function
 	subtract(&stored_value,mode);
 	
 	break;
@@ -233,7 +244,7 @@ int main(void)
 	    break;
 	    
 	  }
-	
+	//call appropriate function
 	stored_value=get_operand(mode);
 	break;
 	
@@ -265,22 +276,25 @@ short get_operand(char mode)
 	      printf("Input must be 16 digits or less, without spaces.\n\nEnter binary value: ");
 	    }
       }while(count>16);
-      
+      //We have a separate function for binary conversion.
       result=get_binary_op(bin);
 
       break;
       
     case 'x':
+      //h to denote that this value is a short; x for hexadecimal
       scanf("%hx",&result);
       printf("%hX\n",result);
       break;
       
     case 'd':
+      //h -> short, d -> decimal
       scanf("%hd",&result);
       printf("%hd\n",result);
       break;
       
     case 'o':
+      //o -> octal, h -> short
       scanf("%ho",&result);
       printf("%ho\n",result);
       break;
@@ -308,7 +322,7 @@ void print_acc(short acc)
   printf("*   Hex     :  ");
 
   int z=0;
-  
+  //count the 0's you add until it's correct padding for all of these
   for(z=0;z<4-hex_digits;z++)
     {
       printf("0");
@@ -327,7 +341,7 @@ void print_acc(short acc)
     {
       printf("0");
     }
-
+  
   printf("%ho",acc);
   
   for(z=0;z<16;z++)
@@ -366,9 +380,8 @@ char print_menu(void)
   printf("%s\n",output);
   
   char lower_output=tolower(output[0]);
-
+  //the correct options
   while(strlen(output)!=1 ||
-	
 	(lower_output!='+' &&
 	 lower_output!='-' &&
 	 lower_output!='^' &&
@@ -443,12 +456,15 @@ void convert_to_binary (short acc, char *bin)
     {
       if(dex==4 || dex==9 || dex==14)
 	{
+	  //account for proper spacing between groups of 4 digits
 	  bin[dex]=' ';
 	}
       else
 	{
 	  rem=u_acc%2;
 	  u_acc=u_acc/2;
+	  //remainder will be 0 or 1, so advancing 1 in the ascii table gets us
+	  //the digit 1
 	  bin[dex]=rem+'0';
 	}
     }
