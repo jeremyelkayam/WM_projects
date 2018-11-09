@@ -1,3 +1,9 @@
+/*
+ * rc.h
+ * 
+ * @author Jeremy Elkayam
+ */
+
 #ifndef RC_H
 #define RC_H
 
