@@ -1,23 +1,26 @@
 #ifndef RC_H
 #define RC_H
 
+#include "vec.h"
+
 typedef struct {
-  double origin,direction;
+  VEC_T origin,direction;
 } RAY_T;
 
 typedef struct  {
-  int r,g,b;
+  double r,g,b; // all 3 are between 0 and 1
 } COLOR_T;
 
 typedef struct {
-  double center,radius;
+  VEC_T center; //xyz coords of the center
+  double radius; //radius
 } SPHERE_T;
 
-typedef struct {
+typedef struct OBJ {
   SPHERE_T sphere;
   COLOR_T color;
-  *OBJ_T next;
-} OBJ_T
+  struct OBJ *next;
+} OBJ_T;
 
 void read_objs(OBJ_T **list);
 
