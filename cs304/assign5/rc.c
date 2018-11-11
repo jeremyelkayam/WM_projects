@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <math.h>
 
 void read_objs(OBJ_T **list){
   double x,y,z,rad,r,g,b;
@@ -71,16 +72,20 @@ int main(){
   for(int row=0;row<1000;row++){//iterate through every row, then every col
     for(int col=0;col<1000;col++){
       RAY_T current_px;
-      current_px.x=col;
-      current_px.y=row;
-      current_px.z=500/tan(30);
+      current_px.direction.x=col;
+      current_px.direction.y=row;
+      current_px.direction.z=500/tan(30);
+
+      current_px.origin.x=0;
+      current_px.origin.y=0;
+      current_px.origin.z=0;
       
-      COLOR_T
+      COLOR_T color=cast(current_px,list);
       
       unsigned char r,g,b;
-      r=255;
-      g=255;
-      b=255;
+      r=255*color.r;
+      g=255*color.g;
+      b=255*color.b;
       printf("%c%c%c",r,g,b);
     }
   }
