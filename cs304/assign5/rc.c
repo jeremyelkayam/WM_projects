@@ -66,6 +66,9 @@ int main(){
   
   //free all members of list
   for(OBJ_T *current=list ; current=current->next ; current!=NULL){
+    VEC_T vecky=normalize(current->sphere.center);
+    printf("normalized vect: %lf %lf %lf",vecky.x,vecky.y,vecky.z);
+    
     free(current);
   }
   
