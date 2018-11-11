@@ -66,15 +66,22 @@ int main(){
 
   read_objs(&list); // Read in the object parameters from stdin and append them to list
   
-  //printf("P6 1000 1000 255\n"); //PPM header
+  printf("P6 1000 1000 255\n"); //PPM header
   
   for(int row=0;row<1000;row++){//iterate through every row, then every col
     for(int col=0;col<1000;col++){
+      RAY_T current_px;
+      current_px.x=col;
+      current_px.y=row;
+      current_px.z=500/tan(30);
+      
+      COLOR_T
+      
       unsigned char r,g,b;
       r=255;
       g=255;
       b=255;
-      //printf("%c%c%c",r,g,b);
+      printf("%c%c%c",r,g,b);
     }
   }
   
