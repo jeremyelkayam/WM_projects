@@ -10,7 +10,7 @@ void read_objs(OBJ_T **list){
   
   while(scanf("%lf%lf%lf%lf%lf%lf%lf",&x,&y,&z,&rad,&r,&g,&b)==7){
 
-    printf("scanned in:\n%lf %lf %lf\n%lf\n%lf %lf %lf\n",x,y,z,rad,r,g,b);
+    //printf("scanned in:\n%lf %lf %lf\n%lf\n%lf %lf %lf\n",x,y,z,rad,r,g,b);
 
     //Allocate memory for a new object
     obj=(OBJ_T *)malloc(sizeof(OBJ_T));
@@ -38,6 +38,20 @@ int intersect_sphere(RAY_T ray, SPHERE_T sphere, double *t){
 
 COLOR_T cast (RAY_T ray, OBJ_T *list){
   COLOR_T result;
+  result.r=1;
+  result.g=1;
+  result.b=1;
+  double dist,closest_so_far;
+
+  for(OBJ_T *current=list;current!=NULL;current=current->next){
+    if(intersect_sphere(ray,current->sphere,&dist)){
+	if(dist<closest_so_far){
+	  closest_so_far=dist;
+	  result=current->color;
+	}
+      }
+  }
+  
   return result;
 }
 
