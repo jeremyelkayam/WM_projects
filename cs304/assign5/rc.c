@@ -106,9 +106,10 @@ int main(){
   current_px.origin.z=0;
 
   COLOR_T px_color;
+  int row,col;
   
-  for(int row=0;row<1000;row++){//iterate through every row, then every col
-    for(int col=0;col<1000;col++){
+  for(row=0;row<1000;row++){//iterate through every row, then every col
+    for(col=0;col<1000;col++){
       //set up ray pointing from origin to here
       current_px.direction.x = -.5 + col / 1000.0;
       current_px.direction.y = .5 - row / 1000.0;
