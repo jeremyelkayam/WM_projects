@@ -6,3 +6,12 @@ int squareadd(int i){
   }
   return result;
 }
+
+int squarebit(int i){
+  return i*i; //todo actually do it
+}
+
+int main(){
+
+  return 0;
+}
