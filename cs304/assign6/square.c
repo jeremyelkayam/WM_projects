@@ -12,13 +12,13 @@ int squareadd(int i){
 int squarebit(int i){
   int sum = 0;
   int mult = i;
-  int bit = 0;
+  int bit = 1;
 
   while(bit<=i){
-    if(i & (1<<bit)){
+    if(i & bit){
       sum+=mult;
     }
-    bit+=1;
+    bit+=bit;
     mult+=mult;
   }
   
