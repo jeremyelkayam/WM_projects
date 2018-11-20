@@ -1,0 +1,55 @@
+# ebx : i
+
+irmovl Array, %eax  # array_address = Array
+mrmovl 0(%eax),%ebx # i = array_address[0]
+
+#ecx : result , edx : counter , eax : 1
+#squareadd
+irmovl 1,%eax       #incrementor=1
+irmovl 0,%ecx       #result=0
+irmovl 0,%edx       #counter=0
+
+adloop:
+addl %ebx, %ecx     #result+=i
+addl %eax, %edx     #counter++
+rrmovl %ebx,%ebp    #max_loops=i
+
+subl %edx, %ebp     # max_loops-=counter
+jg adloop           # loop if max_loops > 0
+
+#end of loop, save result to memory
+irmovl Array, %eax  # array_address = Array
+rmmovl %ecx, 4(%eax)# array_address[1] = result
+
+
+#sum : ecx , counter : edx , bit : edi , mult : ebp
+#squarebit
+irmovl 0,%ecx       #sum=0
+irmovl 0,%edx       #counter=0
+irmovl 1,%edi       #bit = 000001
+rrmovl %ebx,%ebp    #mult=i
+
+bitloop:
+rrmovl %ebx,%esi    #bit_check=i
+andl %edi,%esi      #bit_check=bit_check & bit
+je noadd            #if bit_check == 0, jump to noadd
+
+addl %ebp,%ecx      #else, sum += mult
+
+noadd:
+addl %edi,%edi      #bit += bit
+addl %ebp, %ebp     #mult += mult
+rrmovl %ebx,%esi    #max_bit_value=i
+subl %edi,%esi      #max_bit_value-=bit
+jge bitloop         #if max_bit_value >= 0, loop
+
+#end of loop, save result to memory
+irmovl Array, %eax  # array_address = Array
+rmmovl %ecx, 8(%eax)# array_address[1] = sum
+
+halt
+
+Array:
+.long 0x11
+.long 0x0
+.long 0x0
