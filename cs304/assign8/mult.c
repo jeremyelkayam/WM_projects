@@ -18,7 +18,31 @@ int rmult(int i, int j)
 
 int bmult(int i, int j)
 {
-  return 0;
+  int hi,lo,result;
+  
+  if(i<j){
+    hi=j;
+    lo=i;
+  }else{
+    hi=i;
+    lo=j;
+  }//initialize hi to the higher one and lo to the lower one
+  result=0;
+  
+  int bit = 1;
+
+  while(bit <= lo) //if bit is higher than the lower number, it's already been
+    {             // shifted past all of its contents so we're done 
+      if(bit & lo)// check if bit is set in lo
+	{
+	  result+=hi;
+	}
+      hi+=hi;   //doubling hi here means it will always equal hi_init * bit
+                // saving us computations :)
+      bit+=bit; //adding bit to itself = doubling it = shifting it left by 1
+  }
+  
+  return result;
 }
 
 int main()
@@ -34,11 +58,11 @@ int main()
 	
 	//rmult
 	int rec=rmult(fac1,fac2);
-	printf("0x%08d  ",rec);
+	printf("0x%08x  ",rec);
 
 	//bmult
 	int bit=bmult(fac1,fac2);
-	printf("0x%08d\n",bit);
+	printf("0x%08x\n",bit);
       }
     }
   printf("***********************************\n");
