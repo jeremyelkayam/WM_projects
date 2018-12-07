@@ -10,6 +10,156 @@ main:
 	irmovl 8,%ebx       #a=8
 	
 bigloop:
+	irmovl 0xffffffff,%esi
+	rmmovl %esi,(%edi)
+    irmovl 4,%esi
+    addl %esi,%edi
+	
+	irmovl 1,%esi       #temp=1
+	irmovl 1,%edx       #d=3
+	addl %esi,%ebx      #b++
+	irmovl 13,%esi      #temp=13
+	subl %ebx,%esi      #temp=temp-b
+	je finish           #if temp=b, finish
+
+loop:
+	
+	pushl %edx          # stacking (a,d)
+	pushl %ebx          # for rmult to use
+	
+	call rmult
+	
+	popl %eax
+	popl %edx
+	
+	rmmovl %eax,(%edi)
+	irmovl 4,%eax
+	addl %eax,%edi      # edi+=4
+	
+	
+	pushl %edx          # stacking (a,d)
+	pushl %ebx          # for rmult to use
+	
+	call bmult
+	
+	popl %eax
+	popl %edx
+	
+	
+	rmmovl %eax,(%edi)
+	irmovl 4,%eax
+	addl %eax,%edi      # edi+=4
+	irmovl 2,%eax       #
+	addl %eax,%edx      #edx += 2
+	irmovl 9,%eax       #eax = 9
+	subl %edx,%eax      #eax -= edx
+	je bigloop          #if edx = 9 jump back up
+	jmp loop
+
+finish:
+    halt
+	
+    
+rmult:
+    pushl %ebp          # housekeeping 
+    rrmovl %esp,%ebp    # to make sure we have the stack
+    
+    pushl %ebx
+    
+    mrmovl 8(%ebp),%eax # pull a from the stack frame
+    mrmovl 12(%ebp),%edx# pull d from the stack frame
+    
+    irmovl 1,%ecx       # c=1
+    
+    subl %ecx,%edx      # d-=1
+    je rmultend         # if d=0, end it
+                    
+                        #else 
+    rrmovl %eax,%ebx    #b=a
+    
+
+    pushl %edx          #prep our arguments to put into b
+    pushl %eax
+    
+    call rmult
+    
+    popl %eax
+    popl %edx           #get them back
+    
+
+    addl %ebx,%eax      #a+=b
+    
+    rmmovl %eax,8(%ebp) #put our newly altered a back into the frame
+    
+rmultend:
+    popl %ebx           # pop off the register we needed
+    popl %ebp           # reset base pointer
+    ret
+
+    
+    
+    
+bmult:
+    pushl %ebp          # housekeeping 
+    rrmovl %esp,%ebp    # to make sure we have the stack
+    pushl %ebx
+    pushl %esi
+    pushl %edi
+    
+    mrmovl 8(%ebp),%eax # pull a from the stack frame
+    mrmovl 12(%ebp),%edx# pull d from the stack frame
+    
+
+    irmovl 0,%edi       #sum = 0
+    irmovl 1,%esi       #bit = 1
+    
+bmultloop:
+    rrmovl %edx,%ebx    #bitcheck=d
+    andl %esi,%ebx      #bitcheck = bitcheck & bit
+    je bitnotset        #if bitcheck & bit = 0 jump to bitnotset
+    addl %eax,%edi      #else sum = sum + a
+bitnotset:
+    addl %eax,%eax      #a*=2
+    addl %esi,%esi      #bit*=2
+    
+    
+    rrmovl %esi,%ebx    #loopcheck=bit
+    
+    subl %edx,%ebx      #loopcheck=loopcheck - d
+    jle bmultloop       #if loopcheck <=0, jump to bmultloop
+                        #else it's over
+    
+    
+    
+    rmmovl %edi,8(%ebp) # replace a with sum on the stack frame
+    
+    popl %edi           # pop off our variables
+    popl %esi
+    popl %ebx
+    
+    popl %ebp           #cleanup post procedure
+    ret
+    
+    
+
+    
+.pos 0x200
+Array:
+
+.pos 0x400
+Stack:
+    #Jeremy Elkayam
+# mult.ys
+# Purpose: 2 procedures (one recursive, one iterative) to multiply 2 numbers.
+# Intended to teach stack procedures in Y86.
+.pos 0
+main:
+    irmovl Stack,%esp	# bottom of Stack
+	irmovl Array,%edi	# Array base address to write results
+	
+	irmovl 8,%ebx       #a=8
+	
+bigloop:
     irmovl 4,%esi
     addl %esi,%edi
 	irmovl 0xffffffff,%esi
